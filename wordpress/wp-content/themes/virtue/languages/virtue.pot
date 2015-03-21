@@ -1,19 +1,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Lite Virtue\n"
-"POT-Creation-Date: 2015-01-22 00:17-0700\n"
-"PO-Revision-Date: 2015-01-22 00:17-0700\n"
+"POT-Creation-Date: 2015-02-24 15:24-0700\n"
+"PO-Revision-Date: 2015-02-24 15:24-0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr__;esc_attr_e\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPathExcluded-0: ../themeoptions/assets\n"
+"X-Poedit-SearchPathExcluded-1: ../themeoptons/framework.php\n"
+"X-Poedit-SearchPathExcluded-2: ../themeoptions/inc\n"
+"X-Poedit-SearchPathExcluded-3: ../themeoptions/options\n"
+"X-Poedit-SearchPathExcluded-4: ../themeoptions/redux-extensions\n"
+"X-Poedit-SearchPathExcluded-5: ../assets/js\n"
 
 #: ../404.php:11
 msgid "Sorry, but the page you were trying to view does not exist."
@@ -323,15 +329,6 @@ msgstr ""
 #: ../lib/cmb/helpers/cmb_Meta_Box_types.php:178
 #: ../lib/cmb/helpers/cmb_Meta_Box_types.php:547
 #: ../lib/cmb/helpers/cmb_Meta_Box_types.php:590
-#: ../themeoptions/inc/fields/background/field_background.php:321
-#: ../themeoptions/inc/fields/media/field_media.php:200
-#: ../themeoptions/inc/fields/multi_text/field_multi_text.php:69
-#: ../themeoptions/inc/fields/multi_text/field_multi_text.php:73
-#: ../themeoptions/inc/fields/multi_text/field_multi_text.php:76
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:116
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:182
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:115
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:161
 msgid "Remove"
 msgstr ""
 
@@ -352,7 +349,6 @@ msgstr ""
 
 #: ../lib/cmb/helpers/cmb_Meta_Box_types.php:547
 #: ../lib/cmb/helpers/cmb_Meta_Box_types.php:590
-#: ../themeoptions/inc/import_export.php:104
 msgid "Download"
 msgstr ""
 
@@ -494,20 +490,20 @@ msgstr ""
 msgid "Head Content"
 msgstr ""
 
-#: ../lib/metaboxes.php:99 ../themeoptions/options.php:1534
+#: ../lib/metaboxes.php:99 ../themeoptions/options.php:1540
 msgid "None"
 msgstr ""
 
-#: ../lib/metaboxes.php:100 ../themeoptions/options.php:1534
+#: ../lib/metaboxes.php:100 ../themeoptions/options.php:1540
 msgid "Image Slider"
 msgstr ""
 
 #: ../lib/metaboxes.php:101 ../lib/metaboxes.php:129
-#: ../themeoptions/options.php:1534
+#: ../themeoptions/options.php:1540
 msgid "Video"
 msgstr ""
 
-#: ../lib/metaboxes.php:102 ../themeoptions/options.php:1534
+#: ../lib/metaboxes.php:102 ../themeoptions/options.php:1540
 msgid "Image"
 msgstr ""
 
@@ -638,13 +634,13 @@ msgstr ""
 msgid "Sidebar Options"
 msgstr ""
 
-#: ../lib/scripts.php:32
+#: ../lib/scripts.php:33
 msgid ""
 "Sorry, no products matched your selection. Please choose a different "
 "combination."
 msgstr ""
 
-#: ../lib/scripts.php:33
+#: ../lib/scripts.php:34
 msgid ""
 "Sorry, this product is unavailable. Please choose a different combination."
 msgstr ""
@@ -832,7 +828,7 @@ msgstr ""
 msgid "Virtue: Recent Posts"
 msgstr ""
 
-#: ../lib/widgets.php:540 ../templates/recentblog-carousel.php:2
+#: ../lib/widgets.php:540 ../templates/recentblog-carousel.php:7
 msgid "Recent Posts"
 msgstr ""
 
@@ -910,10 +906,6 @@ msgid "Image URL"
 msgstr ""
 
 #: ../lib/widgets.php:860
-#: ../themeoptions/inc/fields/background/field_background.php:314
-#: ../themeoptions/inc/fields/media/field_media.php:193
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:108
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:159
 msgid "Upload"
 msgstr ""
 
@@ -931,13 +923,13 @@ msgstr ""
 
 #: ../page-blog.php:70 ../templates/home/blog-home.php:136
 #: ../templates/home/latest-slider.php:58
-#: ../templates/recentblog-carousel.php:48
+#: ../templates/recentblog-carousel.php:71
 #: ../templates/similarblog-carousel.php:77
 msgid "Sorry, no blog entries found."
 msgstr ""
 
 #: ../page-portfolio.php:130 ../templates/home/portfolio-carousel.php:86
-#: ../templates/recentportfolio-carousel.php:42
+#: ../templates/recentportfolio-carousel.php:54
 msgid "Sorry, no portfolio entries found."
 msgstr ""
 
@@ -985,7 +977,7 @@ msgstr ""
 msgid "Leave a Reply"
 msgstr ""
 
-#: ../templates/comments.php:54 ../woocommerce/single-product-reviews.php:58
+#: ../templates/comments.php:54
 #, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
@@ -1008,7 +1000,7 @@ msgstr ""
 msgid "Log out &raquo;"
 msgstr ""
 
-#: ../templates/comments.php:68 ../woocommerce/single-product-reviews.php:62
+#: ../templates/comments.php:68
 msgid "Name"
 msgstr ""
 
@@ -1077,12 +1069,152 @@ msgstr ""
 msgid "Featured Projects"
 msgstr ""
 
-#: ../templates/recentportfolio-carousel.php:2
+#: ../templates/recentportfolio-carousel.php:7
 msgid "Recent Projects"
 msgstr ""
 
 #: ../templates/similarblog-carousel.php:7
 msgid "Similar Posts"
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:531
+#: ../themeoptions/framework.php:1850
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:532
+#: ../themeoptions/framework.php:1858
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:533
+#: ../themeoptions/framework.php:1874
+msgid ""
+"Your current options will be replaced with the values of this preset. Would "
+"you like to proceed?"
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:566
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:567
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr ""
+
+#: ../themeoptions/extensions/customizer/extension_customizer.php:568
+msgid ""
+"Your current options will be replaced with the values of this preset.  Would "
+"you like to proceed?"
+msgstr ""
+
+#: ../themeoptions/framework.php:209
+#, php-format
+msgid "Options panel created using %1$s"
+msgstr ""
+
+#: ../themeoptions/framework.php:209
+msgid "Redux Framework"
+msgstr ""
+
+#: ../themeoptions/framework.php:213 ../themeoptions/framework.php:217
+msgid "Options"
+msgstr ""
+
+#: ../themeoptions/framework.php:1866
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: ../themeoptions/framework.php:1881
+msgid "Please Wait"
+msgstr ""
+
+#: ../themeoptions/framework.php:2006
+msgid "Enable"
+msgstr ""
+
+#: ../themeoptions/framework.php:2011
+msgid "Disable"
+msgstr ""
+
+#: ../themeoptions/framework.php:2017
+msgid "moving the mouse over"
+msgstr ""
+
+#: ../themeoptions/framework.php:2019
+msgid "clicking"
+msgstr ""
+
+#: ../themeoptions/framework.php:2023
+#, php-format
+msgid ""
+"Hints are tooltips that popup when %d the hint icon, offering addition "
+"information about the field in which they appear.  They can be %d d by using "
+"the link below."
+msgstr ""
+
+#: ../themeoptions/framework.php:2028
+msgid "Hints"
+msgstr ""
+
+#: ../themeoptions/framework.php:3256
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3307
+msgid "Developer Mode Enabled"
+msgstr ""
+
+#: ../themeoptions/framework.php:3336
+msgid "Expand"
+msgstr ""
+
+#: ../themeoptions/framework.php:3338 ../themeoptions/framework.php:3648
+msgid "Save Changes"
+msgstr ""
+
+#: ../themeoptions/framework.php:3342 ../themeoptions/framework.php:3652
+msgid "Reset Section"
+msgstr ""
+
+#: ../themeoptions/framework.php:3344 ../themeoptions/framework.php:3654
+msgid "Reset All"
+msgstr ""
+
+#: ../themeoptions/framework.php:3349 ../themeoptions/framework.php:3659
+msgid "Working..."
+msgstr ""
+
+#: ../themeoptions/framework.php:3369
+msgid "Settings Imported!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3384
+msgid "All Defaults Restored!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3398
+msgid "Section Defaults Restored!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3412
+msgid "Settings Saved!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3432
+msgid "Settings have changed, you should save them!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3440
+msgid "error(s) were found!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3448
+msgid "warning(s) were found!"
+msgstr ""
+
+#: ../themeoptions/framework.php:3512 ../themeoptions/framework.php:3591
+msgid "System Info"
 msgstr ""
 
 #: ../themeoptions/options.php:56
@@ -1532,606 +1664,505 @@ msgstr ""
 msgid "How many products per page"
 msgstr ""
 
-#: ../themeoptions/options.php:718
+#: ../themeoptions/options.php:717
 msgid "Show Ratings in Shop and Category Pages"
 msgstr ""
 
-#: ../themeoptions/options.php:719
+#: ../themeoptions/options.php:718
 msgid "This determines if the rating is displayed in the product archive pages"
 msgstr ""
 
+#: ../themeoptions/options.php:724
+msgid "Quantity Box plus and minus"
+msgstr ""
+
 #: ../themeoptions/options.php:725
+msgid ""
+"Turn this off if you would like to use browser added plus and minus for "
+"number boxes"
+msgstr ""
+
+#: ../themeoptions/options.php:731
 msgid "Shop Product Title Settings"
 msgstr ""
 
-#: ../themeoptions/options.php:730
+#: ../themeoptions/options.php:736
 msgid "Shop & archive Product title Font"
 msgstr ""
 
-#: ../themeoptions/options.php:745
+#: ../themeoptions/options.php:751
 msgid "Choose Size and Style for product titles on category and archive pages."
 msgstr ""
 
-#: ../themeoptions/options.php:756
+#: ../themeoptions/options.php:762
 msgid "Set Product Title to Uppercase?"
 msgstr ""
 
-#: ../themeoptions/options.php:757
+#: ../themeoptions/options.php:763
 msgid "This makes your product titles uppercase on Category pages"
 msgstr ""
 
-#: ../themeoptions/options.php:763
+#: ../themeoptions/options.php:769
 msgid "Product title Min Height"
 msgstr ""
 
-#: ../themeoptions/options.php:764
+#: ../themeoptions/options.php:770
 msgid ""
 "If your titles are long increase this to help align your products height."
 msgstr ""
 
-#: ../themeoptions/options.php:773
+#: ../themeoptions/options.php:779
 msgid "Product Image Sizes"
 msgstr ""
 
-#: ../themeoptions/options.php:778
+#: ../themeoptions/options.php:784
 msgid "Enable Product Image Crop on Catalog pages"
 msgstr ""
 
-#: ../themeoptions/options.php:779
+#: ../themeoptions/options.php:785
 msgid ""
 "If turned off image dimensions are set by woocommerce settings - recommended "
 "width: 270px for Catalog Images"
 msgstr ""
 
-#: ../themeoptions/options.php:785
+#: ../themeoptions/options.php:791
 msgid "Enable Product Image Crop on product Page"
 msgstr ""
 
-#: ../themeoptions/options.php:786
+#: ../themeoptions/options.php:792
 msgid ""
 "If turned off image dimensions are set by woocommerce settings - recommended "
 "width: 468px for Single Product Image"
 msgstr ""
 
-#: ../themeoptions/options.php:792
+#: ../themeoptions/options.php:798
 msgid "Product Page Settings"
 msgstr ""
 
-#: ../themeoptions/options.php:797
+#: ../themeoptions/options.php:803
 msgid "Display product tabs?"
 msgstr ""
 
-#: ../themeoptions/options.php:798
+#: ../themeoptions/options.php:804
 msgid "This determines if product tabs are displayed"
 msgstr ""
 
-#: ../themeoptions/options.php:804
+#: ../themeoptions/options.php:810
 msgid "Display related products?"
 msgstr ""
 
-#: ../themeoptions/options.php:805
+#: ../themeoptions/options.php:811
 msgid "This determines related products are displayed"
 msgstr ""
 
-#: ../themeoptions/options.php:813
+#: ../themeoptions/options.php:819
 msgid "Basic Styling"
 msgstr ""
 
-#: ../themeoptions/options.php:814
+#: ../themeoptions/options.php:820
 msgid "Basic Stylng"
 msgstr ""
 
-#: ../themeoptions/options.php:819
+#: ../themeoptions/options.php:825
 msgid "Theme Skin Stylesheet"
 msgstr ""
 
-#: ../themeoptions/options.php:820
+#: ../themeoptions/options.php:826
 msgid ""
 "Note* changes made in options panel will override this stylesheet. Example: "
 "Colors set in typography."
 msgstr ""
 
-#: ../themeoptions/options.php:829
+#: ../themeoptions/options.php:835
 msgid "Primary Color"
 msgstr ""
 
-#: ../themeoptions/options.php:830
+#: ../themeoptions/options.php:836
 msgid "Choose the default Highlight color for your site."
 msgstr ""
 
-#: ../themeoptions/options.php:839
+#: ../themeoptions/options.php:845
 msgid "20% lighter than Primary Color"
 msgstr ""
 
-#: ../themeoptions/options.php:840
+#: ../themeoptions/options.php:846
 msgid "This is used for hover effects"
 msgstr ""
 
-#: ../themeoptions/options.php:849
+#: ../themeoptions/options.php:855
 msgid "Sitewide Gray Fonts"
 msgstr ""
 
-#: ../themeoptions/options.php:859
+#: ../themeoptions/options.php:865
 msgid "Footer Font Color"
 msgstr ""
 
-#: ../themeoptions/options.php:871
+#: ../themeoptions/options.php:877
 msgid "Advanced Styling"
 msgstr ""
 
-#: ../themeoptions/options.php:872
+#: ../themeoptions/options.php:878
 msgid "Main Content Background"
 msgstr ""
 
-#: ../themeoptions/options.php:877
+#: ../themeoptions/options.php:883
 msgid "Content Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:886 ../themeoptions/options.php:926
-#: ../themeoptions/options.php:966 ../themeoptions/options.php:1006
-#: ../themeoptions/options.php:1046 ../themeoptions/options.php:1086
-#: ../themeoptions/options.php:1126
+#: ../themeoptions/options.php:892 ../themeoptions/options.php:932
+#: ../themeoptions/options.php:972 ../themeoptions/options.php:1012
+#: ../themeoptions/options.php:1052 ../themeoptions/options.php:1092
+#: ../themeoptions/options.php:1132
 msgid "Upload background image or texture"
 msgstr ""
 
-#: ../themeoptions/options.php:891 ../themeoptions/options.php:931
-#: ../themeoptions/options.php:971 ../themeoptions/options.php:1011
-#: ../themeoptions/options.php:1051 ../themeoptions/options.php:1091
-#: ../themeoptions/options.php:1131
+#: ../themeoptions/options.php:897 ../themeoptions/options.php:937
+#: ../themeoptions/options.php:977 ../themeoptions/options.php:1017
+#: ../themeoptions/options.php:1057 ../themeoptions/options.php:1097
+#: ../themeoptions/options.php:1137
 msgid "Image repeat options"
 msgstr ""
 
-#: ../themeoptions/options.php:898 ../themeoptions/options.php:938
-#: ../themeoptions/options.php:978 ../themeoptions/options.php:1018
-#: ../themeoptions/options.php:1058 ../themeoptions/options.php:1098
-#: ../themeoptions/options.php:1138
+#: ../themeoptions/options.php:904 ../themeoptions/options.php:944
+#: ../themeoptions/options.php:984 ../themeoptions/options.php:1024
+#: ../themeoptions/options.php:1064 ../themeoptions/options.php:1104
+#: ../themeoptions/options.php:1144
 msgid "X image placement options"
 msgstr ""
 
-#: ../themeoptions/options.php:905 ../themeoptions/options.php:945
-#: ../themeoptions/options.php:985 ../themeoptions/options.php:1025
-#: ../themeoptions/options.php:1065 ../themeoptions/options.php:1105
-#: ../themeoptions/options.php:1145
+#: ../themeoptions/options.php:911 ../themeoptions/options.php:951
+#: ../themeoptions/options.php:991 ../themeoptions/options.php:1031
+#: ../themeoptions/options.php:1071 ../themeoptions/options.php:1111
+#: ../themeoptions/options.php:1151
 msgid "Y image placement options"
 msgstr ""
 
-#: ../themeoptions/options.php:912
+#: ../themeoptions/options.php:918
 msgid "Topbar Background"
 msgstr ""
 
-#: ../themeoptions/options.php:917
+#: ../themeoptions/options.php:923
 msgid "Topbar Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:952
+#: ../themeoptions/options.php:958
 msgid "Header Background"
 msgstr ""
 
-#: ../themeoptions/options.php:957
+#: ../themeoptions/options.php:963
 msgid "Header Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:992
+#: ../themeoptions/options.php:998
 msgid "Secondary Menu Background"
 msgstr ""
 
-#: ../themeoptions/options.php:997
+#: ../themeoptions/options.php:1003
 msgid "Secondary menu Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:1032
+#: ../themeoptions/options.php:1038
 msgid "Mobile Menu Background"
 msgstr ""
 
-#: ../themeoptions/options.php:1037
+#: ../themeoptions/options.php:1043
 msgid "Mobile Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:1072
+#: ../themeoptions/options.php:1078
 msgid "Footer Background"
 msgstr ""
 
-#: ../themeoptions/options.php:1077
+#: ../themeoptions/options.php:1083
 msgid "Footer Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:1112
+#: ../themeoptions/options.php:1118
 msgid "Body Background"
 msgstr ""
 
-#: ../themeoptions/options.php:1117
+#: ../themeoptions/options.php:1123
 msgid "Body Background Color"
 msgstr ""
 
-#: ../themeoptions/options.php:1152
+#: ../themeoptions/options.php:1158
 msgid "Fixed or Scroll"
 msgstr ""
 
-#: ../themeoptions/options.php:1161
+#: ../themeoptions/options.php:1167
 msgid "Typography"
 msgstr ""
 
-#: ../themeoptions/options.php:1162
+#: ../themeoptions/options.php:1168
 msgid "Header Font Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1167
+#: ../themeoptions/options.php:1173
 msgid "H1 Headings"
 msgstr ""
 
-#: ../themeoptions/options.php:1182
+#: ../themeoptions/options.php:1188
 msgid "Choose Size and Style for h1 (This Styles Your Page Titles)"
 msgstr ""
 
-#: ../themeoptions/options.php:1193
+#: ../themeoptions/options.php:1199
 msgid "H2 Headings"
 msgstr ""
 
-#: ../themeoptions/options.php:1208
+#: ../themeoptions/options.php:1214
 msgid "Choose Size and Style for h2"
 msgstr ""
 
-#: ../themeoptions/options.php:1219
+#: ../themeoptions/options.php:1225
 msgid "H3 Headings"
 msgstr ""
 
-#: ../themeoptions/options.php:1234
+#: ../themeoptions/options.php:1240
 msgid "Choose Size and Style for h3"
 msgstr ""
 
-#: ../themeoptions/options.php:1245
+#: ../themeoptions/options.php:1251
 msgid "H4 Headings"
 msgstr ""
 
-#: ../themeoptions/options.php:1260
+#: ../themeoptions/options.php:1266
 msgid "Choose Size and Style for h4"
 msgstr ""
 
-#: ../themeoptions/options.php:1271
+#: ../themeoptions/options.php:1277
 msgid "H5 Headings"
 msgstr ""
 
-#: ../themeoptions/options.php:1286
+#: ../themeoptions/options.php:1292
 msgid "Choose Size and Style for h5"
 msgstr ""
 
-#: ../themeoptions/options.php:1297
+#: ../themeoptions/options.php:1303
 msgid "Body Font Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1302
+#: ../themeoptions/options.php:1308
 msgid "Body Font"
 msgstr ""
 
-#: ../themeoptions/options.php:1317
+#: ../themeoptions/options.php:1323
 msgid "Choose Size and Style for paragraphs"
 msgstr ""
 
-#: ../themeoptions/options.php:1330
+#: ../themeoptions/options.php:1336
 msgid "Menu Settings"
 msgstr ""
 
-#: ../themeoptions/options.php:1331
+#: ../themeoptions/options.php:1337
 msgid "Primary Menu Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1336
+#: ../themeoptions/options.php:1342
 msgid "Primary Menu Font"
 msgstr ""
 
-#: ../themeoptions/options.php:1351
+#: ../themeoptions/options.php:1357
 msgid "Choose Size and Style for primary menu"
 msgstr ""
 
-#: ../themeoptions/options.php:1362
+#: ../themeoptions/options.php:1368
 msgid "Secondary Menu Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1367
+#: ../themeoptions/options.php:1373
 msgid "Secondary Menu Font"
 msgstr ""
 
-#: ../themeoptions/options.php:1382
+#: ../themeoptions/options.php:1388
 msgid "Choose Size and Style for secondary menu"
 msgstr ""
 
-#: ../themeoptions/options.php:1393
+#: ../themeoptions/options.php:1399
 msgid "Mobile Menu Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1398
+#: ../themeoptions/options.php:1404
 msgid "Mobile Menu Font"
 msgstr ""
 
-#: ../themeoptions/options.php:1413
+#: ../themeoptions/options.php:1419
 msgid "Choose Size and Style for Mobile Menu"
 msgstr ""
 
-#: ../themeoptions/options.php:1427 ../themeoptions/options.php:1428
+#: ../themeoptions/options.php:1433 ../themeoptions/options.php:1434
 msgid "Misc Settings"
 msgstr ""
 
-#: ../themeoptions/options.php:1435
+#: ../themeoptions/options.php:1441
 msgid "All Projects Portfolio Page"
 msgstr ""
 
-#: ../themeoptions/options.php:1436
+#: ../themeoptions/options.php:1442
 msgid ""
 "This sets the link in every single portfolio page. *note: You still have to "
 "set the page template to portfolio."
 msgstr ""
 
-#: ../themeoptions/options.php:1441
+#: ../themeoptions/options.php:1447
 msgid "Allow Comments on Pages"
 msgstr ""
 
-#: ../themeoptions/options.php:1442
+#: ../themeoptions/options.php:1448
 msgid "Turn on to allow comments on pages"
 msgstr ""
 
-#: ../themeoptions/options.php:1448
+#: ../themeoptions/options.php:1454
 msgid "Allow Comments on Portfolio Posts"
 msgstr ""
 
-#: ../themeoptions/options.php:1449
+#: ../themeoptions/options.php:1455
 msgid "Turn on to allow comments on Portfolio posts"
 msgstr ""
 
-#: ../themeoptions/options.php:1455
+#: ../themeoptions/options.php:1461
 msgid "Hide Image Border"
 msgstr ""
 
-#: ../themeoptions/options.php:1456
+#: ../themeoptions/options.php:1462
 msgid "Choose to show or hide image border for images added in pages or posts"
 msgstr ""
 
-#: ../themeoptions/options.php:1462
+#: ../themeoptions/options.php:1468
 msgid "Blog Archive"
 msgstr ""
 
-#: ../themeoptions/options.php:1463
+#: ../themeoptions/options.php:1469
 msgid "Choose to show full post or post excerpt."
 msgstr ""
 
-#: ../themeoptions/options.php:1471
+#: ../themeoptions/options.php:1477
 msgid "Show Comments Closed Text?"
 msgstr ""
 
-#: ../themeoptions/options.php:1472
+#: ../themeoptions/options.php:1478
 msgid "Choose to show or hide comments closed alert below posts."
 msgstr ""
 
-#: ../themeoptions/options.php:1478
+#: ../themeoptions/options.php:1484
 msgid "Show Author Icon with posts?"
 msgstr ""
 
-#: ../themeoptions/options.php:1479
+#: ../themeoptions/options.php:1485
 msgid "Choose to show or hide author icon under post title."
 msgstr ""
 
-#: ../themeoptions/options.php:1485
+#: ../themeoptions/options.php:1491
 msgid "Show Previous and Next posts links?"
 msgstr ""
 
-#: ../themeoptions/options.php:1486
+#: ../themeoptions/options.php:1492
 msgid ""
 "Choose to show or hide previous and next post links in the footer of a "
 "single post."
 msgstr ""
 
-#: ../themeoptions/options.php:1493
+#: ../themeoptions/options.php:1499
 msgid "Custom Favicon"
 msgstr ""
 
-#: ../themeoptions/options.php:1494
+#: ../themeoptions/options.php:1500
 msgid ""
 "Upload a 16px x 16px png/gif/ico image that will represent your website "
 "favicon."
 msgstr ""
 
-#: ../themeoptions/options.php:1499
+#: ../themeoptions/options.php:1505
 msgid "Contact Form Email"
 msgstr ""
 
-#: ../themeoptions/options.php:1500
+#: ../themeoptions/options.php:1506
 msgid "Sets the email for the contact page email form."
 msgstr ""
 
-#: ../themeoptions/options.php:1506
+#: ../themeoptions/options.php:1512
 msgid "Footer Copyright Text"
 msgstr ""
 
-#: ../themeoptions/options.php:1507
+#: ../themeoptions/options.php:1513
 msgid ""
 "Write your own copyright text here. You can use the following shortcodes in "
 "your footer text: [copyright] [site-name] [the-year]"
 msgstr ""
 
-#: ../themeoptions/options.php:1513
+#: ../themeoptions/options.php:1519
 msgid "Blog Post Defaults"
 msgstr ""
 
-#: ../themeoptions/options.php:1518
+#: ../themeoptions/options.php:1524
 msgid "Blog Post Summary Default"
 msgstr ""
 
-#: ../themeoptions/options.php:1527
-msgid "Defualt post summary feature Image"
+#: ../themeoptions/options.php:1533
+msgid "Default post summary feature Image"
 msgstr ""
 
-#: ../themeoptions/options.php:1528
+#: ../themeoptions/options.php:1534
 msgid "Replace theme default feature image for posts without a featured image"
 msgstr ""
 
-#: ../themeoptions/options.php:1533
+#: ../themeoptions/options.php:1539
 msgid "Blog Post Head Content Default"
 msgstr ""
 
-#: ../themeoptions/options.php:1541
+#: ../themeoptions/options.php:1547
 msgid "Create Sidebars"
 msgstr ""
 
-#: ../themeoptions/options.php:1546
+#: ../themeoptions/options.php:1552
 msgid "Create Custom Sidebars"
 msgstr ""
 
-#: ../themeoptions/options.php:1547
+#: ../themeoptions/options.php:1553
 msgid "Type new sidebar name into textbox"
 msgstr ""
 
-#: ../themeoptions/options.php:1548
+#: ../themeoptions/options.php:1554
 msgid "Extra Sidebar"
 msgstr ""
 
-#: ../themeoptions/options.php:1553
+#: ../themeoptions/options.php:1559
 msgid "Wordpress Galleries"
 msgstr ""
 
-#: ../themeoptions/options.php:1558
+#: ../themeoptions/options.php:1564
 msgid "Enable Virtue Galleries to override Wordpress"
 msgstr ""
 
-#: ../themeoptions/options.php:1559
+#: ../themeoptions/options.php:1565
 msgid ""
 "Disable this if using a plugin to customize galleries, for example jetpack "
 "tiled gallery."
 msgstr ""
 
-#: ../themeoptions/options.php:1567
+#: ../themeoptions/options.php:1573
 msgid "Advanced Settings"
 msgstr ""
 
-#: ../themeoptions/options.php:1568
+#: ../themeoptions/options.php:1574
 msgid "Custom CSS Box"
 msgstr ""
 
-#: ../themeoptions/options.php:1573
+#: ../themeoptions/options.php:1579
 msgid "Custom CSS"
 msgstr ""
 
-#: ../themeoptions/options.php:1574
+#: ../themeoptions/options.php:1580
 msgid "Quickly add some CSS to your theme by adding it to this block."
 msgstr ""
 
-#: ../themeoptions/options.php:1592 ../themeoptions/options.php:1593
+#: ../themeoptions/options.php:1599 ../themeoptions/options.php:1600
 msgid "Theme Options"
 msgstr ""
 
-#: ../themeoptions/options.php:1600
+#: ../themeoptions/options.php:1607
 msgid ""
 "Thank you for using the Virtue Theme by <a href=\"http://kadencethemes.com/"
 "\" target=\"_blank\">Kadence Themes</a>."
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:50
-msgid "Icon"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:55
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:53
-#, php-format
-msgid "New %s"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:110
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:180
-msgid "Upload Icon"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:121
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:187
-msgid "Select an Icon"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:141
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:206
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:121
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:166
-msgid "URL"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:142
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:208
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:122
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:168
-msgid "Title"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:143
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:210
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:123
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:170
-msgid "Description"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:144
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:212
-msgid "Icon Link"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:148
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:217
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:128
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:177
-msgid "Open Link in New Tab/Window"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:158
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:226
-msgid "Delete Icon"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_icons/kad_icons/field_kad_icons.php:229
-msgid "Add Icon"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:48
-msgid "Slide"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:124
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:172
-msgid "Slide Link"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:137
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:185
-msgid "Delete Slide"
-msgstr ""
-
-#: ../themeoptions/options/extensions/kad_slides/kad_slides/field_kad_slides.php:188
-#, php-format
-msgid "Add %s"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:22
-msgid "Calculate Shipping"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:28
-msgid "Select a country&hellip;"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:45
-#: ../woocommerce/cart/shipping-calculator.php:51
-#: ../woocommerce/cart/shipping-calculator.php:63
-msgid "State / county"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:52
-msgid "Select a state&hellip;"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:72
-msgid "City"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:80
-msgid "Postcode / Zip"
-msgstr ""
-
-#: ../woocommerce/cart/shipping-calculator.php:85
-msgid "Update Totals"
 msgstr ""
 
 #: ../woocommerce/loop/sale-flash.php:16
@@ -2166,74 +2197,6 @@ msgstr ""
 msgid "Track"
 msgstr ""
 
-#: ../woocommerce/single-product-reviews.php:21
-#, php-format
-msgid "%s review for %s"
-msgid_plural "%s reviews for %s"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../woocommerce/single-product-reviews.php:23
-msgid "Reviews"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:44
-msgid "There are no reviews yet."
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:57
-msgid "Add a review"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:57
-msgid "Be the first to review"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:64
-msgid "Email"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:67
-msgid "Submit"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:73
-msgid "Your Rating"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:74
-msgid "Rate&hellip;"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:75
-msgid "Perfect"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:76
-msgid "Good"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:77
-msgid "Average"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:78
-msgid "Not that bad"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:79
-msgid "Very Poor"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:83
-msgid "Your Review"
-msgstr ""
-
-#: ../woocommerce/single-product-reviews.php:92
-msgid ""
-"Only logged in customers who have purchased this product may leave a review."
-msgstr ""
-
 #: ../woocommerce/single-product.php:27 ../woocommerce/single-product.php:29
 msgid "Back to"
 msgstr ""
@@ -2242,38 +2205,25 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: ../woocommerce/single-product/add-to-cart/variable.php:80
+#: ../woocommerce/single-product/add-to-cart/variable.php:27
 msgid "Choose an option"
 msgstr ""
 
-#: ../woocommerce/single-product/add-to-cart/variable.php:128
+#: ../woocommerce/single-product/add-to-cart/variable.php:62
 msgid "Clear selection"
 msgstr ""
 
-#: ../woocommerce/single-product/add-to-cart/variable.php:161
+#: ../woocommerce/single-product/add-to-cart/variable.php:94
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
-
-#: ../woocommerce/single-product/rating.php:23
-#, php-format
-msgid "Rated %s out of 5"
-msgstr ""
-
-#: ../woocommerce/single-product/rating.php:25
-#: ../woocommerce/single-product/review.php:27
-msgid "out of 5"
-msgstr ""
-
-#: ../woocommerce/single-product/rating.php:28
-#, php-format
-msgid "%s customer review"
-msgid_plural "%s customer reviews"
-msgstr[0] ""
-msgstr[1] ""
 
 #: ../woocommerce/single-product/review.php:26
 #, php-format
 msgid "Rated %d out of 5"
+msgstr ""
+
+#: ../woocommerce/single-product/review.php:27
+msgid "out of 5"
 msgstr ""
 
 #: ../woocommerce/single-product/review.php:34

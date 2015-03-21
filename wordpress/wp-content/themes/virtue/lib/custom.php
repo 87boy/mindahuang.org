@@ -520,6 +520,13 @@ function kadence_show_extra_profile_fields( $user ) { ?>
       <span class="description"><?php _e('Please enter your Google Plus url. (be sure to include http://)', 'virtue'); ?></span>
     </td>
   </tr>
+   <tr>
+    <th><label for="youtube">YouTube</label></th>
+    <td>
+      <input type="text" name="youtube" id="youtube" value="<?php echo esc_attr( get_the_author_meta( 'youtube', $user->ID ) ); ?>" class="regular-text" /><br />
+      <span class="description"><?php _e('Please enter your YourTube url. (be sure to include http://)', 'virtue'); ?></span>
+    </td>
+  </tr>
     <tr>
     <th><label for="flickr">Flickr</label></th>
     <td>
@@ -567,6 +574,7 @@ function kadence_save_extra_profile_fields( $user_id ) {
     update_user_meta( $user_id, 'twitter', $_POST['twitter'] );
   update_user_meta( $user_id, 'facebook', $_POST['facebook'] );
   update_user_meta( $user_id, 'google', $_POST['google'] );
+  update_user_meta( $user_id, 'youtube', $_POST['youtube'] );
   update_user_meta( $user_id, 'flickr', $_POST['flickr'] );
   update_user_meta( $user_id, 'linkedin', $_POST['linkedin'] );
   update_user_meta( $user_id, 'dribbble', $_POST['dribbble'] );

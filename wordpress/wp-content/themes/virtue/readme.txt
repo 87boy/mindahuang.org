@@ -49,6 +49,14 @@ Virtue Theme Uses:
 
 = Theme Name: Virtue =
 
+= Version 2.4.2 =
+* Add: Youtube option for author box.
+* Add: category crop option.
+* Add: Better Carousel Animate in. 
+* Fix: Menu widget
+* Update: Language files.
+* Update: Better Disqus Support
+
 = Version 2.4.1 =
 * Fix: IE9 Issue.
 * Fix: lightbox issue with products.

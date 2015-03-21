@@ -314,6 +314,12 @@ function zerif_scripts()
 
     wp_enqueue_style('zerif_responsive_style', get_template_directory_uri() . '/css/responsive.css', array('zerif_style'), 'v1');
 
+    if ( wp_is_mobile() ){
+        
+        wp_enqueue_style( 'zerif_style_mobile', get_template_directory_uri() . '/css/style-mobile.css', array('zerif_bootstrap_style', 'zerif_style'),'v1' );
+    
+    }
+
     wp_enqueue_script('jquery');
 
     /* Bootstrap script */
@@ -987,9 +993,8 @@ class zerif_testimonial_widget extends WP_Widget
 
                 <div class="client-info">
 
-					<?php if( !empty($instance['title']) ): ?>
-						<a class="client-name" href=""><?php echo apply_filters('widget_title', $instance['title']); ?></a>
-					<?php endif; ?>	
+					<a class="client-name" target="_blank" <?php if( !empty($instance['link']) ): echo 'href="'.esc_url($instance['link']).'"'; endif; ?>><?php if( !empty($instance['title']) ): echo apply_filters('widget_title', $instance['title'] ); endif; ?></a>
+					
 
 					<?php if( !empty($instance['details']) ): ?>
                     <div class="client-company">
@@ -1043,6 +1048,8 @@ class zerif_testimonial_widget extends WP_Widget
         $instance['details'] = strip_tags($new_instance['details']);
 
         $instance['image_uri'] = strip_tags($new_instance['image_uri']);
+		
+		$instance['link'] = strip_tags( $new_instance['link'] );
 
         return $instance;
 
@@ -1065,6 +1072,14 @@ class zerif_testimonial_widget extends WP_Widget
                    class="widefat"/>
 
         </p>
+		
+		<p>
+
+			<label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Author link','zerif'); ?></label><br />
+
+			<input type="text" name="<?php echo $this->get_field_name('link'); ?>" id="<?php echo $this->get_field_id('link'); ?>" value="<?php if( !empty($instance['link']) ): echo $instance['link']; endif; ?>" class="widefat" />
+
+		</p>
 
         <p>
 
@@ -1786,4 +1801,35 @@ function zerif_get_themes( $request ) {
 	}
 
 	return $themes;
+}
+
+
+/* Enqueue Google reCAPTCHA scripts */
+add_action( 'wp_enqueue_scripts', 'recaptcha_scripts' );
+
+function recaptcha_scripts() {
+
+    if ( is_home() ):
+        $zerif_contactus_sitekey = get_theme_mod('zerif_contactus_sitekey');
+        $zerif_contactus_secretkey = get_theme_mod('zerif_contactus_secretkey');
+        $zerif_contactus_recaptcha_show = get_theme_mod('zerif_contactus_recaptcha_show');
+        if( isset($zerif_contactus_recaptcha_show) && $zerif_contactus_recaptcha_show != 1 && !empty($zerif_contactus_sitekey) && !empty($zerif_contactus_secretkey) ) :
+            wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js' );
+        endif;
+    endif;
+
+}
+
+/* remove custom-background from body_class() */
+add_filter( 'body_class', 'remove_class_function' );
+function remove_class_function( $classes ) {
+
+    if ( !is_home() ) {   
+        // index of custom-background
+        $key = array_search('custom-background', $classes);
+        // remove class
+        unset($classes[$key]);
+    }
+    return $classes;
+
 }

@@ -1,14 +1,13 @@
-#
+# 
 # Translators:
 # Wolfgang <wolferl.moeller@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Moesia\n"
-"POT-Creation-Date: 2014-11-07 10:29+0200\n"
-"PO-Revision-Date: 2015-01-28 14:58+0200\n"
-"Last-Translator: Wolfgang <wolferl.moeller@gmail.com>\n"
-"Language-Team: German (Austria) (http://www.transifex.com/projects/p/moesia/"
-"language/de_AT/)\n"
+"POT-Creation-Date: 2015-01-30 09:14+0200\n"
+"PO-Revision-Date: 2015-03-11 17:30+0000\n"
+"Last-Translator: Vlad\n"
+"Language-Team: German (Austria) (http://www.transifex.com/projects/p/moesia/language/de_AT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,9 +15,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-KeywordsList: __;_e;_x\n"
-"X-Poedit-SearchPath-0: D:\\Programe\\InstantWP\\InstantWP_4.3.1\\iwpserver"
-"\\htdocs\\wordpress\\wp-content\\themes\\moesia\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n\n"
+"X-Poedit-SearchPath-0: D:\\Programe\\InstantWP\\InstantWP_4.3.1\\iwpserver\\htdocs\\wordpress\\wp-content\\themes\\moesia\n"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/404.php:15
 msgid "Oops! That page can&rsquo;t be found."
@@ -26,11 +24,9 @@ msgstr "Ups, die Seite konnte nicht gefunden werden."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/404.php:19
 msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
-msgstr ""
-"Es scheint, dass hier nichts gefunden wurde. Vielleicht helfen die folgenden "
-"Links oder die Suchfunktion?"
+"It looks like nothing was found at this location. Maybe try one of the links"
+" below or a search?"
+msgstr "Es scheint, dass hier nichts gefunden wurde. Vielleicht helfen die folgenden Links oder die Suchfunktion?"
 
 #. translators: %1$s: smiley
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/404.php:27
@@ -38,71 +34,71 @@ msgstr ""
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Durchstöbere die monatlichen Archive: %1$s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:27
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:30
 #, php-format
 msgid "Author: %s"
 msgstr "Autor: %s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:30
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:33
 #, php-format
 msgid "Day: %s"
 msgstr "Tag: %s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:33
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:36
 #, php-format
 msgid "Month: %s"
 msgstr "Monat: %s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:33
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:36
 msgid "F Y"
 msgstr "F Y"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:36
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:39
 #, php-format
 msgid "Year: %s"
 msgstr "Jahr: %s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:36
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:39
 msgid "Y"
 msgstr "Y"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:39
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:42
 msgid "Asides"
 msgstr "Kurzmitteilungen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:42
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:45
 msgid "Galleries"
 msgstr "Galerien"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:45
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:48
 msgid "Images"
 msgstr "Bilder"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:48
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:51
 msgid "Videos"
 msgstr "Videos"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:51
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:54
 msgid "Quotes"
 msgstr "Zitate"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:54
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:57
 msgid "Links"
 msgstr "Links"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:57
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:60
 msgid "Statuses"
 msgstr "Statusupdates"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:60
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:63
 msgid "Audios"
 msgstr "Audio"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:63
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:66
 msgid "Chats"
 msgstr "Chats"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:66
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/archive.php:69
 msgid "Archives"
 msgstr "Archiv"
 
@@ -180,27 +176,20 @@ msgstr "Keine Treffer"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/content-none.php:19
 #, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-msgstr ""
-"Bereit deinen ersten Artikel zu veröffentlichen? <a href=\"%1$s\">Fange hier "
-"an</a>."
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Bereit deinen ersten Artikel zu veröffentlichen? <a href=\"%1$s\">Fange hier an</a>."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/content-none.php:23
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
-msgstr ""
-"Zu deinem Suchbegriff konnte leider nichts gefunden werden. Bitte versuche "
-"es mit einem anderen Suchbegriff erneut."
+msgstr "Zu deinem Suchbegriff konnte leider nichts gefunden werden. Bitte versuche es mit einem anderen Suchbegriff erneut."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/content-none.php:28
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
-msgstr ""
-"Es sieht so aus, als könnten wir nicht das finden, wonach du gesucht hast. "
-"Möglicherweise hilft die Suchfunktion."
+msgstr "Es sieht so aus, als könnten wir nicht das finden, wonach du gesucht hast. Möglicherweise hilft die Suchfunktion."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/content-page.php:25
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/content-project.php:19
@@ -253,39 +242,39 @@ msgstr "Stolz präsentiert von %s"
 msgid "Theme: %2$s by %1$s"
 msgstr "Theme: %2$s von %1$s"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:46
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:47
 msgid "Primary Menu"
 msgstr "Hauptmenü"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:81
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:82
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:90
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:91
 msgid "Footer A"
 msgstr "Footer A"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:98
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:99
 msgid "Footer B"
 msgstr "Footer B"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:106
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:107
 msgid "Footer C"
 msgstr "Footer C"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:267
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:278
 msgid "Author Bio: Facebook"
 msgstr "Autorenbiografie: Facebook"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:268
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:279
 msgid "Author Bio: Twitter"
 msgstr "Autorenbiografie: Twitter"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:269
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:280
 msgid "Author Bio: Google Plus"
 msgstr "Autorenbiografie: Google Plus"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:270
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/functions.php:281
 msgid "Author Bio: Linkedin"
 msgstr "Autorenbiografie: Linkedin"
 
@@ -298,6 +287,10 @@ msgstr "Direkt zum Inhalt"
 msgid "Search Results for: %s"
 msgstr "Suchergebnisse für: %s"
 
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/searchform.php:13
+msgid "Search for:"
+msgstr ""
+
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:33
 msgid "General"
 msgstr "Allgemein"
@@ -307,606 +300,600 @@ msgid "Upload your logo"
 msgstr "Lade dein Logo hoch"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:71
+msgid "Logo size"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:72
+msgid ""
+"Menu-content spacing will return to normal after you save &amp; exit the "
+"Customizer"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:93
 msgid "Upload your favicon"
 msgstr "Lade dein Favicon hoch"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:92
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:114
 msgid "Upload your Apple Touch Icon (144x144 pixels)"
 msgstr "Lade dein Apple Touch Icon hoch (144x144 Pixel)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:113
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:135
 msgid "Upload your Apple Touch Icon (114x114 pixels)"
 msgstr "Lade dein Apple Touch Icon hoch (114x114 Pixel)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:134
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:156
 msgid "Upload your Apple Touch Icon (72x72 pixels)"
 msgstr "Lade dein Apple Touch Icon hoch (72x72 Pixel)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:155
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:177
 msgid "Upload your Apple Touch Icon (57x57 pixels)"
 msgstr "Lade dein Apple Touch Icon hoch (57x57 Pixel)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:175
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:197
 msgid "Check this box if you want to disable the custom scroller."
-msgstr ""
-"Setze hier ein Häkchen, wenn du die individuellen Scrollleisten deaktivieren "
-"möchtest."
+msgstr "Setze hier ein Häkchen, wenn du die individuellen Scrollleisten deaktivieren möchtest."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:192
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:214
 msgid "Check this box if you want to disable the animations."
 msgstr "Setze hier ein Häkchen, wenn du die Animationen abschalten möchtest."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:209
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:231
 msgid ""
 "Check this box to hide the sidebar widgets on screen widths below 1024px"
-msgstr ""
-"Setze hier ein Häkchen, um die Seitenleiste auf Bildschirmbreiten unter "
-"1024px auszublenden"
+msgstr "Setze hier ein Häkchen, um die Seitenleiste auf Bildschirmbreiten unter 1024px auszublenden"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:226
-msgid "Check this box to hide the footer widgets on screen widths below 1024px"
-msgstr ""
-"Setze hier ein Häkchen, um die Footer-Widgets auf Bildschirmbreiten unter "
-"1024px auszublenden"
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:248
+msgid ""
+"Check this box to hide the footer widgets on screen widths below 1024px"
+msgstr "Setze hier ein Häkchen, um die Footer-Widgets auf Bildschirmbreiten unter 1024px auszublenden"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:235
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:265
+msgid "Activate header search icon?"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:274
 msgid "Single posts/pages"
 msgstr "Einzelne Beiträge/Seiten"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:250
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:289
 msgid "Check this box to show featured images on single posts"
 msgstr "Setze hier ein Häkchen um bei Beiträgen ein Beitragsbild anzuzeigen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:265
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:304
 msgid "Check this box to show featured images on pages"
 msgstr "Setze hier ein Häkchen um auf Seiten ein Beitragsbild anzuzeigen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:280
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:319
 msgid ""
 "Check this box to display the author bio on single posts. You can add your "
 "author bio and social links on the Users screen in the Your Profile section."
-msgstr ""
-"Setze hier ein Häkchen, um die Autorenbiografie unter jedem Post anzuzeigen. "
-"Du kannst deine Autorenbiografie und Links zu sozialen Netzwerken über das "
-"Menü Benutzer im Bereich Dein Profil eintragen."
+msgstr "Setze hier ein Häkchen, um die Autorenbiografie unter jedem Post anzuzeigen. Du kannst deine Autorenbiografie und Links zu sozialen Netzwerken über das Menü Benutzer im Bereich Dein Profil eintragen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:288
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:327
 msgid "Blog options"
 msgstr "Blogoptionen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:290
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:329
 msgid ""
 "The blog layout can use either small featured images or large featured "
 "images. Select your desired option below."
-msgstr ""
-"Das Bloglayout kann entweder kleine oder große Beitragsbilder verwenden. "
-"Wähle hier deine gewünschte Option."
+msgstr "Das Bloglayout kann entweder kleine oder große Beitragsbilder verwenden. Wähle hier deine gewünschte Option."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:307
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:346
 msgid "Layout"
 msgstr "Layout"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:327
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:368
 msgid ""
 "Check this box to display the full content of your posts on the home page."
-msgstr ""
-"Setze hier ein Häkchen, wenn du auf der Homepage die kompletten Blogeinträge "
-"anzeigen möchtest."
+msgstr "Setze hier ein Häkchen, wenn du auf der Homepage die kompletten Blogeinträge anzeigen möchtest."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:344
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:385
 msgid "Excerpt lenght"
 msgstr "Länge des Textauszugs"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:345
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:386
 msgid "Choose your excerpt length here. Default: 30 words"
 msgstr "Wähle hier die Länge des Textauszugs. Standard: 30 Wörter"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:357
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:398
 msgid "Welcome Area"
 msgstr "Welcome-Seite"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:372
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:413
 msgid "Welcome title (not the site title)"
 msgstr "Überschrift auf der Welcome-Seite (nicht der Seitentitel)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:391
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:432
 msgid ""
 "Welcome logo. Displayed instead of the welcome title from the previous "
 "option."
-msgstr ""
-"Welcome-Logo. Wird statt der Überschrift aus dem vorigen Feld angezeigt."
+msgstr "Welcome-Logo. Wird statt der Überschrift aus dem vorigen Feld angezeigt."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:410
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:453
+msgid "Welcome logo size"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:472
 msgid "Welcome message (not the site description)"
 msgstr "Willkommensnachricht (nicht die Seitenbeschreibung)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:427
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:489
 msgid "The text for the call to action button"
 msgstr "Der Text für den Call-To-Action-Button"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:444
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:506
 msgid "The link for the call to action button"
 msgstr "Der Link für den Call-To-Action-Button"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:462
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:524
 msgid ""
-"Check this box if you want to disable the header image and text on all pages "
-"except the front page."
-msgstr ""
-"Setze hier ein Häkchen, wenn du das Header-Bild auf allen Seiten außer der "
-"Startseite deaktivieren möchtest."
+"Check this box if you want to disable the header image and text on all pages"
+" except the front page."
+msgstr "Setze hier ein Häkchen, wenn du das Header-Bild auf allen Seiten außer der Startseite deaktivieren möchtest."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:479
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:541
 msgid "Check this box if you want to disable the header overlay pattern."
-msgstr ""
-"Setze hier ein Häkchen, wenn du das Muster über dem Titelbild entfernen "
-"möchtest."
+msgstr "Setze hier ein Häkchen, wenn du das Muster über dem Titelbild entfernen möchtest."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:498
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:560
 msgid "Welcome title color"
 msgstr "Farbe der Überschrift auf der Welcome-Seite"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:519
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:581
 msgid "Welcome message color"
 msgstr "Farbe der Willkommensnachricht"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:540
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1943
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:602
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2089
 msgid "Button background"
 msgstr "Button-Hintergrund"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:561
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1964
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:623
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2110
 msgid "Button box shadow"
 msgstr "Button-Schatten"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:572
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:634
+msgid "Menu"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:650
+msgid ""
+"Check this box to show the nav bar at top (changes will be visible after you"
+" save and exit the Customizer)."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:667
+msgid "Menu bar height"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:668
+msgid "The 40px default value refers to the top/bottom padding"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:688
+msgid "Menu bar height [sticky]"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:689
+msgid "This option refers to the menu in sticky mode"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:709
+msgid "Stop the nav bar from being sticky?"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:718
 msgid "Front Page Colors"
 msgstr "Farben der Startseite"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:574
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:720
 msgid "Here you can change the colors for each type of front page section."
 msgstr "Hier kannst du die Farben für jeden Bereich der Startseite anpassen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:585
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:731
 msgid "Services section"
 msgstr "Abschnitt \"Services\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:605
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:751
 msgid "Services section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Services\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:626
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:772
 msgid "Services section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Services\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:647
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:793
 msgid ""
-"Services section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Services\" (Wird aktualisiert, nachdem "
-"du Speichern & Veröffentlichen klickst)"
+"Services section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Services\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:668
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:814
 msgid "Services section icons background"
 msgstr "Abschnitt \"Services\" - Hintergrundfarbe der Icons"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:689
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:835
 msgid "Services section item titles"
 msgstr "Abschnitt \"Services\" - Überschriften der Serviceelemente"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:710
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:856
 msgid "Services section body"
 msgstr "Abschnitt \"Services\" - Textkörper"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:725
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:871
 msgid "Employees section"
 msgstr "Abschnitt \"Mitarbeiter\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:745
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:891
 msgid "Employees section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Mitarbeiter\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:766
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:912
 msgid "Employees section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Mitarbeiter\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:787
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:933
 msgid ""
-"Employees section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Mitarbeiter\" (Wird aktualisiert, "
-"nachdem du Speichern & Veröffentlichen klickst)"
+"Employees section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Mitarbeiter\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:808
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:954
 msgid "Employees section names"
 msgstr "Abschnitt \"Mitarbeiter\" - Namen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:829
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:975
 msgid "Employees section functions&amp;social icons"
 msgstr "Abschnitt \"Mitarbeiter\" - Positionen & Social Icons"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:850
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:996
 msgid "Employees section body"
 msgstr "Abschnitt \"Mitarbeiter\" - Textkörper"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:865
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1011
 msgid "Testimonials section"
 msgstr "Abschnitt \"Testimonials\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:885
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1031
 msgid "Testimonials section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Testimonials\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:906
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1052
 msgid "Testimonials section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Testimonials\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:927
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1073
 msgid ""
-"Testimonials section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Testimonials\" (Wird aktualisiert, "
-"nachdem du Speichern & Veröffentlichen klickst)"
+"Testimonials section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Testimonials\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:948
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1094
 msgid "Testimonials section - clients names"
 msgstr "Abschnitt \"Testimonials\" - Kundennamen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:969
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1115
 msgid "Testimonials section - clients functions"
 msgstr "Abschnitt \"Testimonials\" - Kundenpositionen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:990
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1136
 msgid "Testimonials section - item background "
 msgstr "Abschnitt \"Testimonials\" - Hintergrundfarbe des Textelements"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1011
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1157
 msgid "Testimonials section - item text color"
 msgstr "Abschnitt \"Testimonials\" - Textfarbe"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1026
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1172
 msgid "Skills section"
 msgstr "Abschnitt \"Fähigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1046
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1192
 msgid "Skills section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Fähigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1067
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1213
 msgid "Skills section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Fähigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1088
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1234
 msgid ""
-"Skills section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Fähigkeiten\" (Wird aktualisiert, "
-"nachdem du Speichern & Veröffentlichen klickst)"
+"Skills section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Fähigkeiten\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1109
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1255
 msgid "Skills section - skills bar"
 msgstr "Abschnitt \"Fähigkeiten\" - Fähigkeitenbalken"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1130
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1276
 msgid "Skills section - body text"
 msgstr "Abschnitt \"Fähigkeiten\" - Textkörper"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1145
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1291
 msgid "Facts section"
 msgstr "Abschnitt \"Fakten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1165
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1311
 msgid "Facts section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Fakten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1186
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1332
 msgid "Facts section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Fakten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1207
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1353
 msgid ""
-"Facts section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Fakten\" (Wird aktualisiert, nachdem "
-"du Speichern & Veröffentlichen klickst)"
+"Facts section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Fakten\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1228
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1374
 msgid "Facts section - facts numbers"
 msgstr "Abschnitt \"Fakten\" - Faktenwerte"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1249
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1395
 msgid "Facts section - body text"
 msgstr "Abschnitt \"Fakten\" - Textkörper"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1264
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1410
 msgid "Clients section"
 msgstr "Abschnitt \"Kunden\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1284
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1430
 msgid "Clients section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Kunden\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1305
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1451
 msgid "Clients section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Kunden\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1326
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1472
 msgid ""
-"Clients section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Kunden\" (Wird aktualisiert, nachdem "
-"du Speichern & Veröffentlichen klickst)"
+"Clients section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Kunden\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1347
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1493
 msgid ""
 "Clients section - slider controls (Updates after you press Save&amp;Publish)"
-msgstr ""
-"Abschnitt \"Kunden\" - Bedienelemente des Sliders (Werden aktualisiert, "
-"nachdem du Speichern & Veröffentlichen klickst)"
+msgstr "Abschnitt \"Kunden\" - Bedienelemente des Sliders (Werden aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1362
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1508
 msgid "Blockquote section"
 msgstr "Abschnitt \"Zitate\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1382
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1528
 msgid "Blockquote section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Zitate\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1403
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1549
 msgid "Blockquote section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Zitate\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1424
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1570
 msgid ""
-"Blockquote section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Zitate\" (Wird aktualisiert, nachdem "
-"du Speichern & Veröffentlichen klickst)"
+"Blockquote section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Zitate\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1445
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1591
 msgid ""
-"Blockquote section - blockquote icon (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Abschnitt \"Zitate\" - Zitat-Icon (Wird aktualisiert, nachdem du Speichern & "
-"Veröffentlichen klickst)"
+"Blockquote section - blockquote icon (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Abschnitt \"Zitate\" - Zitat-Icon (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1466
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1612
 msgid "Blockquote section - body text"
 msgstr "Abschnitt \"Zitate\" - Textkörper"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1481
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1627
 msgid "Social section"
 msgstr "Abschnitt \"Soziale Netzwerke\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1501
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1647
 msgid "Social section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Soziale Netzwerke\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1522
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1668
 msgid "Social section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Soziale Netzwerke\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1543
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1689
 msgid ""
-"Social section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Soziale Netzwerke\" (Wird "
-"aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
+"Social section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Soziale Netzwerke\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1564
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1710
 msgid ""
 "Social section - social icons (Updates after you press Save&amp;Publish)"
-msgstr ""
-"Abschnitt \"Soziale Netzwerke\" - Social Icons (Werden aktualisiert, nachdem "
-"du Speichern & Veröffentlichen klickst)"
+msgstr "Abschnitt \"Soziale Netzwerke\" - Social Icons (Werden aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1580
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1726
 msgid "Projects section"
 msgstr "Abschnitt \"Projekte\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1600
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1746
 msgid "Projects section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Projekte\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1621
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1767
 msgid "Projects section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Projekte\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1642
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1788
 msgid "Projects section main title decoration"
 msgstr "Farbe des Zierelements im Abschnitt \"Projekte\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1663
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1809
 msgid "Projects section - item background (on hover)"
-msgstr ""
-"Abschnitt \"Projekte\" - Elementhintergrund (beim Darüberfahren mit der Maus)"
+msgstr "Abschnitt \"Projekte\" - Elementhintergrund (beim Darüberfahren mit der Maus)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1684
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1830
 msgid "Projects section - projects icons"
 msgstr "Abschnitt \"Projekte\" - Projekticons"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1699
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1845
 msgid "Latest news section"
 msgstr "Abschnitt \"Letzte Neuigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1719
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1865
 msgid "Latest news section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Letzte Neuigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1740
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1886
 msgid "Latest news section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Letzte Neuigkeiten\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1761
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1907
 msgid ""
-"Latest news section main title decoration (Updates after you press Save&amp;"
-"Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Letzte Neuigkeiten\" (Wird "
-"aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
+"Latest news section main title decoration (Updates after you press "
+"Save&amp;Publish)"
+msgstr "Farbe des Zierelements im Abschnitt \"Letzte Neuigkeiten\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1782
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1928
 msgid "Post titles"
 msgstr "Beitragsüberschriften"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1803
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1949
 msgid "Text color"
 msgstr "Textfarbe"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1824
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1970
 msgid "See all button"
 msgstr "\"Alles anzeigen\"-Button"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1839
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1985
 msgid "Call to action section"
 msgstr "Abschnitt \"Call-To-Action\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1859
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2005
 msgid "Call to action section background color"
 msgstr "Hintergrundfarbe des Abschnitts \"Call-To-Action\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1880
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2026
 msgid "Call to action section main title color"
 msgstr "Farbe der Überschrift des Abschnitts \"Call-To-Action\""
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1901
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2047
 msgid ""
 "Call to action section main title decoration (Updates after you press "
 "Save&amp;Publish)"
-msgstr ""
-"Farbe des Zierelements im Abschnitt \"Call-To-Action\" (Wird aktualisiert, "
-"nachdem du Speichern & Veröffentlichen klickst)"
+msgstr "Farbe des Zierelements im Abschnitt \"Call-To-Action\" (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1922
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2068
 msgid "Message"
 msgstr "Nachricht"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1973
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2119
 msgid ""
 "Not all of the color settings found in this section apply to the front page."
-msgstr ""
-"Nicht alle Farbeinstellungen in diesem Abschnitt finden auf der Startseite "
-"Anwendung."
+msgstr "Nicht alle Farbeinstellungen in diesem Abschnitt finden auf der Startseite Anwendung."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:1989
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2135
 msgid "Menu background"
 msgstr "Menühintergrund"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2010
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2156
 msgid "Menu links"
 msgstr "Menülinks"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2031
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2177
 msgid "Primary color (Updates after you click Save&amp;Publish)"
-msgstr ""
-"Hauptfarbe (Wird aktualisiert, nachdem du Speichern & Veröffentlichen "
-"klickst)"
+msgstr "Hauptfarbe (Wird aktualisiert, nachdem du Speichern & Veröffentlichen klickst)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2052
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2198
 msgid "Site title"
 msgstr "Seitentitel"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2073
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2219
 msgid "Site description"
 msgstr "Seitenbeschreibung"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2094
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2240
 msgid "Entry title"
 msgstr "Entry title"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2115
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2261
 msgid "Text"
 msgstr "Text"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2136
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2282
 msgid "Footer background"
 msgstr "Footer-Hintergrund"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2147
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2293
 msgid "Fonts"
 msgstr "Schriftarten"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2186
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2332
 msgid "Select your desired font for the headings."
 msgstr "Wähle deine gewünschte Schriftart für die Überschriften."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2203
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2349
 msgid "Select your desired font for the body."
 msgstr "Wähle deine gewünschte Schriftart für den Textkörper."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2221
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2367
 msgid "H1 font size"
 msgstr "H1 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2242
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2388
 msgid "H2 font size"
 msgstr "H2 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2263
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2409
 msgid "H3 font size"
 msgstr "H3 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2284
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2430
 msgid "H4 font size"
 msgstr "H4 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2305
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2451
 msgid "H5 font size"
 msgstr "H5 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2326
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2472
 msgid "H6 font size"
 msgstr "H6 Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2347
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2493
 msgid "Body font size"
 msgstr "Schriftgröße des Textkörpers"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2368
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2514
 msgid "Home page widget titles size"
 msgstr "Größe der Überschrift der Homepage-Widgets"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2389
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2535
 msgid "Menu links font size"
 msgstr "Menülink-Schriftgröße"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2401
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2547
 msgid "Moesia Pro"
 msgstr "Moesia Pro"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2403
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2549
 msgid ""
 "If you like Moesia and you want to see what Moesia Pro offers, have a look "
-msgstr ""
-"Wenn du Moesia magst und sehen möchtest, was Moesia Pro kann, schau hier"
+msgstr "Wenn du Moesia magst und sehen möchtest, was Moesia Pro kann, schau hier"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2432
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2578
 msgid "Small screens header image"
 msgstr "Header-Bild für kleine Bildschirme"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2436
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/customizer.php:2582
 msgid ""
 "You can add below a smaller version of your header image and it will be "
 "displayed at screen widths below 1024px. This is important in case iPhones "
 "don't display your header image because of it being too big. You can also "
-"add a completely different image if you want, in case you have one that will "
-"look better on small screens. Recommended width: 1024px"
-msgstr ""
-"Du kannst eine kleinere Version deines Header-Bilds hinzufügen, die bei "
-"Bildschirmbreiten unter 1024px angezeigt wird. Dies ist wichtig, wenn "
-"iPhones dein Header-Bild nicht anzeigen, weil es zu groß ist. Du kannst auch "
-"ein ganz anderes Bild hochladen, wenn du möchtest, falls du eins hast, das "
-"auf kleinen Bildschirmen besser aussieht. Empfohlene Breite: 1024px"
+"add a completely different image if you want, in case you have one that will"
+" look better on small screens. Recommended width: 1024px"
+msgstr "Du kannst eine kleinere Version deines Header-Bilds hinzufügen, die bei Bildschirmbreiten unter 1024px angezeigt wird. Dies ist wichtig, wenn iPhones dein Header-Bild nicht anzeigen, weil es zu groß ist. Du kannst auch ein ganz anderes Bild hochladen, wenn du möchtest, falls du eins hast, das auf kleinen Bildschirmen besser aussieht. Empfohlene Breite: 1024px"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/inc/extras.php:63
 #, php-format
@@ -954,9 +941,7 @@ msgstr "%title&nbsp;<span class=\"meta-nav\">&rarr;</span>"
 msgid ""
 "<span class=\"posted-on\"><i class=\"fa fa-calendar\"></i> %1$s</span><span "
 "class=\"byline\"><i class=\"fa fa-user\"></i> %2$s</span>"
-msgstr ""
-"<span class=\"posted-on\"><i class=\"fa fa-calendar\"></i> %1$s</span><span "
-"class=\"byline\"><i class=\"fa fa-user\"></i> %2$s</span>"
+msgstr "<span class=\"posted-on\"><i class=\"fa fa-calendar\"></i> %1$s</span><span class=\"byline\"><i class=\"fa fa-user\"></i> %2$s</span>"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:161
 msgid "Install Required Plugins"
@@ -989,6 +974,7 @@ msgid "Plugin activated successfully."
 msgstr "Plugin erfolgreich aktiviert."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:178
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:1636
 msgid "The following plugin was activated successfully:"
 msgstr "Folgendes Plugin wurde erfolgreich aktiviert:"
 
@@ -1049,9 +1035,7 @@ msgstr "Aktivieren"
 msgid ""
 "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
 "Dashboard\">Return to the Dashboard</a>"
-msgstr ""
-"Keine Plugins zu installieren oder aktivieren. <a href=\"%1$s\" title="
-"\"Zurück zum Dashboard\">Zurück zum Dashboard</a>"
+msgstr "Keine Plugins zu installieren oder aktivieren. <a href=\"%1$s\" title=\"Zurück zum Dashboard\">Zurück zum Dashboard</a>"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:1377
 msgid "Plugin"
@@ -1076,9 +1060,7 @@ msgstr "Installationspaket nicht verfügbar."
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:1929
 #, php-format
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
-msgstr ""
-"Herunterladen des Installationspakets von <span class=\"code\">%s</"
-"span>&#8230;"
+msgstr "Herunterladen des Installationspakets von <span class=\"code\">%s</span>&#8230;"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:1930
 msgid "Unpacking the package&#8230;"
@@ -1102,11 +1084,9 @@ msgstr "Die Pluginaktivierung ist fehlgeschlagen."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:2058
 msgid ""
-"The installation and activation process is starting. This process may take a "
-"while on some hosts, so please be patient."
-msgstr ""
-"Der Installations- und Aktivierungsprozess beginnt. Dieser Prozess kann bei "
-"manchen Hosts eine Weile dauern, bitte hab etwas Geduld."
+"The installation and activation process is starting. This process may take a"
+" while on some hosts, so please be patient."
+msgstr "Der Installations- und Aktivierungsprozess beginnt. Dieser Prozess kann bei manchen Hosts eine Weile dauern, bitte hab etwas Geduld."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:2059
 #, php-format
@@ -1136,16 +1116,12 @@ msgstr "Installiere und aktiviere Plugin %1$s (%2$d/%3$d)"
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
-msgstr ""
-"Der Installationsprozess beginnt. Dieser Prozess kann bei manchen Hosts eine "
-"Weile dauern, bitte hab etwas Geduld."
+msgstr "Der Installationsprozess beginnt. Dieser Prozess kann bei manchen Hosts eine Weile dauern, bitte hab etwas Geduld."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:2066
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr ""
-"Bei der Installation von %1$s ist ein Fehler aufgetreten: <strong>%2$s</"
-"strong>."
+msgstr "Bei der Installation von %1$s ist ein Fehler aufgetreten: <strong>%2$s</strong>."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/plugins/class-tgm-plugin-activation.php:2067
 #, php-format
@@ -1178,13 +1154,13 @@ msgstr "Moesia: Kontaktinformationen"
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-blockquote.php:27
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-call-to-action.php:28
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-clients.php:26
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:28
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:30
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-facts.php:33
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:25
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:26
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:28
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:27
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:27
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:30
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-skills.php:36
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:29
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:31
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-posts.php:26
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/video-widget.php:25
 msgid "Title"
@@ -1260,20 +1236,18 @@ msgstr "Überschrift für den Button"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-call-to-action.php:52
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-clients.php:35
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:37
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:39
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-facts.php:86
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:34
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:35
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:37
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:42
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:38
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:39
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-skills.php:105
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-social.php:100
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:38
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:40
 msgid ""
-"Upload an image for the background if you want. It will get a parallax "
-"effect."
+"[DEPRECATED - Go to Edit Row > Theme > Background image] Upload an image for"
+" the background if you want. It will get a parallax effect."
 msgstr ""
-"Lade ein Hintergrundbild hoch, wenn du möchtest. Es wird mit einem Parallax-"
-"Effekt dargestellt."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-clients.php:7
 msgid "Show your visitors your impressive client list."
@@ -1288,10 +1262,7 @@ msgid ""
 "In order to display this widget, you must first add some clients from the "
 "dashboard. Add as many as you want and the theme will automatically display "
 "their logos in a carousel."
-msgstr ""
-"Um dieses Widget anzuzeigen, musst du erst ein paar Kunden über das "
-"Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird ihre "
-"Logos automatisch in einer Karussell anzeigen."
+msgstr "Um dieses Widget anzuzeigen, musst du erst ein paar Kunden über das Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird ihre Logos automatisch in einer Karussell anzeigen."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-clients.php:83
 msgid "Our clients"
@@ -1305,35 +1276,39 @@ msgstr "Zeige deine Teammitglieder in einer schicken Art und Weise an."
 msgid "Moesia FP: Employees"
 msgstr "Moesia FP: Mitarbeiter"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:26
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:28
 msgid ""
 "In order to display this widget, you must first add some employees from the "
 "dashboard. Add as many as you want and the theme will automatically display "
 "them all."
-msgstr ""
-"Um dieses Widget anzuzeigen, musst du erst ein paar Mitarbeiter über das "
-"Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie "
-"automatisch alle anzeigen."
+msgstr "Um dieses Widget anzuzeigen, musst du erst ein paar Mitarbeiter über das Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie automatisch alle anzeigen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:40
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:42
 msgid "Number of employees to show (-1 shows all of them):"
 msgstr "Anzahl der anzuzeigenden Mitarbeiter (-1 zeigt alle an):"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:42
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:44
 msgid ""
 "Enter the URL for your employees page. Useful if you want to show here just "
 "a few employees, then send your visitors to a page that uses the employees "
 "page template."
-msgstr ""
-"Gib die URL für deine Mitarbeiterseite an. Nützlich, wenn du hier nur ein "
-"paar Mitarbeiter anzeigen möchtest und deine Besucher dann zu einer Seite "
-"weiterleitest, die die Mitarbeiter-Seitenvorlage benutzt."
+msgstr "Gib die URL für deine Mitarbeiterseite an. Nützlich, wenn du hier nur ein paar Mitarbeiter anzeigen möchtest und deine Besucher dann zu einer Seite weiterleitest, die die Mitarbeiter-Seitenvorlage benutzt."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:91
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:46
+msgid ""
+"The text for the button [Defaults to <em>See all our employees</em> if left "
+"empty]"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:49
+msgid "Enter the slug for your category or leave empty to show all employees."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:101
 msgid "Our Employees"
 msgstr "Unsere Mitarbeiter"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:151
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-employees.php:168
 msgid "See all our employees"
 msgstr "Alle Mitarbeiter anzeigen"
 
@@ -1389,11 +1364,23 @@ msgstr "Zeige die letzten Neuigkeiten deines Blogs."
 msgid "Moesia FP: Latest News"
 msgstr "Moesia FP: Letzte Neuigkeiten"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:82
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:31
+msgid ""
+"Enter the slug for your category or leave empty to show posts from all "
+"categories."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:34
+msgid ""
+"Add the text for the button here if you want to change the default <em>See "
+"all our news</em>"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:92
 msgid "Latest news"
 msgstr "Letzte Neuigkeiten"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:123
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-latest-news.php:97
 msgid "See all our news"
 msgstr "Alle Neuigkeiten anzeigen"
 
@@ -1405,17 +1392,18 @@ msgstr "Zeige deine interessantesten Projekte."
 msgid "Moesia FP: Projects"
 msgstr "Moesia FP: Projekte"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:24
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:25
 msgid ""
 "In order to display this widget, you must first add some projects from the "
 "dashboard. Add as many as you want and the theme will automatically display "
 "them all."
-msgstr ""
-"Um dieses Widget anzuzeigen, musst du erst ein paar Projekte über das "
-"Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie "
-"automatisch alle anzeigen."
+msgstr "Um dieses Widget anzuzeigen, musst du erst ein paar Projekte über das Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie automatisch alle anzeigen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:83
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:30
+msgid "Enter the slug for your category or leave empty to show all projects."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-projects.php:87
 msgid "Our projects"
 msgstr "Unsere Projekte"
 
@@ -1427,35 +1415,39 @@ msgstr "Zeige, welche Services du anbieten kannst."
 msgid "Moesia FP: Services"
 msgstr "Moesia FP: Services"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:26
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:28
 msgid ""
 "In order to display this widget, you must first add some services from the "
 "dashboard. Add as many as you want and the theme will automatically display "
 "them all."
-msgstr ""
-"Um dieses Widget anzuzeigen, musst du erst ein paar Services über das "
-"Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie "
-"automatisch alle anzeigen."
+msgstr "Um dieses Widget anzuzeigen, musst du erst ein paar Services über das Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie automatisch alle anzeigen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:41
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:42
 msgid "Number of services to show (-1 shows all of them):"
 msgstr "Anzahl der anzuzeigenden Services (-1 zeigt alle an):"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:44
 msgid ""
-"Enter the URL for your services page. Useful if you want to show here just a "
-"few services, then send your visitors to a page that uses the Services page "
-"template."
-msgstr ""
-"Gib die URL für deine Services-Seite an. Nützlich, wenn du hier nur ein paar "
-"Services anzeigen möchtest und deine Besucher dann zu einer Seite "
-"weiterleitest, die die Services-Seitenvorlage benutzt."
+"Enter the URL for your services page. Useful if you want to show here just a"
+" few services, then send your visitors to a page that uses the Services page"
+" template."
+msgstr "Gib die URL für deine Services-Seite an. Nützlich, wenn du hier nur ein paar Services anzeigen möchtest und deine Besucher dann zu einer Seite weiterleitest, die die Services-Seitenvorlage benutzt."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:94
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:46
+msgid ""
+"The text for the button [Defaults to <em>See all our services</em> if left "
+"empty]"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:48
+msgid "Enter the slug for your category or leave empty to show all services."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:100
 msgid "Our Services"
 msgstr "Unsere Services"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:135
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-services.php:148
 msgid "See all our services"
 msgstr "Alle Services anzeigen"
 
@@ -1528,8 +1520,7 @@ msgstr "Moesia FP: Soziale Netzwerke"
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/social-profile.php:56
 #, php-format
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
-msgstr ""
-"Es wurden noch keine Menüs erstellt. <a href=\"%s\">Erstelle welche</a>."
+msgstr "Es wurden noch keine Menüs erstellt. <a href=\"%s\">Erstelle welche</a>."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-social.php:78
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-comments.php:130
@@ -1541,16 +1532,11 @@ msgstr "Überschrift:"
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/social-profile.php:64
 msgid ""
 "In order to display your social icons in a widget, all you need to do is go "
-"to <strong>Appearance > Menus</strong> and create a menu containing links to "
-"your social profiles, then assign that menu here. Supported networks: "
+"to <strong>Appearance > Menus</strong> and create a menu containing links to"
+" your social profiles, then assign that menu here. Supported networks: "
 "Facebook, Twitter, Google Plus, Instagram, Dribble, Vimeo, Linkedin, "
 "Youtube, Flickr, Pinterest, Tumblr, Foursquare, Behance."
-msgstr ""
-"Um deine Social Icons anzuzeigen musst du nur über das Dashboard zu "
-"<strong>Design > Menüs</strong> gehen und ein Menü erstellen, das Links zu "
-"deinen sozialen Netzwerken enthält. Diese Menü musst du dann hier zuweisen. "
-"Unterstützte Netzwerke: Facebook, Twitter, Google Plus, Instagram, Dribble, "
-"Vimeo, Linkedin, Youtube, Flickr, Pinterest, Tumblr, Foursquare, Behance."
+msgstr "Um deine Social Icons anzuzeigen musst du nur über das Dashboard zu <strong>Design > Menüs</strong> gehen und ein Menü erstellen, das Links zu deinen sozialen Netzwerken enthält. Diese Menü musst du dann hier zuweisen. Unterstützte Netzwerke: Facebook, Twitter, Google Plus, Instagram, Dribble, Vimeo, Linkedin, Youtube, Flickr, Pinterest, Tumblr, Foursquare, Behance."
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-social.php:83
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/social-profile.php:66
@@ -1570,40 +1556,45 @@ msgstr "Zeige Testimonials aus den Reihen deiner Kunden an."
 msgid "Moesia FP: Testimonials"
 msgstr "Moesia FP: Testimonials"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:26
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:28
 msgid ""
 "In order to display this widget, you must first add some testimonials from "
 "the dashboard. Add as many as you want and the theme will automatically "
 "display them all."
-msgstr ""
-"Um dieses Widget anzuzeigen, musst du erst ein paar Testimonials über das "
-"Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie "
-"automatisch alle anzeigen."
+msgstr "Um dieses Widget anzuzeigen, musst du erst ein paar Testimonials über das Dashboard hinzufügen. Erstelle so viele du willst und das Theme wird sie automatisch alle anzeigen."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:41
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:43
 msgid "Number of testimonials to show (-1 shows all of them):"
 msgstr "Anzahl der anzuzeigenden Testimonials (-1 zeigt alle an)"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:43
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:45
 msgid ""
 "Enter the URL for your testimonials page. Useful if you want to show here "
 "just a few testimonials, then send your visitors to a page that uses the "
 "testimonials page template."
-msgstr ""
-"Gib die URL für deine Testimonials-Seite an. Nützlich, wenn du hier nur ein "
-"paar Testimonials anzeigen möchtest und deine Besucher dann zu einer Seite "
-"weiterleitest, die die Testimonials-Seitenvorlage benutzt."
+msgstr "Gib die URL für deine Testimonials-Seite an. Nützlich, wenn du hier nur ein paar Testimonials anzeigen möchtest und deine Besucher dann zu einer Seite weiterleitest, die die Testimonials-Seitenvorlage benutzt."
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:93
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:47
+msgid ""
+"The text for the button [Defaults to <em>See all our testimonials</em> if "
+"left empty]"
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:49
+msgid ""
+"Enter the slug for your category or leave empty to show all testimonials."
+msgstr ""
+
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:102
 msgid "What our clients say"
 msgstr "Was unsere Kunden sagen"
 
-#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:130
+#: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/fp-testimonials.php:146
 msgid "See all our testimonials"
 msgstr "Alle Testimonials anzeigen"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-comments.php:6
-msgid "Display your site&#8217;s recent comments with avatars."
+msgid "Display your site&rsquo;s recent comments with avatars."
 msgstr ""
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-comments.php:7
@@ -1625,7 +1616,7 @@ msgid "Number of comments to show:"
 msgstr "Wie viele Kommentare sollen angezeigt werden?:"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-posts.php:7
-msgid "Display your site&#8217;s recent posts with thumbnails."
+msgid "Display your site&rsquo;s recent posts with thumbnails."
 msgstr ""
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-posts.php:8
@@ -1634,9 +1625,7 @@ msgstr "Moesia: Aktuelle Artikel"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-posts.php:30
 msgid "Number of posts to show:"
-msgstr ""
-"Anzahl der anzueigenden Artikel (die nicht die Formatvorlage \"Standard\" "
-"haben):"
+msgstr "Anzahl der anzueigenden Artikel (die nicht die Formatvorlage \"Standard\" haben):"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/recent-posts.php:34
 msgid "Display post date?"
@@ -1662,9 +1651,7 @@ msgstr "Moesia: Video"
 msgid ""
 "Paste the URL of the video (only from a network that supports oEmbed, like "
 "Youtube, Vimeo etc.):"
-msgstr ""
-"Füge die URL des Videos ein (nur von einem Netzwerk, das oEmbed unterstützt, "
-"z. B. Youtube, Vimeo, etc.):"
+msgstr "Füge die URL des Videos ein (nur von einem Netzwerk, das oEmbed unterstützt, z. B. Youtube, Vimeo, etc.):"
 
 #: D:\Programe\InstantWP\InstantWP_4.3.1\iwpserver\htdocs\wordpress\wp-content\themes\moesia/widgets/video-widget.php:76
 msgid "Video"

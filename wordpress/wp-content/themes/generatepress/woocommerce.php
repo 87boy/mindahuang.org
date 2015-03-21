@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<div id="primary" <?php generate_content_class();?>>
-		<main id="main" <?php generate_main_class(); ?> itemprop="mainContentOfPage" role="main">
+	<div id="primary" <?php generate_content_class();?> itemprop="mainContentOfPage">
+		<main id="main" <?php generate_main_class(); ?> role="main">
 			<?php do_action('generate_before_main_content'); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemtype="http://schema.org/CreativeWork" itemscope="itemscope">
 				<div class="inside-article">

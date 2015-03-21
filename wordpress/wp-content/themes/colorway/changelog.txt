@@ -1,5 +1,17 @@
 Theme Name: ColorWay
 ========================
+
+* Version 3.3.0
+***************************************
+1. Used sane defaults to theme options.
+2. Sanitized all options.
+3. An option added for on/off for top feature section on home page. 
+4. An option added for on/off for blog section on home page.
+5. Remove title tag from header.php, used wordpress functionality instead.
+6. Data lost on theme update, issue fixed.
+7. Miner changes in style.css.
+8. All stylesheet enqueued through wp function instead of import.
+
 * Version 3.2.9
 ***************************************
 1. Use integrated theme option panel instead of theme options setting by plugin.

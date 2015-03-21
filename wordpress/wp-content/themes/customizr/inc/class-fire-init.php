@@ -20,6 +20,8 @@ if ( ! class_exists( 'TC_init' ) ) :
       public $tc_thumb_size;
       public $slider_full_size;
       public $slider_size;
+      public $tc_grid_full_size;
+      public $tc_grid_size;
       public $skins;
       public $skin_color_map;
       public $font_pairs;
@@ -70,9 +72,12 @@ if ( ! class_exists( 'TC_init' ) ) :
           );
 
           //Default images sizes
-          $this -> tc_thumb_size      = array('width' => 270 , 'height' => 250, 'crop' => true ); //size name : tc-thumb
-          $this -> slider_full_size   = array('width' => 9999 , 'height' => 500, 'crop' => true ); //size name : slider-full
-          $this -> slider_size        = array('width' => 1170 , 'height' => 500, 'crop' => true ); //size name : slider
+          $this -> tc_thumb_size      = array( 'width' => 270 , 'height' => 250, 'crop' => true ); //size name : tc-thumb
+          $this -> slider_full_size   = array( 'width' => 9999 , 'height' => 500, 'crop' => true ); //size name : slider-full
+          $this -> slider_size        = array( 'width' => 1170 , 'height' => 500, 'crop' => true ); //size name : slider
+          $this -> tc_grid_full_size  = array( 'width' => 1170 , 'height' => 350, 'crop' => true ); //size name : tc-grid-full
+          $this -> tc_grid_size       = array( 'width' => 570 , 'height' => 350, 'crop' => true ); //size name : tc-grid
+
 
           //Default skins array
           $this -> skins              =  array(
@@ -398,6 +403,27 @@ if ( ! class_exists( 'TC_init' ) ) :
             add_filter( 'tc_slider_full_size'    , array($this,  'tc_set_slider_img_height') );
             add_filter( 'tc_slider_size'         , array($this,  'tc_set_slider_img_height') );
         }
+
+
+        /***********
+        *** GRID ***
+        ***********/
+        if ( isset( $_options['tc_grid_thumb_height'] ) ) {
+            $_user_height  = esc_attr( $_options['tc_grid_thumb_height'] );
+
+        }
+        $tc_grid_full_size     = $this -> tc_grid_full_size;
+        $tc_grid_size          = $this -> tc_grid_size;
+        $_user_grid_height     = isset( $_options['tc_grid_thumb_height'] ) && is_numeric( $_options['tc_grid_thumb_height'] ) ? esc_attr( $_options['tc_grid_thumb_height'] ) : $tc_grid_full_size['height'];
+
+        add_image_size( 'tc-grid-full', $tc_grid_full_size['width'], $_user_grid_height, $tc_grid_full_size['crop'] );
+        add_image_size( 'tc-grid', $tc_grid_size['width'], $_user_grid_height, $tc_grid_size['crop'] );
+
+        if ( $_user_grid_height != $tc_grid_full_size['height'] )
+          add_filter( 'tc_grid_full_size', array( $this,  'tc_set_grid_img_height') );
+        if ( $_user_grid_height != $tc_grid_size['height'] )
+          add_filter( 'tc_grid_size'     , array( $this,  'tc_set_grid_img_height') );
+
       }
 
 
@@ -414,6 +440,22 @@ if ( ! class_exists( 'TC_init' ) ) :
         $_options = get_option('tc_theme_options');
 
         $_default_size['height'] = esc_attr( $_options['tc_slider_default_height'] );
+        return $_default_size;
+      }
+
+
+      /**
+      * Set post list desgin new image sizes
+      * Callback of tc_grid_full_size and tc_grid_size filters
+      *
+      * @package Customizr
+      * @since Customizr 3.1.12
+      *
+      */
+      function tc_set_grid_img_height( $_default_size ) {
+        $_options = get_option('tc_theme_options');
+
+        $_default_size['height'] =  esc_attr( $_options['tc_grid_thumb_height'] ) ;
         return $_default_size;
       }
 
@@ -497,8 +539,8 @@ if ( ! class_exists( 'TC_init' ) ) :
       * @since Customizr 3.0.15
       */
       function tc_get_style_src( $_wot = 'skin' ) {
-        $_sheet    = ( 'skin' == $_wot ) ? esc_attr( tc__f( '__get_option' , 'tc_skin' ) ) : 'tc_common.css';
-        if ( esc_attr( tc__f( '__get_option' , 'tc_minified_skin' ) ) )
+        $_sheet    = ( 'skin' == $_wot ) ? esc_attr( TC_utils::$inst->tc_opt( 'tc_skin' ) ) : 'tc_common.css';
+        if ( esc_attr( TC_utils::$inst->tc_opt( 'tc_minified_skin' ) ) )
           $_sheet  = str_replace('.css', '.min.css', $_sheet);
 
         //Finds the good path : are we in a child theme and is there a skin to override?
@@ -548,7 +590,7 @@ if ( ! class_exists( 'TC_init' ) ) :
           function tc_bbpress_disable_thumbnail($bool) {
              return ( function_exists('is_bbpress') && is_bbpress() ) ? false : $bool;
           }
-          add_filter( 'tc_show_post_list_excerpt', 'tc_bbpress_disable_excerpt' );
+          add_filter( 'tc_show_excerpt', 'tc_bbpress_disable_excerpt' );
           function tc_bbpress_disable_excerpt($bool) {
              return ( function_exists('is_bbpress') && is_bbpress() ) ? false : $bool;
           }
@@ -566,10 +608,17 @@ if ( ! class_exists( 'TC_init' ) ) :
           }
 
           //disables post metas
-          add_filter( 'tc_show_post_metas', 'tc_bbpress_disable_post_metas' );
+          add_filter( 'tc_show_post_metas', 'tc_bbpress_disable_post_metas', 100);
           function tc_bbpress_disable_post_metas($bool) {
              return ( function_exists('is_bbpress') && is_bbpress() ) ? false : $bool;
           }
+
+          //disable the grid
+          add_filter( 'tc_set_grid_hooks' , 'tc_bbpress_disable_grid', 100 );
+          function tc_bbpress_disable_grid($bool) {
+             return ( function_exists('is_bbpress') && is_bbpress() ) ? false : $bool;
+          }
+
         }//end if bbpress on
 
 
@@ -748,7 +797,7 @@ if ( ! class_exists( 'TC_init' ) ) :
      */
       function tc_add_retina_support( $metadata, $attachment_id ) {
         //checks if retina is enabled in options
-        if ( 0 == tc__f( '__get_option' , 'tc_retina_support' ) )
+        if ( 0 == TC_utils::$inst->tc_opt( 'tc_retina_support' ) )
           return $metadata;
 
         if ( ! is_array($metadata) )
@@ -817,7 +866,7 @@ if ( ! class_exists( 'TC_init' ) ) :
      */
       function tc_clean_retina_images( $attachment_id ) {
         //checks if retina is enabled in options
-        if ( 0 == tc__f( '__get_option' , 'tc_retina_support' ) )
+        if ( 0 == TC_utils::$inst->tc_opt( 'tc_retina_support' ) )
           return;
 
         $meta = wp_get_attachment_metadata( $attachment_id );
@@ -871,14 +920,14 @@ if ( ! class_exists( 'TC_init' ) ) :
       */
       function tc_set_body_classes( $_classes ) {
         $_to_add = array();
-        if ( 0 != esc_attr( tc__f( '__get_option' , 'tc_link_hover_effect' ) ) )
+        if ( 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_hover_effect' ) ) )
           $_to_add[] = 'tc-fade-hover-links';
-        if ( TC_utils::$instance -> tc_is_customizing() )
+        if ( TC___::$instance -> tc_is_customizing() )
           $_to_add[] = 'is-customizing';
         if ( wp_is_mobile() )
           $_to_add[] = 'tc-is-mobile';
-        if ( 0 != esc_attr( tc__f( '__get_option' , 'tc_enable_dropcap' ) ) )
-          $_to_add[] = esc_attr( tc__f( '__get_option' , 'tc_dropcap_design' ) );
+        if ( 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_enable_dropcap' ) ) )
+          $_to_add[] = esc_attr( TC_utils::$inst->tc_opt( 'tc_dropcap_design' ) );
 
         return array_merge( $_classes , $_to_add );
       }

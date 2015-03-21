@@ -3,8 +3,8 @@
 /*-------------------------------------------------------------------------------------------*/
 /**Trail version notification */
 .trail-notify {
-    margin: 15px;
-    width: 763px;
+    margin: 15px 0;
+    width: 1118px;
     border: 1px solid #ccc;
     border-radius: 6px;
     -moz-border-radius: 6px;
@@ -27,7 +27,7 @@
     display:none!important
 } /* disable the admin notices */
 #of_container {
-    margin: 15px;
+    margin: 15px 15px 15px 0;
     width: 785px;
     position:relative;
     z-index: 0
@@ -45,11 +45,11 @@
 }
 #of_container #header .logo {
     float: left;
-    margin:5px 15px;
-    margin-top:10px;
+    margin: 26px 15px;
 }
 #of_container #header .logo h2 {
     font-style:normal;
+    padding: 0;
 }
 #of_container #header .icon-option {
     float: right;
@@ -343,7 +343,13 @@
     border-bottom-right-radius: 6px;
     -moz-border-radius-bottomright: 6px;
 }
-
+.save_bar_left{
+    border-width:0 0 1px 1px;
+}
+.save_bar_right{
+    border-width:0 1px 1px 0;
+    float: right;
+}
 .hide {
     display:none
 }
@@ -392,4 +398,71 @@ html body * span.clear, html body * div.clear, html body * li.clear, html body *
     visibility: hidden;
     width: 0;
     height: 0;
+}
+
+.theme-option{
+    float: left;
+}
+.theme-notification{
+    display: inline-block;
+    max-width: 340px;
+    width: 100%;
+    margin: 15px 0;
+}
+.postbox-container{
+    background: white;
+    padding: 1.5em;
+    background-color: white;
+    border-left: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+}
+.postbox-container h3{
+    margin-top: 0;
+    line-height: 1.2em;
+}
+.notification-header{
+    height: 80px;
+    background:#dfdfdf url("../../../../wp-admin/images/gray-grad.png") repeat-x left top;
+    border: 1px solid #ccc;
+    border-top-left-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    -webkit-border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    border-top-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+}
+span.wrap{
+    margin-right: 0;
+}
+.notification-heading{
+    margin: 0;
+}
+span.wrap h2{
+    padding: 0;
+    margin: 26px 0;
+    text-align: center;
+}
+.notification-header .icon-option{
+    float: right;
+    height: 50px;
+    width: 178px;
+    background: url(images/inkthemeslogo.png) no-repeat;
+    margin: 15px 0 0;
+}
+input[type="email"],input[type="text"]{
+    background: #fff;
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+    padding: 10px;
+    color: #3d4142;
+    width: 100%;
+    max-width: 296px;
+}
+.form-container .button-primary{
+    margin: 1em 0 .5em 0;  
+}
+.horizontal-line{
+    border-bottom: 1px solid #d6d6d6;
+    margin: 18px 0;
 }

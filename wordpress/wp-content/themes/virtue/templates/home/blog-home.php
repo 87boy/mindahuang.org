@@ -104,23 +104,28 @@
 				                            
 				                        </div>
 				                    <header class="home_blog_title">
-			                          <a href="<?php the_permalink() ?>"><h4 class="entry-title"><?php the_title(); ?></h4></a>
-			                          <div class="subhead color_gray">
-			                          		<span class="postauthortop" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo get_the_author() ?>">
-			                          			<i class="icon-user"></i>
-			                          		</span>
-			                          		<span class="kad-hidepostauthortop"> | </span>
-			                          		<?php $post_category = get_the_category($post->ID); if (!empty($post_category)) { ?> 
-			                          		<span class="postedintop" data-toggle="tooltip" data-placement="top" data-original-title="<?php 
-			                          			foreach ($post_category as $category)  { 
-			                          				echo $category->name .'&nbsp;'; 
-			                          			} ?>"><i class="icon-folder-open"></i></span>
-			                          		 <?php }?>
-			                          		 |
-			                        	<span class="postcommentscount" data-toggle="tooltip" data-placement="top" data-original-title="<?php $num_comments = get_comments_number(); if(comments_open()) {echo esc_attr($num_comments);} ?>">
-			                        		<i class="icon-comments-alt"></i>
-			                        	</span>
-			                        </div>
+			                          	<a href="<?php the_permalink() ?>">
+			                          		<h4 class="entry-title"><?php the_title(); ?></h4>
+			                          	</a>
+
+			                          		<div class="subhead color_gray">
+			                          			<span class="postauthortop" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo get_the_author() ?>">
+			                          				<i class="icon-user"></i>
+			                          			</span>
+			                          			<span class="kad-hidepostauthortop"> | </span>
+			                          				<?php $post_category = get_the_category($post->ID); if (!empty($post_category)) { ?> 
+			                          					<span class="postedintop" data-toggle="tooltip" data-placement="top" data-original-title="<?php 
+			                          						foreach ($post_category as $category)  { 
+			                          								echo $category->name .'&nbsp;'; 
+			                          						} ?>"><i class="icon-folder-open"></i></span>
+			                          		 		<?php }?>
+			                          			<?php if(comments_open()) { ?>
+			                          				<span class="kad-hidepostedin">|</span>
+			                        				<span class="postcommentscount" data-toggle="tooltip" data-placement="top" data-original-title="<?php $num_comments = get_comments_number(); echo esc_attr($num_comments); ?>">
+			                        					<i class="icon-comments-alt"></i>
+			                        				</span>
+			                        			<?php } ?>
+			                        		</div>
 			                        </header>
 		                        	<div class="entry-content">
 		                          		<p><?php echo virtue_excerpt(34); ?> <a href="<?php the_permalink() ?>"><?php _e('READ MORE', 'virtue');?></a></p>

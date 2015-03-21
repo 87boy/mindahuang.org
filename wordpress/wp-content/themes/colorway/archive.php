@@ -30,13 +30,13 @@
                 ?>
                 <h1>
                     <?php if (is_day()) : ?>
-                        <?php printf('Daily Archives: %s', get_the_date()); ?>
+                        <?php printf(__('Daily Archives: %s','colorway'), get_the_date()); ?>
                     <?php elseif (is_month()) : ?>
-                        <?php printf('Monthly Archives: %s', get_the_date('F Y')); ?>
+                        <?php printf(__('Monthly Archives: %s','colorway'), get_the_date('F Y')); ?>
                     <?php elseif (is_year()) : ?>
-                        <?php printf('Yearly Archives: %s', get_the_date('Y')); ?>
+                        <?php printf(__('Yearly Archives: %s','colorway'), get_the_date('Y')); ?>
                     <?php else : ?>
-                        <?php echo ('Blog Archives'); ?>
+                        <?php echo __('Blog Archives','colorway'); ?>
                     <?php endif; ?>
                 </h1>
                 <?php

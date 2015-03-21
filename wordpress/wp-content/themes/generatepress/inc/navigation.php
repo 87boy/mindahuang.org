@@ -135,24 +135,31 @@ function generate_mobile_navigation_position()
 		generate_get_defaults() 
 	);
 	
-	if ( 'nav-left-sidebar' !== $generate_settings['nav_position_setting'] &&  'nav-right-sidebar' !== $generate_settings['nav_position_setting'] )
+	if ( 'nav-left-sidebar' !== $generate_settings['nav_position_setting'] && 'nav-right-sidebar' !== $generate_settings['nav_position_setting'] )
 		return;
 		
 	?>
 	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			var $window = $(window);
-
+		jQuery(window).load(function($) {
+			var mobile, widthTimer;
+			mobile = jQuery( '.menu-toggle' );
+			
 			function generateCheckWidth() {
-				var windowsize = $window.width();
-				if (windowsize < 760) {
-					$('.main-navigation').insertAfter('.site-header');
+				if ( mobile.is( ':visible' ) ) {
+					jQuery('.main-navigation').insertAfter('.site-header');
 				} else {
-					$('.main-navigation').appendTo('.gen-sidebar-nav');
+					jQuery('.main-navigation').appendTo('.gen-sidebar-nav');
 				}
 			}
-			generateCheckWidth();
-			$(window).resize(generateCheckWidth);
+			
+			if ( mobile.is( ':visible' ) ) {
+				generateCheckWidth();
+			}
+			
+			jQuery(window).resize(function() {
+				clearTimeout(widthTimer);
+				widthTimer = setTimeout(generateCheckWidth, 100);
+			});
 		});
 	</script>
 	<?php

@@ -10,17 +10,8 @@
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo('charset'); ?>" />
-        <title>
-            <?php
-            /*
-             * Print the <title> tag based on what is being viewed.
-             */
-            wp_title('|', true, 'right');
-            ?>
-        </title>
         <link rel="profile" href="http://gmpg.org/xfn/11" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
         <?php
         /* We add some JavaScript to pages with the comment form
@@ -31,25 +22,28 @@
         ?>
     </head>
     <body <?php body_class(); ?> background="<?php
-        if (inkthemes_get_option('inkthemes_bodybg') != '') {
-            echo inkthemes_get_option('inkthemes_bodybg');
-        } else {
-            if(empty($bgcolor)){
+    if (inkthemes_get_option('inkthemes_bodybg') != '') {
+        echo inkthemes_get_option('inkthemes_bodybg');
+    } else {
+        if (empty($bgcolor)) {
             ?>
-                                     <?php echo get_template_directory_uri(); ?>/images/body-bg.png
-            <?php }} ?>">
-        <?php global $page, $paged;?>
+                                         <?php echo get_template_directory_uri(); ?>/images/body-bg.png
+                                         <?php
+                                     }
+                                 }
+                                 ?>">
+                                     <?php global $page, $paged; ?>
         <!--Start Container Div-->
         <div class="container_24 container">
             <!--Start Header Grid-->
             <div class="grid_24 header">
                 <div class="logo">
-					<a href="<?php echo home_url(); ?>"><img src="<?php if (inkthemes_get_option('colorway_logo') != '') { ?><?php echo inkthemes_get_option('colorway_logo'); ?><?php } else { ?><?php echo get_template_directory_uri(); ?>/images/logo.png<?php } ?>" alt="<?php bloginfo('name'); ?> logo"/></a>
-					   </div>
+                    <a href="<?php echo home_url(); ?>"><img src="<?php if (inkthemes_get_option('colorway_logo') != '') { ?><?php echo inkthemes_get_option('colorway_logo'); ?><?php } else { ?><?php echo get_template_directory_uri(); ?>/images/logo.png<?php } ?>" alt="<?php bloginfo('name'); ?> logo"/></a>
+                </div>
                 <!--Start MenuBar-->
                 <div class="menu-bar">  
-                     <?php inkthemes_nav(); ?>                       
-                 <div class="clearfix"></div>
+                    <?php inkthemes_nav(); ?>                       
+                    <div class="clearfix"></div>
                 </div>
                 <!--End MenuBar-->
             </div>

@@ -10,6 +10,29 @@ Changelog Legend:
 
 ----
 
+(3/9/2015) - 1.2.9
+[*] Font Awesome updated to 4.3.0
+[+] Comic Sans MS added to font list
+[*] Calculate $content_width variable based on layout
+[+] Get layout of current page with generate_get_layout()
+[+] generate_sidebar_layout filter added
+[*] Clean up page header function
+[*] Move page header functions to template-tags.php
+[+] WooCommerce styles cleaned up
+[+] bbPress styles cleaned up
+[+] Norwegian translation added (thanks, Olaf!!)
+[*] HTML structure changed to include left sidebar before right sidebar
+[*] Various code cleaned up and optimized
+[+] Support for more post formats added
+[*] Microdata warnings and errors cleaned up
+[*] Mobile breakpoint removed from mobile.css and added to enqueue function
+[*] Show read more link when using more tag, even when blog content is set to show excerpts
+[+] Czech language added (thanks, Jirí!!)
+[!] Fixed bug where mobile menu didn't move to below header from sidebar
+[!] Fixed bug in IE10 where navigation search text is invisible
+
+----
+
 (2/8/2015) - 1.2.8
 [+] Portuguese translation added
 [!] Fix navigation search translation issue

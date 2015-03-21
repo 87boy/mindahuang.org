@@ -6,10 +6,16 @@ include_once get_template_directory() . '/functions/admin-functions.php';
 include_once get_template_directory() . '/functions/admin-interface.php';
 include_once get_template_directory() . '/functions/theme-options.php';
 
+//get the theme option from options array
 function inkthemes_get_option($name) {
     $options = get_option('inkthemes_options');
     if (isset($options[$name]))
         return $options[$name];
+}
+
+// Save all option in single array
+function inkthemes_save_option($option) {
+    return update_option('inkthemes_options', $option);
 }
 
 //update theme option
@@ -26,14 +32,28 @@ function inkthemes_delete_option($name) {
     return update_option('inkthemes_options', $options);
 }
 
-$options = get_option('colorway');
-if (!empty($options) && isset($_REQUEST['activated']) && $_REQUEST['activated'] == 'true') {
-    foreach ($options as $key => $val) {
-        if ($val != '') {
+$inkthemes_backup_data = get_option('inkthemes_backup_data');
+if (!$inkthemes_backup_data) {
+    $colorway_options = get_option('colorway');
+    $inkthemes_options = get_option('inkthemes_options');
+    if (!empty($colorway_options) && empty($inkthemes_options)) {
+        foreach ($colorway_options as $key => $val) {
             inkthemes_update_option($key, $val);
         }
+        update_option('inkthemes_backup_data', '1');
+    } elseif (!empty($inkthemes_options)) {
+        foreach ($colorway_options as $key => $val) {
+            $previous_value = inkthemes_get_option($key);
+            if ($previous_value == '') {
+                inkthemes_update_option($key, $val);
+            }
+        }
+        update_option('inkthemes_backup_data', '1');
+    } elseif (empty($colorway_options) && empty($inkthemes_options)) {
+        update_option('inkthemes_backup_data', '1');
     }
 }
+
 
 
 /* ----------------------------------------------------------------------------------- */
@@ -41,8 +61,13 @@ if (!empty($options) && isset($_REQUEST['activated']) && $_REQUEST['activated'] 
 /* ----------------------------------------------------------------------------------- */
 
 function inkthemes_add_stylesheet() {
-    wp_enqueue_style('inkthemes_superfish', get_template_directory_uri() . "/css/superfish.css", '', '', 'all');
-    wp_enqueue_style('inkthemes-media', get_template_directory_uri() . "/css/media.css", '', '', 'all');
+    if (!is_admin()) {
+		wp_enqueue_style('inkthemes_reset_stylesheet', get_template_directory_uri() . "/css/reset.css", '', '', 'all');
+		wp_enqueue_style('inkthemes_responsive_stylesheet', get_template_directory_uri() . "/css/960_24_col_responsive.css", '', '', 'all');
+        wp_enqueue_style('inkthemes_stylesheet', get_template_directory_uri() . "/style.css", '', '', 'all');
+        wp_enqueue_style('inkthemes_superfish', get_template_directory_uri() . "/css/superfish.css", '', '', 'all');
+        wp_enqueue_style('inkthemes-media', get_template_directory_uri() . "/css/media.css", '', '', 'all');
+    }
 }
 
 add_action('init', 'inkthemes_add_stylesheet');

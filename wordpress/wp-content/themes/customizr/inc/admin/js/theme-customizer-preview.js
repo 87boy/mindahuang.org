@@ -207,7 +207,9 @@
 	});
 	wp.customize( 'tc_theme_options[tc_post_list_thumb_height]' , function( value ) {
 		value.bind( function( to ) {
-			$('.tc-rectangular-thumb').css('max-height' , to + 'px').trigger('refresh-height');
+			$('.tc-rectangular-thumb').css('max-height' , to + 'px');
+      if ( 0 !== $('.tc-rectangular-thumb').find('img').length )
+        $('.tc-rectangular-thumb').find('img').trigger('refresh-height');//listened by the jsimgcentering $ plugin
 		} );
 	});
 	wp.customize( 'tc_theme_options[tc_single_post_thumb_height]' , function( value ) {
@@ -436,11 +438,10 @@
 			$('#custom-bubble-color').remove();
 			var $style_element	= $('<style>' , { id : 'custom-bubble-color'}),
 				bubble_live_css = '';
-			//default bubble
-			bubble_live_css += '.comments-link .fs1 {color:' + to + ';}';
+
 			//custom bubble
-			bubble_live_css += '.comments-link .custom-bubble-one {border-color:' + to + ';color:' + to + '}';
-			bubble_live_css += '.comments-link .custom-bubble-one:before {border-color:' + to + ' rgba(0, 0, 0, 0);}';
+			bubble_live_css += '.comments-link .tc-comment-bubble {border-color:' + to + ';color:' + to + '}';
+			bubble_live_css += '.comments-link .tc-comment-bubble:before {border-color:' + to + '}';
 			$('head').append($style_element.html(bubble_live_css));
 		} );
 	} );
@@ -557,8 +558,6 @@
       }
     } );
   } );
-
-
   wp.customize( 'tc_theme_options[tc_ext_link_target]' , function( value ) {
     value.bind( function( to ) {
       if ( false !== to ) {
@@ -574,7 +573,30 @@
     } );
   } );
 
-
-
+  //GRID
+  wp.customize( 'tc_theme_options[tc_grid_shadow]' , function( value ) {
+    value.bind( function( to ) {
+      if ( false !== to )
+        $('.tc-post-list-grid').each( function() { $(this).addClass('tc-grid-shadow'); } );
+      else
+        $('.tc-post-list-grid').each( function() { $(this).removeClass('tc-grid-shadow'); } );
+    } );
+  });
+  wp.customize( 'tc_theme_options[tc_grid_bottom_border]' , function( value ) {
+    value.bind( function( to ) {
+      if ( false !== to )
+        $('.tc-post-list-grid').each( function() { $(this).addClass('tc-grid-border'); } );
+      else
+        $('.tc-post-list-grid').each( function() { $(this).removeClass('tc-grid-border'); } );
+    } );
+  });
+  wp.customize( 'tc_theme_options[tc_grid_icons]' , function( value ) {
+    value.bind( function( to ) {
+      if ( false === to )
+        $('.tc-grid-icon').each( function() { $(this).fadeOut(); } );
+      else
+        $('.tc-grid-icon').each( function() { $(this).fadeIn(); } );
+    } );
+  });
 
 } )( jQuery );

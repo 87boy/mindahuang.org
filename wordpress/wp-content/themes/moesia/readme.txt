@@ -87,8 +87,8 @@ License: CC0 1.0
 License URI: http://creativecommons.org/publicdomain/zero/1.0/deed.en
 
 k) Screenshot
-Copyright: PublicDomainArchive
-Resource URI: http://pixabay.com/en/photographer-photography-window-349921/
+Copyright: edar
+Resource URI: http://pixabay.com/en/keyboard-computer-internet-work-561124/
 License: CC0 1.0
 License URI: http://creativecommons.org/publicdomain/zero/1.0/deed.en
 

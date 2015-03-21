@@ -36,10 +36,8 @@ GeneratePress is licensed under the GNU General Public License v2 or later
 More details here: http://www.gnu.org/licenses/gpl-2.0.html
 
 Screenshot images are all licensed under CC0 1.0 Universal - http://creativecommons.org/publicdomain/zero/1.0/deed.en
-http://pixabay.com/en/road-asphalt-space-sky-clouds-220058/
-http://pixabay.com/en/way-clouds-seat-belts-direction-427984/
 http://pixabay.com/en/home-office-workstation-office-336378/
-http://pixabay.com/en/departure-platform-subway-371218/
+http://pixabay.com/en/utah-mountain-biking-bike-biking-95032/
 
 -------------------------------------------------------
 Unsemantic Framework

@@ -2632,7 +2632,7 @@ function moesia_customize_register( $wp_customize ) {
         'header_max_height_1199',
         array(
             'sanitize_callback' => 'absint',
-            'default'           => '1080',
+            'default'           => '1440',
         )       
     );
     $wp_customize->add_control( 'header_max_height_1199', array(
@@ -2643,7 +2643,7 @@ function moesia_customize_register( $wp_customize ) {
         'description' => __('Max height for the header at screen widths above 1199px', 'moesia'),
         'input_attrs' => array(
             'min'   => 200,
-            'max'   => 1080,
+            'max'   => 1440,
             'step'  => 5,
             'style' => 'margin-bottom: 15px; padding: 15px;',
         ),
@@ -2653,7 +2653,7 @@ function moesia_customize_register( $wp_customize ) {
         'header_max_height_1025',
         array(
             'sanitize_callback' => 'absint',
-            'default'           => '1080',
+            'default'           => '1440',
         )       
     );
     $wp_customize->add_control( 'header_max_height_1025', array(
@@ -2664,7 +2664,7 @@ function moesia_customize_register( $wp_customize ) {
         'description' => __('Max height for the header at screen widths above 1024px', 'moesia'),
         'input_attrs' => array(
             'min'   => 200,
-            'max'   => 1080,
+            'max'   => 1440,
             'step'  => 5,
             'style' => 'margin-bottom: 15px; padding: 15px;',
         ),

@@ -726,6 +726,20 @@ $this->sections[] = array(
             "default"=> 1,
             ),
         array(
+            'id'=>'info_cat_product_size',
+            'type' => 'info',
+            'desc' => __('Shop Category Image Size', 'virtue'),
+            ),
+        array(
+            'id'=>'product_cat_img_ratio',
+            'type' => 'select',
+            'title' => __('Category Image Aspect Ratio', 'virtue'), 
+            'subtitle' => __('This sets how you want your category images to be cropped.', 'virtue'),
+            'options' => array('square' => __('Square 1:1', 'virtue'), 'portrait' => __('Portrait 3:4', 'virtue'), 'landscape' => __('Landscape 4:3', 'virtue'), 'widelandscape' => __('Wide Landscape 4:2', 'virtue'), 'off' => __('Turn Off', 'virtue')),
+            'default' => 'widelandscape',
+            'width' => 'width:60%',
+            ),
+        array(
             'id'=>'info_shop_product_title',
             'type' => 'info',
             'desc' => __('Shop Product Title Settings', 'virtue'),

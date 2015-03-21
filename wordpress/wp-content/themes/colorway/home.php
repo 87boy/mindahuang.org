@@ -13,56 +13,62 @@
 ?>
 <?php get_header(); ?>
 <!--Start Slider-->
-<div class="grid_24 slider">
-    <div class="slider-container">
-        <div id="slides">
-            <div id="slide-box">
-                <div class="slides_container col-full slide-fix" >
-                    <div class="slide slide-1" >
-                        <div class="slide-content entry fl">
-                            <?php if (inkthemes_get_option('colorway_slideheading1') != '') { ?>
-                                <h2 class="title"><a href="<?php echo inkthemes_get_option('colorway_slidelink1'); ?>"><?php echo inkthemes_get_option('colorway_slideheading1'); ?></a></h2>
+<?php if (inkthemes_get_option('colorway_home_page_slider') != 'off') { ?>
+    <div class="grid_24 slider">
+        <div class="slider-container">
+            <div id="slides">
+                <div id="slide-box">
+                    <div class="slides_container col-full slide-fix" >
+                        <div class="slide slide-1" >
+                            <div class="slide-content entry fl">
+                                <?php if (inkthemes_get_option('colorway_slideheading1') != '') { ?>
+                                    <h2 class="title"><a href="<?php echo inkthemes_get_option('colorway_slidelink1'); ?>"><?php echo inkthemes_get_option('colorway_slideheading1'); ?></a></h2>
+                                <?php } else { ?>
+                                    <h2 class="title"><a href="#"><?php _e('Beauty at its best', 'colorway'); ?></a></h2>
+                                <?php } ?> 
+                                <?php if (inkthemes_get_option('colorway_slidedescription1') != '') { ?>
+                                    <p><?php echo inkthemes_get_option('colorway_slidedescription1'); ?></p>
+                                <?php } else { ?>
+                                    <p><?php _e('What happens when beauty and simplicity connects. We tried to give you a slight hint of that with the Colorway Theme.', 'colroway'); ?></p>
+                                <?php } ?>
+                            </div>
+                            <!-- /.slide-content -->
+                            <?php if (inkthemes_get_option('colorway_slideimage1') != '') { ?>
+                                <div class="slide-image fl"><img  src="<?php echo inkthemes_get_option('colorway_slideimage1'); ?>" class="slide-img" alt="Slide 1"/> </div>
                             <?php } else { ?>
-                                <h2 class="title"><a href="#"><?php _e('Beauty at its best', 'colorway'); ?></a></h2>
-                            <?php } ?> 
-                            <?php if (inkthemes_get_option('colorway_slidedescription1') != '') { ?>
-                                <p><?php echo inkthemes_get_option('colorway_slidedescription1'); ?></p>
-                            <?php } else { ?>
-                                <p><?php _e('What happens when beauty and simplicity connects. We tried to give you a slight hint of that with the Colorway Theme.', 'colroway'); ?></p>
+                                <div class="slide-image fl"><img  src="<?php echo get_template_directory_uri(); ?>/images/slider.jpg" class="slide-img" alt="Slide 1"/> </div>
                             <?php } ?>
-                        </div>
-                        <!-- /.slide-content -->
-                        <?php if (inkthemes_get_option('colorway_slideimage1') != '') { ?>
-                            <div class="slide-image fl"><img  src="<?php echo inkthemes_get_option('colorway_slideimage1'); ?>" class="slide-img" alt="Slide 1"/> </div>
-                        <?php } else { ?>
-                            <div class="slide-image fl"><img  src="<?php echo get_template_directory_uri(); ?>/images/slider.jpg" class="slide-img" alt="Slide 1"/> </div>
-                        <?php } ?>
-                        <!-- /.slide-image -->
-                        <div class="fix"></div>
-                    </div>         
+                            <!-- /.slide-image -->
+                            <div class="fix"></div>
+                        </div>         
+                    </div>
+                    <!-- /.slides_container -->
                 </div>
-                <!-- /.slides_container -->
+                <!-- /#slide-box -->
             </div>
-            <!-- /#slide-box -->
+            <!-- /#slides -->
         </div>
-        <!-- /#slides -->
     </div>
-</div>
+<?php } else {
+    ?>
+    <div class="heading_section"></div>
+<?php }
+?>
 <div class="clear"></div>
 <!--End Slider-->
 <!--Start Content Grid-->
 <div class="grid_24 content">
     <div class="content-wrapper">
         <div class="content-info home">
-            <h2>
-                <center>
+            <center>
+                <h2>
                     <?php if (inkthemes_get_option('inkthemes_mainheading') != '') { ?>
                         <?php echo inkthemes_get_option('inkthemes_mainheading'); ?>
                     <?php } else { ?>
                         <?php _e('Design is not just what it looks like and feels like. Design is how it works.', 'colorway'); ?>
                     <?php } ?>
-                </center>
-            </h2>
+                </h2>
+            </center>
         </div>
         <div class="clear"></div>
         <div  id="content">
@@ -142,63 +148,75 @@
             </div>            
         </div>        
         <div class="clear"></div>
-        <div class="home_page_blog">
-            <div class="grid_16 alpha">
-                <div class="content-wrap home">
-                    <?php if (inkthemes_get_option('inkthemes_blog_head') != '') { ?>
-                        <h1 class="blog_head"><?php echo stripslashes(inkthemes_get_option('inkthemes_blog_head')); ?></h1>
-                    <?php } else { ?>
-                        <h1 class="blog_head"><?php _e('From The Blog', 'colorway'); ?></h1>
-                    <?php } ?> 
-                    <div class="blog" id="blogmain">
-                        <ul class="blog_post">
-                            <!-- Start the Loop. -->
-                            <?php query_posts('posts_per_page=3'); ?>
-                            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                                    <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                        <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { ?>
-                                            <a href="<?php the_permalink(); ?>">
-                                                <?php the_post_thumbnail('post_thumbnail', array('class' => 'postimg')); ?>
-                                            </a>
-                                            <?php
-                                        } else {
-                                            echo inkthemes_main_image();
-                                        }
-                                        ?>
-                                        <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-                                        <?php echo inkthemes_custom_trim_excerpt(25); ?>
-                                        <a href="<?php the_permalink() ?>"><?php _e('Continue Reading...', 'colorway'); ?></a> </li>
-                                    <!-- End the Loop. -->
-                                <?php endwhile;
-                            else:
+        <?php if (inkthemes_get_option('colorway_home_page_blog_post') != 'off') { ?>
+            <div class="home_page_blog">
+                <div class="<?php if (inkthemes_get_option('colorway_home_page_blog_post') == 'on_with_sidebar') {
+                ?>grid_16 alpha<?php } else {
+                ?>grid_24<?php } ?>">
+                    <div class="content-wrap home">
+                        <?php if (inkthemes_get_option('inkthemes_blog_head') != '') { ?>
+                            <h1 class="blog_head"><?php echo stripslashes(inkthemes_get_option('inkthemes_blog_head')); ?></h1>
+                        <?php } else { ?>
+                            <h1 class="blog_head"><?php _e('From The Blog', 'colorway'); ?></h1>
+                        <?php } ?> 
+                        <div class="blog" id="blogmain">
+                            <ul class="blog_post">
+                                <!-- Start the Loop. -->
+                                <?php
+                                $post_on_home_page = inkthemes_get_option('inkthemes_blog_posts');
+                                $post_on_home_page--;
                                 ?>
-                                <li>
-                                    <p> <?php _e('Sorry, no posts matched your criteria.', 'colorway'); ?> </p>
-                                </li>
-<?php endif; ?>
-                        </ul>
+                                <?php query_posts("posts_per_page=$post_on_home_page"); ?>
+                                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                                        <li id="post-<?php the_ID();
+                                        ?>" <?php post_class(); ?>>
+                                                <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { ?>
+                                                <a href="<?php the_permalink(); ?>">
+                                                    <?php the_post_thumbnail('post_thumbnail', array('class' => 'postimg')); ?>
+                                                </a>
+                                                <?php
+                                            } else {
+                                                echo inkthemes_main_image();
+                                            }
+                                            ?>
+                                            <h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to ', 'colorway') . the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+                                            <?php echo inkthemes_custom_trim_excerpt(25); ?>
+                                            <a href="<?php the_permalink() ?>"><?php _e('Continue Reading...', 'colorway'); ?></a> </li>
+                                        <!-- End the Loop. -->
+                                        <?php
+                                    endwhile;
+                                else:
+                                    ?>
+                                    <li>
+                                        <p> <?php _e('Sorry, no posts matched your criteria.', 'colorway'); ?> </p>
+                                    </li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <?php if (inkthemes_get_option('colorway_home_page_blog_post') == 'on_with_sidebar') {
+                    ?>
+                    <div class="grid_8 omega">
+                        <?php if (is_active_sidebar('home-page-right-feature-widget-area')) : ?>
+                            <div class="sidebar home">
+                                <?php dynamic_sidebar('home-page-right-feature-widget-area'); ?>
+                            </div>
+                        <?php else : ?>
+                            <div class="sidebar home">
+                                <img class="widget_img" src="<?php echo get_template_directory_uri(); ?>/images/widget-area.png" />
+                            </div>
+                        <?php endif; ?>
+                    </div><?php } ?>
             </div>
-            <div class="grid_8 omega">
-                    <?php if (is_active_sidebar('home-page-right-feature-widget-area')) : ?>
-                    <div class="sidebar home">
-                    <?php dynamic_sidebar('home-page-right-feature-widget-area'); ?>
-                    </div>
-<?php else : ?>
-                    <div class="sidebar home">
-                        <img class="widget_img" src="<?php echo get_template_directory_uri(); ?>/images/widget-area.png" />
-                    </div>
-<?php endif; ?>
-            </div>
-        </div>
+        <?php } ?>
         <div class="clear"></div>
         <?php if (inkthemes_get_option('inkthemes_testimonial') != '') { ?>
             <blockquote class="home_blockquote"><?php echo inkthemes_get_option('inkthemes_testimonial'); ?></blockquote>
-            <?php } else { ?>
+        <?php } else { ?>
             <blockquote class="home_blockquote"><?php _e('Theme from InkThemes.com are based on P3+ Technology, giving high speed, easiness to built &amp; power of SEO for lending trustworthiness and experience to a customer. The Themes are really one of the best we saw everywhere.<br />
                 Neeraj Agarwal', 'colorway'); ?></blockquote>
-<?php } ?>
+        <?php } ?>
     </div>
     <div class="clear"></div>
 </div>

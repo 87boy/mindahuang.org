@@ -3,8 +3,8 @@ Theme Name: GeneratePress
 Theme URI: http://generatepress.com
 Author: Thomas Usborne
 Author URI: http://edge22.com
-Description: GeneratePress is a lightweight mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Available in English, German, Portuguese, Spanish, Russian, French and Polish! See more at http://generatepress.com
-Version: 1.2.8
+Description: GeneratePress is a fast, lightweight, mobile responsive WordPress theme built with speed, SEO and usability in mind. Create your website just the way you want it using the Customizer and see the changes take place right in front of you before you publish. GeneratePress is mobile responsive, W3C Markup Validated, Schema.org microdata integrated, search engine friendly, cross browser compatible (including IE8+), WooCommerce compatible, BuddyPress compatible and 100% translatable. GeneratePress has 8 widget areas, 5 navigation positions, 5 sidebar layouts and much more. Available in English, German, Portuguese, Spanish, Russian, French, Norwegian, Polish and Czech! See more at http://generatepress.com
+Version: 1.2.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: generate
@@ -427,11 +427,9 @@ a:active {
 	display: block;
 	line-height: 60px;
 	padding: 0 20px;
-	/*color:#FFF;*/
 }
 .menu-toggle {
 	line-height: 60px;
-	/*color:#FFF;*/
 	margin: 0;
 	padding: 0 20px;
 }
@@ -502,31 +500,18 @@ a:active {
 .main-navigation ul ul li {
 	width:100%;
 }
-.main-navigation li:hover > a {
-}
-.main-navigation ul ul :hover > a {
-}
-.main-navigation ul ul a:hover {
-}
 .main-navigation ul li:hover > ul {
 	display: block;
 }
-.main-navigation li.current_page_item a,
-.main-navigation li.current-menu-item a {
-}
-
 .nav-float-right .main-navigation {
 	float:right;
 }
-
 .site-header {
 	position:relative;
 }
-
 .header-aligned-left .site-header {
 	text-align: left;
 }
-
 .header-aligned-center .site-header {
 	text-align: center;
 }
@@ -574,12 +559,15 @@ a:active {
 .navigation-search input {
 	border: 0;
 	vertical-align: bottom;
-	padding: 0 15px;
 	line-height: 0;
 	height: 60px;
 	opacity: 0.9;
 	width: 100%;
 	z-index: 20;
+}
+
+.navigation-search input::-ms-clear {
+    display: none;
 }
 
 .nav-left-sidebar .main-navigation li.search-item,
@@ -663,8 +651,26 @@ a:active {
 }
 
 .blog .format-status .entry-title, 
-.archive .format-status .entry-title {
+.archive .format-status .entry-title,
+.blog .format-aside .entry-header,
+.archive .format-aside .entry-header,
+.blog .format-status .entry-header,
+.archive .format-status .entry-header,
+.blog .format-status .entry-meta,
+.archive .format-status .entry-meta {
     display: none;
+}
+
+.blog .format-aside .entry-content,
+.archive .format-aside .entry-content,
+.blog .format-status .entry-content,
+.archive .format-status .entry-content {
+	margin-top: 0;
+}
+
+.blog .format-status .entry-content p:last-child,
+.archive .format-status .entry-content p:last-child {
+	margin-bottom: 0;
 }
 
 /* =Media
@@ -855,21 +861,12 @@ object {
 ----------------------------------------------- */
 
 body {
-	/*background: #EFEFEF;*/
 	font-size: 15px;
 }
 
 body .grid-container {
 	max-width: 1100px;
 }
-/*.inside-article,
-.sidebar .widget,
-.comments-area,
-.page-header,
-.footer-widgets,
-.paging-navigation {
-	background:#FFF;
-}*/
 
 .separate-containers .inside-article,
 .separate-containers .widget,
@@ -878,10 +875,6 @@ body .grid-container {
 .separate-containers .paging-navigation {
 	padding: 40px;
 }
-
-/*.one-container .container {
-	background: #FFF;
-}*/
 
 h1 {
 	font-size: 35px;
@@ -1105,11 +1098,6 @@ h4, h5, h6 {
 	width:100%;
 }
 
-/* Footer */
-/*.site-footer {
-	background: #FFF;
-}*/
-
 .footer-widgets {
 	padding: 40px 0;
 }
@@ -1120,16 +1108,7 @@ h4, h5, h6 {
 .site-info {
 	padding: 40px 0;
 	text-align: center;
-	/*background: #222222;
-	color:#ffffff;*/
 }
-/*.site-info a,
-.site-info a:visited {
-	color:#ffffff;
-}
-.site-info a:hover {
-	color:#4295DD;
-}*/
 
 /* Posts */
 .entry-title {
@@ -1158,13 +1137,6 @@ h4, h5, h6 {
 	font-size: 85%;
 	margin-top: .5em;
 }
-/*.entry-meta a,
-.entry-meta a:visited {
-	color:#666;
-}
-.entry-meta a:hover {
-	color:#1E73BE;
-}*/
 footer.entry-meta {
 	margin-top: 2em;
 }
@@ -1313,7 +1285,6 @@ footer.entry-meta .byline {
 	max-width: 100%;
 }
 .site-description {
-	/*color:#aaa;*/
 	margin: 0;
 }
 .inside-header {
@@ -1377,6 +1348,39 @@ footer.entry-meta .byline {
 .one-container .inside-article .page-header-content  {
 	margin-bottom: 2em;
 	margin-top: 0;
+}
+
+/* WooCommerce */
+
+.woocommerce .page-header-image-single {
+	display: none;
+}
+
+.woocommerce .entry-content,
+.woocommerce .product .entry-summary {
+	margin-top: 0;
+}
+
+/* bbPress */
+#bbpress-forums ul.bbp-lead-topic, 
+#bbpress-forums ul.bbp-topics, 
+#bbpress-forums ul.bbp-forums, 
+#bbpress-forums ul.bbp-replies, 
+#bbpress-forums ul.bbp-search-results,
+#bbpress-forums,
+div.bbp-breadcrumb, 
+div.bbp-topic-tags {
+	font-size: inherit;
+}
+
+#subscription-toggle {
+	display: block;
+	margin: 1em 0;
+	clear: left;
+}
+
+#bbpress-forums .bbp-search-form {
+    margin-bottom: 10px;
 }
 
 /* Mobile menu */

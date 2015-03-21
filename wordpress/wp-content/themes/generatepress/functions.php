@@ -5,7 +5,7 @@
  * @package Generate
  */
 	
-define( 'GENERATE_VERSION', '1.2.8');
+define( 'GENERATE_VERSION', '1.2.9');
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -18,7 +18,8 @@ if ( ! function_exists( 'generate_setup' ) ) :
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  */
-function generate_setup() {
+function generate_setup() 
+{
 
 	/**
 	 * Make theme available for translation
@@ -55,7 +56,7 @@ function generate_setup() {
 	/**
 	 * Enable support for Post Formats
 	 */
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'status' ) );
 	
 	/**
 	 * Enable support for WooCommerce
@@ -68,12 +69,12 @@ function generate_setup() {
 	add_theme_support( 'title-tag' );
 	
 	/**
-	 * Set the content width based on the theme's design and stylesheet.
+	 * Set the content width to something large
+	 * We set a more accurate width in generate_smart_content_width()
 	 */
 	global $content_width;
 	if ( ! isset( $content_width ) )
 		$content_width = 1200; /* pixels */
-
 
 }
 endif; // generate_setup
@@ -203,22 +204,22 @@ require get_template_directory() . '/inc/navigation.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Load Element Classes
+ * Load element classes
  */
 require get_template_directory() . '/inc/element-classes.php';
 
 /**
- * Load Metaboxes
+ * Load metaboxes
  */
 require get_template_directory() . '/inc/metaboxes.php';
 
 /**
- * Load Options
+ * Load options
  */
 require get_template_directory() . '/inc/options.php';
 
 /**
- * Load Addon options
+ * Load add-on options
  */
 require get_template_directory() . '/inc/addons.php';
 
@@ -236,13 +237,13 @@ function generate_scripts() {
 	// Generate stylesheets
 	wp_enqueue_style( 'generate-style-grid', get_template_directory_uri() . '/css/unsemantic-grid.css', false, GENERATE_VERSION, 'all' );
 	wp_enqueue_style( 'generate-style', get_template_directory_uri() . '/style.css', false, GENERATE_VERSION, 'all' );
-	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . '/css/mobile.css', false, GENERATE_VERSION, 'all' );
+	wp_enqueue_style( 'generate-mobile-style', get_template_directory_uri() . '/css/mobile.css', false, GENERATE_VERSION, 'screen and (max-width: 768px)' );
 	wp_add_inline_style( 'generate-style', generate_base_css() );
 	if ( is_child_theme() ) :
 		wp_enqueue_style( 'generate-child', get_stylesheet_uri(), true, filemtime( get_stylesheet_directory() . '/style.css' ), 'all' );
 	endif;
 	wp_enqueue_style( 'superfish', get_template_directory_uri() . '/css/superfish.css', false, GENERATE_VERSION, 'all' );
-	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', false, '4.2.0', 'all' );
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/font-awesome.min.css', false, '4.3.0', 'all' );
 
 	// Generate scripts
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . '/js/navigation.js', array(), GENERATE_VERSION, true );
@@ -265,6 +266,53 @@ function generate_scripts() {
 	}
 }
 
+/**
+ * Get the layout for the current page
+ */
+function generate_get_layout()
+{
+	// Get current post
+	global $post;
+	
+	// Get Customizer options
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// Set up the layout variable for pages
+	$layout = $generate_settings['layout_setting'];
+	
+	// Get the individual page/post sidebar metabox value
+	$layout_meta = ( isset( $post ) ) ? get_post_meta( $post->ID, '_generate-sidebar-layout-meta', true ) : '';
+	
+	// Set up BuddyPress variable
+	$buddypress = false;
+	if ( function_exists( 'is_buddypress' ) ) :
+		$buddypress = ( is_buddypress() ) ? true : false;
+	endif;
+
+	// If we're on the single post page
+	// And if we're not on a BuddyPress page - fixes a bug where BP thinks is_single() is true
+	if ( is_single() && ! $buddypress ) :
+		$layout = null;
+		$layout = $generate_settings['single_layout_setting'];
+	endif;
+
+	// If the metabox is set, use it instead of the global settings
+	if ( '' !== $layout_meta && false !== $layout_meta ) :
+		$layout = $layout_meta;
+	endif;
+	
+	// If we're on the blog, archive, attachment etc..
+	if ( is_home() || is_archive() || is_search() || is_attachment() || is_tax() ) :
+		$layout = null;
+		$layout = $generate_settings['blog_layout_setting'];
+	endif;
+	
+	// Finally, return the layout
+	return apply_filters( 'generate_sidebar_layout', $layout );
+}
 
 /**
  * Construct the sidebars
@@ -273,53 +321,8 @@ function generate_scripts() {
 add_action('generate_sidebars','generate_contruct_sidebars');
 function generate_contruct_sidebars()
 {
-	global $post;
-	$generate_settings = wp_parse_args( 
-		get_option( 'generate_settings', array() ), 
-		generate_get_defaults() 
-	);
-	$stored_meta = '';
-	
-	// Prevent PHP notices
-	if ( isset( $post ) ) :
-		$stored_meta = get_post_meta( $post->ID, '_generate-sidebar-layout-meta', true );
-	endif;
-	
-	// Is BuddyPress active on this page?
-	$buddypress = false;
-	if ( function_exists( 'is_buddypress' ) ) :
-		if ( is_buddypress() ) {
-			$buddypress = true;
-		} else {
-			$buddypress = false;
-		}
-	endif;
-
-	// If we're on the single post page, use appropriate setting
-	// And if we're not on a BuddyPress page - fixes a bug where BP thinks is_single() is true
-	if ( is_single() && ! $buddypress ) :
-		$generate_settings['layout_setting'] = null;
-		$generate_settings['layout_setting'] = $generate_settings['single_layout_setting'];
-	endif;
-
-	// If the metabox is set, use it instead of the global settings
-	if ( '' !== $stored_meta && false !== $stored_meta ) :
-		$generate_settings['layout_setting'] = $stored_meta;
-	endif;
-	
-	// If we're on the blog, single post etc.. replace value with the blog layout setting
-	if ( is_home() ||
-		is_category() || 
-		is_tag() || 
-		is_archive() || 
-		is_tax() || 
-		is_author() || 
-		is_date() || 
-		is_search() || 
-		is_attachment() ) :
-		$generate_settings['layout_setting'] = null;
-		$generate_settings['layout_setting'] = $generate_settings['blog_layout_setting'];
-	endif;
+	// Get the layout
+	$layout = generate_get_layout();
 	
 	// When to show the right sidebar
 	$rs = array('right-sidebar','both-sidebars','both-right','both-left');
@@ -327,14 +330,14 @@ function generate_contruct_sidebars()
 	// When to show the left sidebar
 	$ls = array('left-sidebar','both-sidebars','both-right','both-left');
 	
-	// If right sidebar, show it
-	if ( in_array( $generate_settings['layout_setting'], $rs ) ) :
-		get_sidebar(); 
-	endif;
-
 	// If left sidebar, show it
-	if ( in_array( $generate_settings['layout_setting'], $ls ) ) :
+	if ( in_array( $layout, $ls ) ) :
 		get_sidebar('left'); 
+	endif;
+	
+	// If right sidebar, show it
+	if ( in_array( $layout, $rs ) ) :
+		get_sidebar(); 
 	endif;
 	
 }
@@ -351,7 +354,7 @@ add_action('generate_copyright_line','generate_add_login_attribution');
 function generate_add_login_attribution()
 {
 	?>
-	&#x000B7; <a href="<?php echo esc_url('http://generatepress.com');?>" target="_blank" title="<?php _e('GeneratePress','generate');?>"><?php _e('GeneratePress','generate');?></a> &#x000B7; <a href="http://wordpress.org" target="_blank" title="<?php _e('Proudly powered by WordPress','generate');?>"><?php _e('WordPress','generate');?></a>
+	&#x000B7; <a href="<?php echo esc_url('http://generatepress.com');?>" target="_blank" title="<?php _e('GeneratePress','generate');?>" itemprop="url"><?php _e('GeneratePress','generate');?></a> &#x000B7; <a href="http://wordpress.org" target="_blank" title="<?php _e('Proudly powered by WordPress','generate');?>"><?php _e('WordPress','generate');?></a>
 	<?php
 }
 
@@ -428,64 +431,6 @@ function generate_base_css()
 	return $output;
 }
 
-/**
- * Build the page header
- * @since 1.0.7
- */
-function generate_featured_page_header_area($class)
-{
-	// Don't run the function unless we're on a page it applies to
-	if ( ! is_singular() )
-		return;
-		
-	global $post;
-	$page_header_image_info = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-	$page_header_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'full') );
-	$page_header_image_width = $page_header_image_info[1];
-	$page_header_image_height = $page_header_image_info[2];
-		
-	if ( !empty($page_header_image) ) :
-		echo '<div class="' . $class . ' grid-container grid-parent">';
-			echo '<img src="' . $page_header_image . '" width="' . $page_header_image_width . '" height="' . $page_header_image_height . '" alt="" />';
-		echo '</div>';
-	endif;
-}
-
-/**
- * Add page header above content
- * @since 1.0.2
- */
-add_action('generate_after_header','generate_featured_page_header', 10);
-function generate_featured_page_header()
-{
-	if ( function_exists('generate_page_header') )
-		return;
-
-	if ( is_page() ) :
-		
-		generate_featured_page_header_area('page-header-image');
-	
-	endif;
-}
-
-/**
- * Add post header inside content
- * Only add to single post
- * @since 1.0.7
- */
-add_action('generate_before_content','generate_featured_page_header_inside_single', 10);
-function generate_featured_page_header_inside_single()
-{
-	if ( function_exists('generate_page_header') )
-		return;
-
-	if ( is_single() ) :
-	
-		generate_featured_page_header_area('page-header-image-single');
-	
-	endif;
-}
-
 /** 
  * Moving standalone db entries to generate_settings db entry
  * @since 1.0.8
@@ -493,8 +438,8 @@ function generate_featured_page_header_inside_single()
 add_action('after_setup_theme', 'generate_update_db_entries');
 function generate_update_db_entries() 
 {
-	$generate_settings = get_option('generate_settings');
 	
+	$generate_settings = get_option('generate_settings');
 	
 	//Grab options
 	$generate_hide_title = get_theme_mod( 'generate_title' );
@@ -608,15 +553,54 @@ function generate_ie_compatibility()
 <?php
 }
 
+if ( ! function_exists( 'generate_remove_caption_padding' ) ) :
 /**
  * Remove WordPress's default padding on images with captions
  *
  * @param int $width Default WP .wp-caption width (image width + 10px)
  * @return int Updated width to remove 10px padding
  */
-if ( ! function_exists( 'generate_remove_caption_padding' ) ) :
 add_filter( 'img_caption_shortcode_width', 'generate_remove_caption_padding' );
 function generate_remove_caption_padding( $width ) {
 	return $width - 10;
+}
+endif;
+
+if ( ! function_exists( 'generate_smart_content_width' ) ) :
+/**
+ * Set the $content_width depending on layout of current page
+ * Hook into "wp" so we have the correct layout setting from generate_get_layout()
+ * Hooking into "after_setup_theme" doesn't get the correct layout setting
+ */
+add_action( 'wp', 'generate_smart_content_width' );
+function generate_smart_content_width()
+{
+
+	global $content_width, $post;
+	
+	// Get Customizer options
+	$generate_settings = wp_parse_args( 
+		get_option( 'generate_settings', array() ), 
+		generate_get_defaults() 
+	);
+	
+	// Get sidebar widths
+	$right_sidebar_width = apply_filters( 'generate_right_sidebar_width', '25' );
+	$left_sidebar_width = apply_filters( 'generate_left_sidebar_width', '25' );
+	
+	// Find the real content width
+	if ( 'left-sidebar' == generate_get_layout() ) {
+		// If left sidebar is present
+		$content_width = $generate_settings['container_width'] * ( ( 100 - $left_sidebar_width ) / 100 );
+	} elseif ( 'right-sidebar' == generate_get_layout() ) {
+		// If right sidebar is present
+		$content_width = $generate_settings['container_width'] * ( ( 100 - $right_sidebar_width ) / 100 );
+	} elseif ( 'no-sidebar' == generate_get_layout() ) {
+		// If no sidebars are present
+		$content_width = $generate_settings['container_width'];
+	} else {
+		// If both sidebars are present
+		$content_width = $generate_settings['container_width'] * ( ( 100 - ( $left_sidebar_width + $right_sidebar_width ) ) / 100 );	
+	}
 }
 endif;

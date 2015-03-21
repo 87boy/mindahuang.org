@@ -23,6 +23,10 @@ function virtue_author_box() { ?>
             <span class="googlepluslink">
 				<a href="<?php the_author_meta( 'google' ); ?>" title="<?php _e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php _e('on Google Plus', 'virtue');?>"><i class="icon-google-plus"></i></a>
 			</span>
+           <?php } if ( get_the_author_meta( 'youtube' ) ) { ?>
+            <span class="youtubelink">
+        <a href="<?php the_author_meta( 'google' ); ?>" title="<?php _e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php _e('on YouTube', 'virtue');?>"><i class="icon-youtube"></i></a>
+      </span>
             <?php } if ( get_the_author_meta( 'flickr' ) ) { ?>
             <span class="flickrlink">
 				<a href="<?php the_author_meta( 'flickr' ); ?>" title="<?php _e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php _e('on Flickr', 'virtue');?>"><i class="icon-flickr"></i></a>

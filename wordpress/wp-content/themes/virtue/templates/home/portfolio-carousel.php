@@ -40,7 +40,7 @@
 					$xs = 2;
 					$ss = 1; ?>
 				<div class="home-margin fredcarousel">
-				<div id="carouselcontainer-portfolio" class="rowtight">
+				<div id="carouselcontainer-portfolio" class="rowtight fadein-carousel">
 				<div id="portfolio-carousel" class="clearfix caroufedselclass initcaroufedsel clearfix" data-carousel-container="#carouselcontainer-portfolio" data-carousel-transition="700" data-carousel-scroll="1" data-carousel-auto="true" data-carousel-speed="9000" data-carousel-id="portfolio" data-carousel-md="<?php echo esc_attr($md);?>" data-carousel-sm="<?php echo esc_attr($sm);?>" data-carousel-xs="<?php echo esc_attr($xs);?>" data-carousel-ss="<?php echo esc_attr($ss);?>">
 				<?php 
 				$temp = $wp_query; 

@@ -2,6 +2,7 @@
 ob_start();
 
 function inkthemes_setup() {
+    add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('post-thumbnails');
     add_image_size('post_thumbnail', 250, 160, true);

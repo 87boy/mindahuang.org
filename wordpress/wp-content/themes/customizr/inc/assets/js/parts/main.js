@@ -1,60 +1,132 @@
 /* !
  * Customizr WordPress theme Javascript code
- * Copyright (c) 2014 Nicolas GUILLAUME (@nicguillaume), Themes & Co.
+ * Copyright (c) 2014-2015 Nicolas GUILLAUME (@nicguillaume), Themes & Co.
  * GPL2+ Licensed
 */
 //ON DOM READY
 jQuery(function ($) {
     var _p = TCParams;
-    //Img Smart Load
-    if ( 1 == _p.imgSmartLoadEnabled ) {
-      $( '.hentry' ).imgSmartLoad( _.size( _p.imgSmartLoadOpts) > 0 || {} );
-    }
 
-    //Drop Caps
+    //CENTER VARIOUS IMAGES
+    setTimeout( function() {
+      //Featured Pages
+      $('.widget-front .thumb-wrapper').centerImages( {
+        enableCentering : 1 == _p.centerAllImg,
+        enableGoldenRatio : false,
+        disableGRUnder : 0,//<= don't disable golden ratio when responsive
+        zeroTopAdjust : 1,
+        leftAdjust : 2.5,
+        oncustom : ['smartload', 'simple_load']
+      });
+      //POST LIST THUMBNAILS + FEATURED PAGES
+      //Squared, rounded
+      $('.thumb-wrapper', '.hentry' ).centerImages( {
+        enableCentering : 1 == _p.centerAllImg,
+        enableGoldenRatio : false,
+        disableGRUnder : 0,//<= don't disable golden ratio when responsive
+        oncustom : ['smartload', 'simple_load']
+      });
+
+      //rectangulars
+      $('.tc-rectangular-thumb').centerImages( {
+        enableCentering : 1 == _p.centerAllImg,
+        enableGoldenRatio : true,
+        disableGRUnder : 0,//<= don't disable golden ratio when responsive
+        oncustom : ['smartload', 'refresh-height', 'simple_load'], //bind 'refresh-height' event (triggered to the the customizer preview frame)
+      });
+
+      //SINGLE POST THUMBNAILS
+      $('.tc-rectangular-thumb' , '.single').centerImages( {
+        enableCentering : 1 == _p.centerAllImg,
+        enableGoldenRatio : false,
+        disableGRUnder : 0,//<= don't disable golden ratio when responsive
+        oncustom : ['smartload', 'refresh-height', 'simple_load'], //bind 'refresh-height' event (triggered to the the customizer preview frame)
+      });
+
+      //POST GRID IMAGES
+      $('.tc-grid-figure').centerImages( {
+        enableCentering : 1 == _p.centerAllImg,
+        oncustom : ['smartload', 'simple_load'],
+        enableGoldenRatio : true,
+        goldenRatioLimitHeightTo : _p.gridGoldenRatioLimit || 350
+      } );
+    }, 300 );
+
+    //helper to trigger a simple load
+    //=> allow centering when smart load not triggered by smartload
+    var _trigger_simple_load = function( $_imgs ) {
+      if ( 0 === $_imgs.length )
+        return;
+
+      $_imgs.map( function( _ind, _img ) {
+        $(_img).load( function () {
+            $(_img).trigger('simple_load');
+        });//end load
+        if ( $(_img)[0] && $(_img)[0].complete )
+          $(_img).load();
+      } );//end map
+    };//end of fn
+
+
+    //SLIDER IMG + VARIOUS
+    //adds a specific class to the carousel when automatic centering is enabled
+    $('#customizr-slider .carousel-inner').addClass('center-slides-enabled');
+
+    setTimeout( function() {
+      $( '.carousel .carousel-inner').centerImages( {
+        enableCentering : 1 == _p.centerSliderImg,
+        imgSel : '.item .carousel-image img',
+        oncustom : ['slid', 'simple_load'],
+        defaultCSSVal : { width : '100%' , height : 'auto' },
+        useImgAttr : true
+      } );
+      $('.tc-slider-loader-wrapper').hide();
+    } , 50);
+
+    _trigger_simple_load( $( '.carousel .carousel-inner').find('img') );
+
+
+    //IMG SMART LOAD
+    //.article-container covers all post / page content : single and list
+    //__before_main_wrapper covers the single post thumbnail case
+    //.widget-front handles the featured pages
+    if ( 1 == _p.imgSmartLoadEnabled )
+      $( '.article-container, .__before_main_wrapper, .widget-front' ).imgSmartLoad( _.size( _p.imgSmartLoadOpts ) > 0 ? _p.imgSmartLoadOpts : {} );
+    else {
+      //if smart load not enabled => trigger the load event on img load
+      var $_to_center = $( '.article-container, .__before_main_wrapper, .widget-front' ).find('img');
+      _trigger_simple_load($_to_center);
+    }//end else
+
+
+    //DROP CAPS
     if ( _p.dropcapEnabled && 'object' == typeof( _p.dropcapWhere ) ) {
       $.each( _p.dropcapWhere , function( ind, val ) {
         if ( 1 == val ) {
           $( '.entry-content' , 'body.' + ( 'page' == ind ? 'page' : 'single-post' ) ).children().first().addDropCap( {
             minwords : _p.dropcapMinWords,//@todo check if number
-            skipSelectors : _.isObject(_p.skipSelectors) ? _p.skipSelectors : {}
+            skipSelectors : _.isObject(_p.dropcapSkipSelectors) ? _p.dropcapSkipSelectors : {}
           });
         }
       });
     }
 
-
+    //EXT LINKS
     //May be add (check if activated by user) external class + target="_blank" to relevant links
-    //images are excluded
-    var _url_comp     = (location.host).split('.'),
-      _nakedDomain  = new RegExp( _url_comp[1] + "." + _url_comp[2] );
-
-    function _is_external( _href  ) {
-      var _thisHref = $.trim( _href );
-      if ( _thisHref !== '' && _thisHref != '#' && _isValidURL(_thisHref) )
-          return ! _nakedDomain.test(_thisHref) ? true : false;
-    }
-
-    function _isValidURL(url){
-        var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-        if (pattern.test(url)){
-            return true;
-        }
-        return false;
-    }
+    //images are excluded by default
     //links inside post/page content
-    $('a' , '.entry-content').each( function() {
-      var _thisHref = $.trim( $(this).attr('href'));
-      if( _is_external( _thisHref ) && 'IMG' != $(this).children().first().prop("tagName") ) {
-        if ( _p.extLinksStyle )
-          $(this).after('<span class="tc-external">');
-        if ( _p.extLinksTargetExt )
-          $(this).attr('target' , '_blank');
-      }
-    });
+    if ( _p.extLinksStyle || _p.extLinksTargetExt ) {
+      $('a' , '.entry-content').extLinks({
+        addIcon : _p.extLinksStyle,
+        newTab : _p.extLinksTargetExt,
+        skipSelectors : _.isObject(_p.extLinksSkipSelectors) ? _p.extLinksSkipSelectors : {}
+      });
+    }
 
 
-    //fancybox with localized script variables
+
+    //FANCYBOX
+    //Fancybox with localized script variables
     var b = _p.FancyBoxState,
         c = _p.FancyBoxAutoscale;
     if ( 1 == b ) {
@@ -115,7 +187,7 @@ jQuery(function ($) {
     var SmoothScroll = _p.SmoothScroll;
 
     if ('easeOutExpo' == SmoothScroll) {
-        $('a[href^="#"]', '#content').not('[class*=edd], .tc-carousel-control, .carousel-control, [data-toggle="modal"], [data-toggle="dropdown"], [data-toggle="tooltip"], [data-toggle="popover"], [data-toggle="collapse"], [data-toggle="tab"]').click(function () {
+        $('a[href^="#"]', '#content').not( '[class*=edd], .tc-carousel-control, .carousel-control, [data-toggle="modal"], [data-toggle="dropdown"], [data-toggle="tooltip"], [data-toggle="popover"], [data-toggle="collapse"], [data-toggle="tab"], [class*=upme]' ).click(function () {
             var anchor_id = $(this).attr("href");
             if ('#' != anchor_id) {
                 $('html, body').animate({
@@ -279,82 +351,7 @@ jQuery(function ($) {
         });
     }
 
-
-    function centerImageInContainer(container , images){
-        if ( ! $(images).length  )
-            return;
-
-        $(images).each(function () {
-            var container_width    = $(this).closest(container).width(),
-                container_height    = $(container).height(),
-                // this will let us know the real img height
-                ratio = container_width / $(this).attr("width"),
-                real_img_height = ratio * $(this).attr("height");
-
-            // if our image has an height smaller than the container
-            // stretch it (h & w) proportionally to reach the container height
-            // and center it horizontally
-            if ( real_img_height < container_height ){
-                // set the image height as the container height
-                $(this).css("height", container_height);
-                // this will let us know the new image width
-                var img_ratio = container_height / real_img_height;
-                var new_img_width = img_ratio * container_width;
-                // set it
-                $(this).css("width", new_img_width).css("max-width", new_img_width);
-
-                // center it horizontally
-                var pos_left = ( (container_width - new_img_width ) / 2 );
-                $(this).css("left", pos_left);
-
-                // reset v-center flag and margin-top
-                if ( $(this).hasClass("v-center") ){
-                    $(this).removeClass("v-center")
-                    .css("top", "0px");
-                }
-
-                // add h-center class flag
-                $(this).addClass("h-center");
-
-            } else { // center it vertically
-                    // this covers also the case real_img_height == container_height
-                    // a differentiation here looks like pratically useless
-
-                // reset margin-left, width, height and h-center flag
-                if ( $(this).hasClass("h-center") ){
-                    $(this).css("width", "100%")
-                    .css("max-width", "100%")
-                    .css("left", "0px")
-                    .css("height", "auto")
-                    .removeClass("h-center");
-                }
-                // center it vertically
-                var pos_top = ( container_height - real_img_height ) / 2 ;
-                $(this).css("top", pos_top);
-                // add v-center class flag
-                $(this).addClass("v-center");
-            }// end if-else
-        });// end imgs each function
-
-    }// end centerImageInContainer
-
-     //Enable slides centering if option is checked in the customizer.
-    if ( 1 == _p.CenterSlides ) {
-        //adds a specific class to the carousel when automatic centering is enabled
-        $('#customizr-slider .carousel-inner').addClass('center-slides-enabled');
-
-        setTimeout( function() {
-            centerImageInContainer( '.carousel .carousel-inner' , '.carousel .item .carousel-image img' );
-            $('.tc-slider-loader-wrapper').hide();
-        } , 50);
-
-        $(window).resize(function(){
-            setTimeout( function() {
-                centerImageInContainer( '.carousel .carousel-inner' , '.carousel .item .carousel-image img' );
-            }, 50);
-        });
-    }//end of center slides
-
+    //SLIDER ARROWS
     function _center_slider_arrows() {
         if ( 0 === $('.carousel').length )
             return;
@@ -369,19 +366,6 @@ jQuery(function ($) {
     });
     _center_slider_arrows();
 
-    //CENTER RECTANGULAR THUMBNAILS FOR POST LIST AND SINGLE POST VIEWS
-    //on load
-    setTimeout( function() {
-        centerImageInContainer( '.tc-rectangular-thumb' , '.tc-rectangular-thumb > img' );
-    }, 300 );
-    //on resize
-    $(window).resize(function(){
-            centerImageInContainer( '.tc-rectangular-thumb' , '.tc-rectangular-thumb > img' );
-    });
-    //bind 'refresh-height' event (triggered from the customizer)
-    $('.tc-rectangular-thumb').on('refresh-height' , function(){
-        centerImageInContainer( '.tc-rectangular-thumb' , '.tc-rectangular-thumb > img' );
-    });
 
     //Slider swipe support with hammer.js
     if ( 'function' == typeof($.fn.hammer) ) {
@@ -567,7 +551,7 @@ jQuery(function ($) {
             //additional refresh for some edge cases like big logos
             setTimeout( function() { _refresh(); } , 200 );
         }
-    }
+    }//end of fn
 
     $(window).scroll(function() {
         if ( ! _is_sticky_enabled() )

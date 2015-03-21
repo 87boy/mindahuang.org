@@ -75,7 +75,6 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			generate_get_default_fonts() 
 		);
 		
-		
 		// Calculate the sub navigation font size based on the navigation font size
 		if ( $generate_settings['navigation_font_size'] >= 17 ) :
 			$subnav_font_size = $generate_settings['navigation_font_size'] - 3;
@@ -99,7 +98,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 		$space = ' ';
 		
 		// Start the magic
-		$visual_css = array (
+		$visual_css = array(
 		
 			// Body font
 			'body, button, input, select, textarea' => array(
@@ -221,6 +220,7 @@ if ( !function_exists('generate_get_default_fonts') && !function_exists('generat
 			'inherit',
 			'Arial,+Helvetica,+sans-serif',
 			'Century+Gothic',
+			'Comic+Sans+MS',
 			'Courier+New',
 			'Georgia,+Times+New+Roman,+Times,+serif',
 			'Helvetica',
@@ -405,5 +405,7 @@ if ( ! function_exists( 'generate_fonts_customize_register' ) ) :
 				)
 			);
 		}
+		
+		
 	}
 endif;

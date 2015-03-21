@@ -15,6 +15,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
   class TC_utils {
 
       //Access any method or var of the class with classname::$instance -> var or method():
+      static $inst;
       static $instance;
       public $default_options;
       public $db_options;
@@ -22,11 +23,12 @@ if ( ! class_exists( 'TC_utils' ) ) :
       public $is_customizing;
 
       function __construct () {
+        self::$inst =& $this;
         self::$instance =& $this;
         //get all options
         add_filter( '__options'                           , array( $this , 'tc_get_theme_options' ), 10, 1);
         //get single option
-        add_filter( '__get_option'                        , array( $this , 'tc_get_option' ), 10, 2 );
+        add_filter( '__get_option'                        , array( $this , 'tc_opt' ), 10, 2 );
 
         //some useful filters
         add_filter( '__ID'                                , array( $this , 'tc_get_the_ID' ));
@@ -55,9 +57,10 @@ if ( ! class_exists( 'TC_utils' ) ) :
       */
       function tc_wp_filters() {
         add_filter( 'the_content'                         , array( $this , 'tc_fancybox_content_filter' ) );
-        if ( esc_attr( tc__f( '__get_option' , 'tc_img_smart_load' ) ) ) {
+        if ( esc_attr( TC_utils::$inst->tc_opt( 'tc_img_smart_load' ) ) ) {
           add_filter( 'the_content'                       , array( $this , 'tc_parse_imgs' ) );
-          add_filter( 'tc_display_post_thumbnail'         , array( $this , 'tc_parse_imgs' ) );
+          add_filter( 'tc_thumb_html'                     , array( $this , 'tc_parse_imgs' ) );
+          add_filter( 'post_gallery'                      , array( $this , 'tc_parse_imgs' ), 30 );
         }
         add_filter( 'wp_title'                            , array( $this , 'tc_wp_title' ), 10, 2 );
       }
@@ -65,6 +68,8 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
       /**
       * hook : the_content
+      * Inspired from Unveil Lazy Load plugin : https://wordpress.org/plugins/unveil-lazy-load/ by @marubon
+      *
       * @return string
       * @package Customizr
       * @since Customizr 3.3.0
@@ -73,7 +78,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
         if( is_feed() || is_preview() || wp_is_mobile() )
           return $_html;
 
-        if (strpos( $_html, 'data-src' ) !== false)
+        if ( strpos( $_html, 'data-src' ) !== false )
           return $_html;
 
         return preg_replace_callback('#<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>#', array( $this , 'tc_regex_callback' ) , $_html);
@@ -82,6 +87,8 @@ if ( ! class_exists( 'TC_utils' ) ) :
 
       /**
       * callback of preg_replace_callback in tc_parse_imgs
+      * Inspired from Unveil Lazy Load plugin : https://wordpress.org/plugins/unveil-lazy-load/ by @marubon
+      *
       * @return string
       * @package Customizr
       * @since Customizr 3.3.0
@@ -115,7 +122,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @since Customizr 3.2.3
       */
       function tc_init_properties() {
-        $this -> is_customizing   = $this -> tc_is_customizing();
+        $this -> is_customizing   = TC___::$instance -> tc_is_customizing();
         $this -> default_options  = $this -> tc_get_default_options();
         $this -> db_options       = (array) get_option( TC___::$tc_option_group );
         $_ispro = 'customizr-pro' == TC___::$theme_name ? true : false;
@@ -160,26 +167,6 @@ if ( ! class_exists( 'TC_utils' ) ) :
           break;
         }
         return apply_filters( 'tc_get_skin_color' , $_to_return , $_what );
-      }
-
-
-
-      /**
-      * Returns a boolean on the customizer's state
-      *
-      * @package Customizr
-      * @since Customizr 3.1.11
-      */
-      function tc_is_customizing() {
-        //checks if is customizing : two contexts, admin and front (preview frame)
-        global $pagenow;
-        $is_customizing = false;
-        if ( is_admin() && isset( $pagenow ) && 'customize.php' == $pagenow ) {
-                $is_customizing = true;
-        } else if ( ! is_admin() && isset($_REQUEST['wp_customize']) ) {
-                $is_customizing = true;
-        }
-        return $is_customizing;
       }
 
 
@@ -280,19 +267,27 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @package Customizr
       * @since Customizr 1.0
       */
-      function tc_get_option( $option_name , $option_group = null ) {
-          //do we have to look in a specific group of option (plugin?)
-          $option_group       = is_null($option_group) ? 'tc_theme_options' : $option_group;
-          if ( $this -> tc_is_customizing() || is_admin() )
-            $_db_options = (array) get_option( $option_group );
-          else
-            $_db_options = empty($this-> db_options) ? $this -> tc_cache_db_options($option_group) : $this-> db_options;
+      function tc_opt( $option_name , $option_group = null ) {
+        //do we have to look for a specific group of option (plugin?)
+        $option_group       = is_null($option_group) ? TC___::$tc_option_group : $option_group;
+        if ( TC___::$instance -> tc_is_customizing() || is_admin() )
+          $_db_options = (array) get_option( $option_group );
+        else
+          $_db_options = empty($this-> db_options) ? $this -> tc_cache_db_options($option_group) : $this-> db_options;
 
-          $_defaults          = $this -> default_options;
-          $__options          = wp_parse_args( $_db_options, $_defaults );
-          //$options            = array_intersect_key( $_db_options , $defaults);
-          $returned_option    = isset($__options[$option_name]) ? $__options[$option_name] : false;
-        return apply_filters( 'tc_get_option' , $returned_option , $option_name , $option_group );
+        $_defaults      = $this -> default_options;
+        $__options      = wp_parse_args( $_db_options, $_defaults );
+        //$options            = array_intersect_key( $_db_options , $defaults);
+        $_single_opt    = isset($__options[$option_name]) ? $__options[$option_name] : false;
+
+        //contx retro compat
+        //important note : tc_slider is not impacted by contx
+        if ( $option_name != 'tc_sliders' ) {
+          if ( is_array( $_single_opt ) && ! class_exists( 'TC_contx' ) )
+            $_single_opt = isset($_single_opt['all_cx']) ? $_single_opt['all_cx'] : false;
+        }
+
+        return apply_filters( 'tc_opt' , $_single_opt , $option_name , $option_group );
       }
 
 
@@ -340,7 +335,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @package Customizr
       * @since Customizr 1.0
       */
-      function tc_get_current_screen_layout ( $post_id , $sidebar_or_class) {
+      function tc_get_current_screen_layout ( $post_id , $sidebar_or_class = 'class' ) {
           $__options                    = tc__f ( '__options' );
 
           global $post;
@@ -388,11 +383,11 @@ if ( ! class_exists( 'TC_utils' ) ) :
           global $wp_query;
           //if we are displaying an attachement, we use the parent post/page layout
           if ( $post && 'attachment' == $post -> post_type ) {
-            $tc_specific_post_layout  = esc_attr(get_post_meta( $post->post_parent , $key = 'layout_key' , $single = true ));
+            $tc_specific_post_layout  = esc_attr( get_post_meta( $post->post_parent , $key = 'layout_key' , $single = true ) );
           }
           //for a singular post or page OR for the posts page
           elseif ( is_singular() || $wp_query -> is_posts_page ) {
-            $tc_specific_post_layout  = esc_attr(get_post_meta( $post_id, $key = 'layout_key' , $single = true ));
+            $tc_specific_post_layout  = esc_attr( get_post_meta( $post_id, $key = 'layout_key' , $single = true ) );
           }
 
           //checks if we display home page, either posts or static page and apply the customizer option
@@ -408,8 +403,6 @@ if ( ! class_exists( 'TC_utils' ) ) :
               'class'   => $class_tab
             );
           }
-
-
 
         return apply_filters( 'tc_screen_layout' , $tc_screen_layout[$sidebar_or_class], $post_id , $sidebar_or_class );
       }
@@ -427,7 +420,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
        * @since Customizr 2.0.7
        */
       function tc_fancybox_content_filter( $content) {
-        $tc_fancybox = esc_attr( tc__f( '__get_option' , 'tc_fancybox' ) );
+        $tc_fancybox = esc_attr( TC_utils::$inst->tc_opt( 'tc_fancybox' ) );
 
         if ( 1 != $tc_fancybox )
           return $content;
@@ -517,7 +510,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       function tc_get_post_type() {
         global $post;
 
-        if ( !isset($post) )
+        if ( ! isset($post) )
           return;
 
         return $post -> post_type;

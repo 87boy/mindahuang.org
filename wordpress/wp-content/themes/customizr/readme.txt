@@ -39,6 +39,83 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 3.3.12 March 9th 2015 =
+fixed : smooth scroll new excluded selectors not properly set
+
+= 3.3.11 March 9th 2015 =
+fix : tc_set_post_list_hooks hooked on wp_head. wp was too early => fixes bbpress compatibility
+improved : tc_user_options_style filter now declared in the classes constructor
+fix : bbpress issue with single user profiles not showing up ( initially reported here : https://wordpress.org/support/topic/bbpress-problems-with-versions-avove-3217?replies=7#post-6669693 )
+
+= 3.3.10 March 9th 2015 =
+fixed : better insertion of font icons and custom css in the custom inline stylesheet
+fixed : bbpress conflict with the post grid
+
+= 3.3.9 March 9th 2015 =
+fixed : the_content and the_excerpt WP filters missing in post list content model
+fixed : smart load issue when .hentry class is missing (in WooCommerce search results for example)
+added : has-thumb class to the grid > figure element
+added : make the expanded class optional with a filter : tc_grid_add_expanded_class
+added : fade background effect for the excerpt in the no-thumbs grid blocks
+fixes : adjustments for the grid customizer
+changed : TC_post_list_grid::tc_is_grid_enabled shifted from private to public
+improved : jqueryextLinks.js check if the tc-external element already exists before appending it
+fixed : .tc-grid-icon:before better centering
+
+= 3.3.8 March 4th 2015 =
+Fix slider img centering bug
+
+= 3.3.7 March 4th 2015 =
+Fix: array dereferencing fix for PHP<5.4.0
+Fix: typos in webkit transition/transform properties
+
+= 3.3.6 March 2nd 2015 =
+fix a potential bug in the thumbnail types
+
+= 3.3.5 February 28th 2015 =
+improved : trigger simple_load event (=> fire centering) on relevant img if smartload disabled
+
+= 3.3.4 February 28th 2015 =
+fix : ignore tc_sliders option on contx check
+
+= 3.3.3 February 28th 2015 =
+improved hover transition for expanded grid post
+added a note about the grid column forced for specific sidebar(s) layout
+fix minor bubble comment css issues
+added js custom smartload event to trigger image centerering
+
+= 3.3.2 February 28th 2015 =
+added : TC___::tc_doing_customizer_ajax()
+added contx retro compat
+replaced TC_utils::tc_is_customizing() by TC___::tc_is_customizing()
+updated : tc__f( '__get_option' ) replaced by TC_utils::$inst->tc_opt() method TC_utils::tc_get_option() replaced by TC_utils::tc_opt()
+added grid design option as a specific set to be revealed on click
+improved : featured pages thumbnails server side code
+improved : post and page thumbnails id are now stored in a post meta field
+Fix: amend conflicting actions when dropdowntoViewport false and link to an anchor clicked. Perform those actions just when clicking on the menu button (responsive modeFixed in drop cap : skip tags or selectors and parents of those
+improved : better structure for the code in thumbnails, post and post list
+added : new post metas design option in customizer
+improved : re-engineering of the post metas class with a cleaner model / view structure
+added : tc-post-list-context class to body when relevant
+Improved : cleaner post metas callback, adapted for the grid layout
+improved : display metas for post format with no titles (links for example)
+fixed : font icons genericons and entypo are now written in the wp admin editor iframe head
+Fix: hide/don't show social icons in footer when option unchecked
+Added : new comment bubbles
+changed tc_bubble_comment and tc_content_header_class now handled in TC_comment class
+updated : comment bubble callback moved in class-content-comments.php
+added : apply a dynamic js golden ratio for figure height / width on load + resize
+improved the _build_setId, fix the featured pages controls visibility in customizer
+improved : possible user defined tags, classes and ids to skip in js external links skip img tags and btn classes by default
+Fix quotes issue for web safe fonts inline css
+improved ext links options. Now handled with a separate jQuery plugin
+
+= 3.3.1 February 16th 2015 =
+added : pro parameter to the version check
+updated : menu open on hover by default if user started after v3.1+
+improved : better sanitization cb for custom css https://make.wordpress.org/themes/2015/02/10/custom-css-boxes-Fix typos in website performance options description texts
+fix : typos in website performance options description texts
+
 = 3.3.0 February 15th 2015 =
 Fix: dropcap skips also ul,ol tags
 Updated : dropcaps are disabled by default in pages and posts
@@ -54,7 +131,10 @@ Moved date functions in TC_utils and added : check on date format validity
 Fix: better check on when changing default slider's height
 Fix: set sticky offsets after resizing logo
 Fix: fp-button display nothing if empty
-Fix: logo image stretched when sticky header enabled, handled for both logos (normal and sticky) in js. Avoid uFix: tagline navbar-wrapper. Navbar h2 => use .site-description instead of H2 and split the CSS rule in two parFix: add clear:both to boostrap .nav-collapse fix the misplacing .nav-collapse when no socials are displayed inFix: re-add comment near the closing brace for compatibility function
+Fix: logo image stretched when sticky header enabled, handled for both logos (normal and sticky) in js.
+Fix: tagline navbar-wrapper. Navbar h2 => use .site-description instead of H2 and split the CSS rule in two parts
+Fix: add clear:both to boostrap .nav-collapse fix the misplacing .nav-collapse when no socials are displayed in
+Fix: re-add comment near the closing brace for compatibility function
 Fix: new filter tc_the_title, apply filters to the_title in Customizr contexts strictly
 Fix: handle mobile menu display in tc_common (tc_custom)
 Fix: add body class sticky-disabled, with php, by default when sticky header selected

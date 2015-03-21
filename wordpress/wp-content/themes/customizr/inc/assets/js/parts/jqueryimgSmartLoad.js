@@ -24,7 +24,8 @@
         load_all_images_on_first_scroll : false,
         attribute : 'data-src',
         threshold : 200,
-        fadeIn_options : {}
+        fadeIn_options : { duration : 400 },
+        delaySmartLoadEvent : 0
       };
 
 
@@ -117,14 +118,22 @@
   */
   Plugin.prototype._load_img = function( _img ) {
     var $_img = $(_img),
-        _src  = $_img.attr( this.options.attribute );
+        _src  = $_img.attr( this.options.attribute ),
+        self = this;
+
+    $_img.parent().addClass('smart-loading');
 
     $_img.unbind('load_img')
     .hide()
     .removeAttr( this.options.attribute )
     .attr('src' , _src )
-    .fadeIn( this.options.fadeIn_options )
-    .trigger('smartload');
+    .load( function () {
+      $_img.fadeIn(self.options.fadeIn_options).css("display","inline-block").trigger('smartload');
+    });//<= create a load() fn
+    //http://stackoverflow.com/questions/1948672/how-to-tell-if-an-image-is-loaded-or-cached-in-jquery
+    if ( $_img[0].complete )
+      $_img.load();
+    $_img.parent().removeClass('smart-loading');
   };
 
 

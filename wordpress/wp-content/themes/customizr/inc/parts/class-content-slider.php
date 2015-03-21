@@ -15,10 +15,17 @@ if ( ! class_exists( 'TC_slider' ) ) :
   class TC_slider {
     static $instance;
     function __construct () {
-          self::$instance =& $this;
-          add_action('template_redirect'          , array($this, 'tc_set_slider_hooks') );
-          //set user customizer options. @since v3.2.0
-          add_action('template_redirect'          , array($this, 'tc_set_slider_options') );
+      self::$instance =& $this;
+      add_action('template_redirect'         , array($this, 'tc_set_slider_hooks') );
+
+      //set user customizer options. @since v3.2.0
+      add_filter( 'tc_slider_layout_class'   , array( $this , 'tc_set_slider_wrapper_class' ) );
+
+      //! tc_user_options_style filter is shared by several classes => must always check the local context inside the callback before appending new css
+      //fired on hook : wp_enqueue_scripts
+      //Set thumbnail specific design based on user options
+      //Set user defined height
+      add_filter( 'tc_user_options_style'    , array( $this , 'tc_write_slider_inline_css' ) );
     }//end of construct
 
 
@@ -29,27 +36,9 @@ if ( ! class_exists( 'TC_slider' ) ) :
     * @return  void
     */
     function tc_set_slider_hooks() {
-      add_action( '__after_header'                , array( $this , 'tc_slider_display' ) );
-      add_action( '__after_carousel_inner'        , array( $this , 'tc_slider_control_view' ) );
+      add_action( '__after_header'           , array( $this , 'tc_slider_display' ) );
+      add_action( '__after_carousel_inner'   , array( $this , 'tc_slider_control_view' ) );
     }
-
-
-
-    /**
-    * callback of template_redirect
-    * Set slider user options
-    * @return  void
-    *
-    * @package Customizr
-    * @since Customizr 3.2.0
-    *
-    */
-    function tc_set_slider_options() {
-      add_filter( 'tc_slider_layout_class'        , array( $this , 'tc_set_slider_wrapper_class' ) );
-      //Set user defined height
-      add_filter( 'tc_user_options_style'         , array( $this , 'tc_write_slider_inline_css' ) );
-    }
-
 
 
 
@@ -63,55 +52,58 @@ if ( ! class_exists( 'TC_slider' ) ) :
     function tc_write_slider_inline_css( $_css ) {
       // 1) Do we have a custom height ?
       // 2) check if the setting must be applied to all context
-      $_custom_height     = esc_attr( tc__f( '__get_option' , 'tc_slider_default_height') );
+      $_custom_height     = esc_attr( TC_utils::$inst->tc_opt( 'tc_slider_default_height') );
       $_slider_inline_css = "";
 
-      if ( 500 != $_custom_height
-        && ( tc__f('__is_home')
-            || 0 != esc_attr( tc__f( '__get_option' , 'tc_slider_default_height_apply_all') )
-        ) ) {
-        $_resp_shrink_ratios = apply_filters( 'tc_slider_resp_shrink_ratios',
-          array('1200' => 0.77 , '979' => 0.618, '480' => 0.38 , '320' => 0.28 )
-        );
+      //When shall we append custom slider style to the global custom inline stylesheet?
+      $_bool = 500 != $_custom_height;
+      $_bool = $_bool && ( tc__f('__is_home') || 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_slider_default_height_apply_all') ) );
 
-        $_slider_inline_css = "
-          .carousel .item {
-            line-height: {$_custom_height}px;
-            min-height:{$_custom_height}px;
-            max-height:{$_custom_height}px;
-          }
-          .tc-slider-loader-wrapper {
-            line-height: {$_custom_height}px;
-            height:{$_custom_height}px;
-          }
-          .carousel .tc-slider-controls {
-            line-height: {$_custom_height}px;
-            max-height:{$_custom_height}px;
-          }\n";
+      if ( ! apply_filters( 'tc_print_slider_inline_css' , $_bool ) )
+        return $_css;
 
-        foreach ( $_resp_shrink_ratios as $_w => $_ratio) {
-          if ( ! is_numeric($_ratio) )
-            continue;
-          $_item_dyn_height     = $_custom_height * $_ratio;
-          $_caption_dyn_height  = $_custom_height * ( $_ratio - 0.1 );
-          $_slider_inline_css .= "
-            @media (max-width: {$_w}px) {
-              .carousel .item {
-                line-height: {$_item_dyn_height}px;
-                max-height:{$_item_dyn_height}px;
-                min-height:{$_item_dyn_height}px;
-              }
-              .item .carousel-caption {
-                max-height: {$_caption_dyn_height}px;
-                overflow: hidden;
-              }
-              .carousel .tc-slider-loader-wrapper {
-                line-height: {$_item_dyn_height}px;
-                height:{$_item_dyn_height}px;
-              }
-            }\n";
+      $_resp_shrink_ratios = apply_filters( 'tc_slider_resp_shrink_ratios',
+        array('1200' => 0.77 , '979' => 0.618, '480' => 0.38 , '320' => 0.28 )
+      );
+
+      $_slider_inline_css = "
+        .carousel .item {
+          line-height: {$_custom_height}px;
+          min-height:{$_custom_height}px;
+          max-height:{$_custom_height}px;
         }
-      }
+        .tc-slider-loader-wrapper {
+          line-height: {$_custom_height}px;
+          height:{$_custom_height}px;
+        }
+        .carousel .tc-slider-controls {
+          line-height: {$_custom_height}px;
+          max-height:{$_custom_height}px;
+        }\n";
+
+      foreach ( $_resp_shrink_ratios as $_w => $_ratio) {
+        if ( ! is_numeric($_ratio) )
+          continue;
+        $_item_dyn_height     = $_custom_height * $_ratio;
+        $_caption_dyn_height  = $_custom_height * ( $_ratio - 0.1 );
+        $_slider_inline_css .= "
+          @media (max-width: {$_w}px) {
+            .carousel .item {
+              line-height: {$_item_dyn_height}px;
+              max-height:{$_item_dyn_height}px;
+              min-height:{$_item_dyn_height}px;
+            }
+            .item .carousel-caption {
+              max-height: {$_caption_dyn_height}px;
+              overflow: hidden;
+            }
+            .carousel .tc-slider-loader-wrapper {
+              line-height: {$_item_dyn_height}px;
+              height:{$_item_dyn_height}px;
+            }
+          }\n";
+      }//end foreach
+
       return sprintf("%s\n%s", $_css, $_slider_inline_css);
     }
 
@@ -126,7 +118,7 @@ if ( ! class_exists( 'TC_slider' ) ) :
     *
     */
     function tc_set_slider_wrapper_class($_classes) {
-      if ( ! is_array($_classes) || 500 == esc_attr( tc__f( '__get_option' , 'tc_slider_default_height') ) )
+      if ( ! is_array($_classes) || 500 == esc_attr( TC_utils::$inst->tc_opt( 'tc_slider_default_height') ) )
         return $_classes;
 
       return array_merge( $_classes , array('custom-slider-height') );
@@ -149,7 +141,7 @@ if ( ! class_exists( 'TC_slider' ) ) :
         return apply_filters( 'tc_default_slides', TC_init::$instance -> default_slides );
 
       //if not demo, we get slides from options
-      $all_sliders              = tc__f('__get_option' , 'tc_sliders');
+      $all_sliders              = TC_utils::$inst->tc_opt( 'tc_sliders');
       $saved_slides             = ( isset($all_sliders[$slider_name_id]) ) ? $all_sliders[$slider_name_id] : false;
 
       //if the slider not longer exists or exists but is empty, return false
@@ -247,7 +239,7 @@ if ( ! class_exists( 'TC_slider' ) ) :
       global $wp_query;
 
       //gets the front slider if any
-      $tc_front_slider              = tc__f( '__get_option' , 'tc_front_slider' );
+      $tc_front_slider              = TC_utils::$inst->tc_opt( 'tc_front_slider' );
 
       //when do we display a slider? By default only for home (if a slider is defined), pages and posts (including custom post types)
       if ( ! apply_filters( 'tc_show_slider' , !is_404() && !is_archive() && !is_search() || ( tc__f('__is_home') && $tc_front_slider ) ) )
@@ -269,7 +261,7 @@ if ( ! class_exists( 'TC_slider' ) ) :
         return;
 
       //gets slider options if any
-      $layout_value                 = tc__f('__is_home') ? tc__f( '__get_option' , 'tc_slider_width' ) : esc_attr(get_post_meta( $queried_id, $key = 'slider_layout_key' , $single = true ));
+      $layout_value                 = tc__f('__is_home') ? TC_utils::$inst->tc_opt( 'tc_slider_width' ) : esc_attr(get_post_meta( $queried_id, $key = 'slider_layout_key' , $single = true ));
       $layout_value                 = apply_filters( 'tc_slider_layout', $layout_value, $queried_id );
 
       //declares the layout vars
@@ -286,7 +278,7 @@ if ( ! class_exists( 'TC_slider' ) ) :
       ob_start();
       ?>
       <div id="customizr-slider" class="<?php echo $layout_class ?> ">
-          <?php if ( 'demo' == $slider_name_id || ( 1 == esc_attr( tc__f( '__get_option' , 'tc_display_slide_loader') ) && apply_filters( 'tc_display_slider_loader' , true ) ) ) : ?>
+          <?php if ( 'demo' == $slider_name_id || ( 1 == esc_attr( TC_utils::$inst->tc_opt( 'tc_display_slide_loader') ) && apply_filters( 'tc_display_slider_loader' , true ) ) ) : ?>
             <div class="tc-slider-loader-wrapper">
               <div class="tc-img-gif-loader">
                 <img data-no-retina src="<?php echo apply_filters('tc_slider_loader_src' , sprintf( '%1$s/%2$s' , TC_BASE_URL , 'inc/assets/img/slider-loader.gif') ) ?>">

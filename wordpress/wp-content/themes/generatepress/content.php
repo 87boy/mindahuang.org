@@ -20,22 +20,29 @@ $generate_settings = wp_parse_args(
 			<?php endif; ?>
 		</header><!-- .entry-header -->
 		<?php do_action( 'generate_after_entry_header'); ?>
-
+		
 		<?php
-		if ( is_search() || 'excerpt' == $generate_settings['post_content'] ) : ?>
-		<div class="entry-summary" itemprop="text">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		// Check to see if the more tag is being used
+		$more_tag = @strpos( $post->post_content, '<!--more-->');
+
+		// Check the post format
+		$format = ( false !== get_post_format() ) ? get_post_format() : 'standard';
+		
+		// Show the_content() or the the_excerpt() based on settings
+		if ( is_search() || ( 'excerpt' == $generate_settings['post_content'] && 'standard' == $format && false == $more_tag ) ) : ?>
+			<div class="entry-summary" itemprop="text">
+				<?php the_excerpt(); ?>
+			</div><!-- .entry-summary -->
 		<?php else : ?>
-		<div class="entry-content" itemprop="text">
-			<?php the_content(); ?>
-			<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
-				'after'  => '</div>',
-			) );
-			?>
-		</div><!-- .entry-content -->
+			<div class="entry-content" itemprop="text">
+				<?php the_content(); ?>
+				<?php
+				wp_link_pages( array(
+					'before' => '<div class="page-links">' . __( 'Pages:', 'generate' ),
+					'after'  => '</div>',
+				) );
+				?>
+			</div><!-- .entry-content -->
 		<?php endif; ?>
 		
 		<?php do_action( 'generate_after_entry_content'); ?>

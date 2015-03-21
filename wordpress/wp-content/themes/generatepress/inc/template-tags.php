@@ -257,10 +257,81 @@ if ( ! function_exists( 'generate_excerpt_more' ) ) :
  * Prints the read more HTML to post excerpts
  */
 	add_filter( 'excerpt_more', 'generate_excerpt_more' );
-	add_filter( 'the_content_more_link', 'generate_excerpt_more' );
 	function generate_excerpt_more( $more ) {
 		return ' ... <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generate') . '</a>';
 	}
+endif;
+
+if ( ! function_exists( 'generate_content_more' ) ) :
+/**
+ * Prints the read more HTML to post excerpts
+ */
+	add_filter( 'the_content_more_link', 'generate_content_more' );
+	function generate_content_more( $more ) {
+		return '<p><a class="read-more content-read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read more', 'generate') . '</a></p>';
+	}
+endif;
+
+if ( ! function_exists( 'generate_featured_page_header_area' ) ) :
+/**
+ * Build the page header
+ * @since 1.0.7
+ */
+function generate_featured_page_header_area($class)
+{
+	// Don't run the function unless we're on a page it applies to
+	if ( ! is_singular() )
+		return;
+		
+	// Don't run the function unless we have a post thumbnail
+	if ( ! has_post_thumbnail() )
+		return;
+		
+	?>
+	<div class="<?php echo $class; ?> grid-container grid-parent">
+		<?php the_post_thumbnail( 'full', array('itemprop' => 'image') ); ?>
+	</div>
+	<?php
+}
+endif;
+
+if ( ! function_exists( 'generate_featured_page_header' ) ) :
+/**
+ * Add page header above content
+ * @since 1.0.2
+ */
+add_action('generate_after_header','generate_featured_page_header', 10);
+function generate_featured_page_header()
+{
+	if ( function_exists('generate_page_header') )
+		return;
+
+	if ( is_page() ) :
+		
+		generate_featured_page_header_area('page-header-image');
+	
+	endif;
+}
+endif;
+
+if ( ! function_exists( 'generate_featured_page_header_inside_single' ) ) :
+/**
+ * Add post header inside content
+ * Only add to single post
+ * @since 1.0.7
+ */
+add_action('generate_before_content','generate_featured_page_header_inside_single', 10);
+function generate_featured_page_header_inside_single()
+{
+	if ( function_exists('generate_page_header') )
+		return;
+
+	if ( is_single() ) :
+	
+		generate_featured_page_header_area('page-header-image-single');
+	
+	endif;
+}
 endif;
 
 if ( ! function_exists( 'generate_post_image' ) ) :
@@ -275,11 +346,11 @@ function generate_post_image()
 	if ( ! has_post_thumbnail() )
 		return;
 		
-	// If the post type is anything other than a page, and we're not on a single template
-	if ( 'page' !== get_post_type() && !is_single() ) {
+	// If we're not on any single post/page or the 404 template, we must be showing excerpts
+	if ( ! is_singular() && ! is_404() ) {
 	?>
 		<div class="post-image">
-			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>"><?php the_post_thumbnail(); ?></a>
+			<a href="<?php the_permalink();?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'full', array('itemprop' => 'image') ); ?></a>
 		</div>
 	<?php
 	}

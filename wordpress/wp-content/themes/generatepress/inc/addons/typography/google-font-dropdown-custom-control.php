@@ -30,12 +30,13 @@ class Generate_Google_Font_Dropdown_Custom_Control extends WP_Customize_Control
             ?>
                 <label>
                     <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-                    <select <?php $this->link(); ?>>
-						<optgroup label="<?php _e( 'Default fonts', 'generate' ) ?>" class="google_label">
+                    <select <?php $this->link(); ?> class="fonts" data-value="<?php echo $this->value();?>">
+						<optgroup label="<?php _e( 'Default fonts', 'generate' ) ?>" class="default_label">
 							<?php 
 							printf('<option value="%s" %s>%s</option>', 'inherit', selected($this->value(), 'inherit', false), 'inherit');
 							printf('<option value="%s" %s>%s</option>', 'Arial, Helvetica, sans-serif', selected($this->value(), 'Arial, Helvetica, sans-serif', false), 'Arial');
 							printf('<option value="%s" %s>%s</option>', 'Century Gothic', selected($this->value(), 'Century Gothic', false), 'Century Gothic');
+							printf('<option value="%s" %s>%s</option>', 'Comic Sans MS', selected($this->value(), 'Comic Sans MS', false), 'Comic Sans MS');
 							printf('<option value="%s" %s>%s</option>', 'Courier New', selected($this->value(), 'Courier New', false), 'Courier New');
 							printf('<option value="%s" %s>%s</option>', 'Georgia, Times New Roman, Times, serif', selected($this->value(), 'Georgia, Times New Roman, Times, serif', false), 'Georgia');
 							printf('<option value="%s" %s>%s</option>', 'Helvetica', selected($this->value(), 'Helvetica', false), 'Helvetica');

@@ -94,9 +94,10 @@ function kadence_nav_menu_args($args = '') {
 
     $kadence_nav_menu_args['depth'] = 10;
 
-  if ((!$args['walker']) && ($args['theme_location'] == 'primary_navigation' || $args['theme_location'] == 'secondary_navigation' || $args['theme_location'] == 'footer_navigation' || $args['theme_location'] == 'topbar_navigation' || $args['theme_location'] == 'mobile_navigation')) {
+  if ((!$args['walker'])) {
     $kadence_nav_menu_args['walker'] = new kadence_Nav_Walker();
   }
+
 
   return array_merge($args, $kadence_nav_menu_args);
 }

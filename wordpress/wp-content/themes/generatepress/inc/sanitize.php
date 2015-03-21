@@ -67,6 +67,7 @@ function generate_sanitize_typography( $input )
 		'inherit',
 		'Arial, Helvetica, sans-serif',
 		'Century Gothic',
+		'Comic Sans MS',
 		'Courier New',
 		'Georgia, Times New Roman, Times, serif',
 		'Helvetica',

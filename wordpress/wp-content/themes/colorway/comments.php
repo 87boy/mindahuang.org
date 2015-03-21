@@ -11,7 +11,7 @@ if (post_password_required()) {
 <!-- You can start editing here. -->
 <div id="commentsbox">
     <?php if (have_comments()) : ?>
-        <h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses'); ?><?php _e('so far.', 'colorway'); ?></h3>
+        <h3 id="comments"><?php comments_number(__('No Responses', 'colorway'), __('One Response', 'colorway'), __('% Responses', 'colorway')); ?><?php _e('so far.', 'colorway'); ?></h3>
         <ol class="commentlist">
             <?php wp_list_comments(); ?>
         </ol>

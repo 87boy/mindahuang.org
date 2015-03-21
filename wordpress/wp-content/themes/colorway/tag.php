@@ -19,7 +19,7 @@
             </div>
             <div class="blog">
                 <h1>
-                    <?php printf('Tag Archives: %s', '' . single_tag_title('', false) . ''); ?>
+                    <?php printf(__('Tag Archives: %s', 'colorway'), '' . single_tag_title('', false) . ''); ?>
                 </h1>
                 <?php
                 /* Run the loop for the tag archive to output the posts
@@ -33,8 +33,8 @@
                 <!--<label>Page:</label>-->
                 <?php /* Display navigation to next/previous pages when applicable */ ?>
                 <?php if ($wp_query->max_num_pages > 1) : ?>
-                    <?php next_posts_link('&larr; Older posts'); ?>
-                    <?php previous_posts_link('Newer posts &rarr;'); ?>
+                    <?php next_posts_link(__('&larr; Older posts', 'colorway')); ?>
+                    <?php previous_posts_link(__('Newer posts &rarr;', 'colorway')); ?>
                 <?php endif; ?>
             </div>
         </div>

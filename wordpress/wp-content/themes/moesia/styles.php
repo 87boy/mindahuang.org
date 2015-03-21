@@ -439,9 +439,9 @@ function moesia_custom_styles($custom) {
     	$custom .= ".has-banner::after { background-size: contain; }"."\n";
     }
     //Header max height
-    $header_max_height_1025 = get_theme_mod('header_max_height_1025', '1080');
+    $header_max_height_1025 = get_theme_mod('header_max_height_1025', '1440');
     $custom .= "@media only screen and (min-width: 1025px) { .has-banner,.has-banner::after { max-height:" . intval($header_max_height_1025) . "px; } }"."\n";    
-    $header_max_height_1199 = get_theme_mod('header_max_height_1199', '1080');
+    $header_max_height_1199 = get_theme_mod('header_max_height_1199', '1440');
     $custom .= "@media only screen and (min-width: 1199px) { .has-banner,.has-banner::after { max-height:" . intval($header_max_height_1199) . "px; } }"."\n";
     //Welcome info offset
     $wi_offset_991 = get_theme_mod('welcome_info_offset_991', '100');

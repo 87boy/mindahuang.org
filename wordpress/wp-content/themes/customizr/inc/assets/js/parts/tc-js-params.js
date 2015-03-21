@@ -1,6 +1,6 @@
 //Falls back to default params
 var TCParams = TCParams || {
-	CenterSlides: 1,
+	centerAllImg: 1,
 	FancyBoxAutoscale: 1,
 	FancyBoxState: 1,
 	HasComments: "",
@@ -12,6 +12,7 @@ var TCParams = TCParams || {
 	SliderDelay: +5000,
 	SliderHover: 1,
 	SliderName: "demo",
+  centerSliderImg : 1,
 	SmoothScroll: "linear",
 	stickyCustomOffset: 0,
 	stickyHeader: 1,
@@ -19,14 +20,19 @@ var TCParams = TCParams || {
 	timerOnScrollAllBrowsers:1,
   extLinksStyle :1,
   extLinksTargetExt:1,
+  extLinksSkipSelectors: {
+    classes : ['btn'],
+    ids:[]
+  },
   dropcapEnabled:1,
   dropcapWhere:{ post : 0, page : 1 },
   dropcapMinWords:50,
-  skipSelectors: {
-              tags : ['IMG' , 'IFRAME', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'UL', 'OL'],
-              classes : [],
-              ids : []
-            },
+  dropcapSkipSelectors: {
+    tags : ['IMG' , 'IFRAME', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'UL', 'OL'],
+    classes : ['btn'],
+    ids : []
+  },
   imgSmartLoadEnabled:0,
-  imgSmartLoadOpts: {}
+  imgSmartLoadOpts: {},
+  gridGoldenRatioLimit : 350
 };

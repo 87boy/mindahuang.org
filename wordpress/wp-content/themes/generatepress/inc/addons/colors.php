@@ -64,7 +64,7 @@ if ( !function_exists('generate_get_color_defaults') && !function_exists('genera
 			'footer_background_color' => '#222222',
 			'footer_text_color' => '#ffffff',
 			'footer_link_color' => '#ffffff',
-			'footer_link_hover_color' => '#4295DD',
+			'footer_link_hover_color' => '#606060',
 			'form_background_color' => '#FAFAFA',
 			'form_text_color' => '#666666',
 			'form_background_color_focus' => '#FFFFFF',

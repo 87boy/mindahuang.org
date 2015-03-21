@@ -5,23 +5,20 @@
 /* ----------------------------------------------------------------------------------- */
 // Load static framework options pages 
 $functions_path = get_template_directory() . '/functions/';
+
 function inkthemes_optionsframework_add_admin() {
     global $query_string;
 
-    $themename = inkthemes_get_option('of_themename');
-    $shortname = inkthemes_get_option('of_shortname');
-
     if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'optionsframework') {
         if (isset($_REQUEST['of_save']) && 'reset' == $_REQUEST['of_save']) {
-            $options = inkthemes_get_option('of_template');
-            inkthemes_reset_options($options, 'optionsframework');
+            inkthemes_reset_options();
             header("Location: admin.php?page=optionsframework&reset=true");
             die;
         }
     }
-
-
-    $of_page = add_theme_page($themename, 'Theme Options', 'edit_theme_options', 'optionsframework', 'inkthemes_optionsframework_options_page', 'div');
+    $theme_option = inkthemes_options();
+    $themename = $theme_option['theme_name'];
+    $of_page = add_theme_page($themename, __('Theme Options', 'colorway'), 'edit_theme_options', 'optionsframework', 'inkthemes_optionsframework_options_page', 'div');
 
     // Add framework functionaily to the head individually
     add_action("admin_print_scripts-$of_page", 'inkthemes_load_only');
@@ -33,42 +30,7 @@ add_action('admin_menu', 'inkthemes_optionsframework_add_admin');
 /* ----------------------------------------------------------------------------------- */
 
 function inkthemes_reset_options($options, $page = '') {
-    global $wpdb;
-    $count = 0;
-
-    $excludes = array('blogname', 'blogdescription');
-
-
-    foreach ($options as $option) {
-
-        if (isset($option['id'])) {
-            $option_id = $option['id'];
-            $option_type = $option['type'];
-
-            //Skip assigned id's
-            if (in_array($option_id, $excludes)) {
-                continue;
-            }
-
-            if ($option_type == 'multicheck') {
-                foreach ($option['options'] as $option_key => $option_option) {
-                    inkthemes_delete_option("{$option_id}_{$option_key}");
-                }
-            } else if (is_array($option_type)) {
-                foreach ($option_type as $inner_option) {
-                    $option_id = $inner_option['id'];
-                    inkthemes_delete_option($option_id);
-                }
-            } else {
-                inkthemes_delete_option($option_id);
-            }
-        }
-    }
-
-    //When Theme Options page is reset - Add the of_options option
-    if ($page == 'optionsframework') {
-        inkthemes_delete_option('of_options');
-    }
+    delete_option('inkthemes_options');
 }
 
 /* ----------------------------------------------------------------------------------- */
@@ -76,9 +38,10 @@ function inkthemes_reset_options($options, $page = '') {
 /* ----------------------------------------------------------------------------------- */
 
 function inkthemes_optionsframework_options_page() {
-    $options = inkthemes_get_option('of_template');
+    $options = inkthemes_options();
     $themename = inkthemes_get_option('of_themename');
     ?>
+    <div class="clear"></div>
     <div class="trail-notify">
         <?php
         $pro_theme_url = 'http://www.inkthemes.com/wp-themes/colorway-wp-theme/';
@@ -88,55 +51,93 @@ function inkthemes_optionsframework_options_page() {
         <p style="font-size:15px; line-height: 20px;"><?php _e('You are using the Lite Version of ColorWay Theme. Upgrade to Pro for extra features like Home Page Slider Contact Page, Gallery Features, Portfolio Page Template, FullWidth Page Templates, Multiple Color Options and much more.', 'colorway'); ?></p>
         <a href="<?php echo esc_url($pro_theme_url); ?>" target="blank"><?php _e('Upgrade to ColorWay PRO Theme here>>', 'colorway'); ?> </a>
     </div>
-    <div class="wrap" id="of_container">
-        <div id="of-popup-save" class="of-save-popup">
-            <div class="of-save-save"><?php _e('Options Updated', 'colorway'); ?></div>
-        </div>
-        <div id="of-popup-reset" class="of-save-popup">
-            <div class="of-save-reset"><?php _e('Options Reset', 'colorway'); ?></div>
-        </div>
-        <form action="" enctype="multipart/form-data" id="ofform">
-            <?php wp_nonce_field('theme-update-option'); ?>
-            <div id="header">
-                <div class="logo">
-                    <h2><?php
-                        echo $themename;
-                        _e(' Options', 'colorway');
-                        ?></h2>
-                </div>
-                <a href="<?php esc_url($site_url); ?>" target="new">
-                    <div class="icon-option"> </div>
-                </a>
-                <div class="clear"></div>
+    <div class="theme-option">
+        <div class="wrap" id="of_container">
+            <div id="of-popup-save" class="of-save-popup">
+                <div class="of-save-save"><?php _e('Options Updated', 'colorway'); ?></div>
             </div>
-            <?php
-            // Rev up the Options Machine
-            $return = inkthemes_optionsframework_machine($options);
-            ?>
-            <div id="main">
-                <div id="of-nav">
-                    <ul>
-                        <?php echo $return[1] ?>
-                    </ul>
-                </div>
-                <div id="content"> <?php echo $return[0]; /* Settings */ ?> </div>
-                <div class="clear"></div>
+            <div id="of-popup-reset" class="of-save-popup">
+                <div class="of-save-reset"><?php _e('Options Reset', 'colorway'); ?></div>
             </div>
-            <div class="save_bar_top">
-                <img style="display:none" src="<?php echo get_template_directory_uri(); ?>/functions/images/loading-bottom.gif" class="ajax-loading-img ajax-loading-img-bottom" alt="Working..." />
-                <input type="submit" value="Save All Changes" class="button-primary" onclick="tinyMCE.triggerSave()" />
-        </form>
-        <form action="<?php echo esc_attr($_SERVER['REQUEST_URI']) ?>" method="post" style="display:inline" id="ofform-reset">
-            <span class="submit-footer-reset">
-                <input name="reset" type="submit" value="Reset Options" class="button submit-button reset-button" onclick="return confirm('Click OK to reset. Any settings will be lost!');" />
-                <input type="hidden" name="of_save" value="reset" />
-            </span>
-        </form>
+            <form action="" enctype="multipart/form-data" id="ofform">
+                <?php wp_nonce_field('colorwaytheme-update-option', 'colorway_option_nonce'); ?>
+                <div id="header">
+                    <div class="logo">
+                        <h2><?php
+                            echo $themename;
+                            _e(' Options', 'colorway');
+                            ?></h2>
+                    </div>
+                    <a href="<?php esc_url($site_url); ?>" target="new">
+                        <div class="icon-option"> </div>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+                <?php
+                // Rev up the Options Machine
+                $return = inkthemes_optionsframework_machine($options);
+                ?>
+                <div id="main">
+                    <div id="of-nav">
+                        <ul>
+                            <?php echo $return[1] ?>
+                        </ul>
+                    </div>
+                    <div id="content"> <?php echo $return[0]; /* Settings */ ?> </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="save_bar_right save_bar_top">
+                    <img style="display:none" src="<?php echo get_template_directory_uri(); ?>/functions/images/loading-bottom.gif" class="ajax-loading-img ajax-loading-img-bottom" alt="Working..." />
+                    <input type="submit" value="<?php _e('Save All Changes', 'colorway'); ?>" class="button-primary" onclick="tinyMCE.triggerSave()" />
+                </div>
+            </form>
+            <div class="save_bar_left save_bar_top">
+                <form action="<?php echo esc_attr($_SERVER['REQUEST_URI']) ?>" method="post" style="display:inline" id="ofform-reset">
+                    <span class="submit-footer-reset">
+                        <input name="reset" type="submit" value="<?php _e('Reset Options', 'colorway'); ?>" class="button submit-button reset-button" onclick="return confirm('Click OK to reset. Any settings will be lost!');" />
+                        <input type="hidden" name="of_save" value="reset" />
+                    </span>
+                </form>
+            </div>
+            <?php if (!empty($update_message)) echo $update_message; ?>
+            <div style="clear:both;"></div>
+        </div>
     </div>
-    <?php if (!empty($update_message)) echo $update_message; ?>
-    <div style="clear:both;"></div>
+    <div class="theme-notification">
+        <div class="notification-header">
+            <span class="wrap notification-heading"><h2><?php _e('Notifications', 'colorway'); ?></h2></span>
+        </div>
+        <div class="postbox-container" id="main">
+            <div class="notification-box">
+                <h3><?php _e("Get Themes email updates and a free WordPress ebook", "colorway"); ?></h3>
+                <p><?php _e("We'll send you new updates about themes and WordPress and a free WordPress tips & tricks ebook!", 'colorway'); ?>
+                </p>
+                <div class = "form-container">
+                    <form accept-charset="UTF-8" action="//www.formget.com/mailget/signups/subscribe/IjgwNCI_3D " name="mailget_form" method="post" onsubmit="return v_mailget()" >
+                        <div class="form-button-container">
+                            <input name="utf8" type="hidden" value="?"/>
+                            <input name="subs_set_url" type="hidden" value="<?php echo esc_url($site_url); ?>"/>
+                            <input name="subs_name" type="text" placeholder="<?php _e('Your Name', 'colorway'); ?>" required />
+                            <input name="subs_email" type="email" value="<?php echo get_option('admin_email', 'email address'); ?>" required/>
+                        </div>                           
+                        <input type="submit" value="Subscribe and get a free ebook" name="subscribe" class="button button-primary">
+                    </form>
+                </div>
+            </div>
+            <div class="horizontal-line"></div>
+            <div>
+                <h3><?php _e('Get the Pro Theme', 'colorway'); ?></h3>
+                <p><?php _e('You are using the Lite Version of ColorWay Theme. Upgrade to Pro for extra features like Home Page Slider Contact Page, Gallery Features, Portfolio Page Template, FullWidth Page Templates, Multiple Color Options and much more.', 'colorway'); ?></p>
+                <a class="button-primary" href="<?php echo esc_url($pro_theme_url); ?>" target="_blank"><?php _e('Get the Pro Pack', 'colorway'); ?></a>
+            </div>
+            <div class="horizontal-line"></div>
+            <div>
+                <h3><?php _e('Rate us on WordPress.org ', 'colorway'); ?></h3>
+                <p><?php _e('Get Best and free theme support. We are always ready to solve your queries. Just started your query at Wordpress.org', 'colorway'); ?></p>
+                <a class="button-primary" href="<?php echo esc_url('https://wordpress.org/support/theme/colorway'); ?>" target="_blank"><?php _e('Get Free Support', 'colorway'); ?></a>
+            </div>
+        </div>
     </div>
-    <!--wrap-->
     <?php
 }
 
@@ -160,7 +161,7 @@ function inkthemes_load_only() {
         <link rel="stylesheet" media="screen" type="text/css" href="<?php echo get_template_directory_uri(); ?>/functions/css/colorpicker.css" />
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/functions/js/colorpicker.js"></script>
         <script type="text/javascript" language="javascript">
-                    jQuery(document).ready(function () {
+                                jQuery(document).ready(function () {
                         //Color Picker
         <?php
         $options = inkthemes_get_option('of_template');
@@ -177,122 +178,102 @@ function inkthemes_load_only() {
                 }
                 ?>
                                 jQuery('#<?php echo $option_id; ?>_picker').children('div').css('backgroundColor', '<?php echo $color; ?>');
-                                jQuery('#<?php echo $option_id; ?>_picker').ColorPicker({
-                                    color: '<?php echo $color; ?>',
-                                    onShow: function (colpkr) {
+                                        jQuery('#<?php echo $option_id; ?>_picker').ColorPicker({
+                                color: '<?php echo $color; ?>',
+                                        onShow: function (colpkr) {
                                         jQuery(colpkr).fadeIn(500);
-                                        return false;
-                                    },
-                                    onHide: function (colpkr) {
+                                                return false;
+                                        },
+                                        onHide: function (colpkr) {
                                         jQuery(colpkr).fadeOut(500);
-                                        return false;
-                                    },
-                                    onChange: function (hsb, hex, rgb) {
+                                                return false;
+                                        },
+                                        onChange: function (hsb, hex, rgb) {
                                         //jQuery(this).css('border','1px solid red');
                                         jQuery('#<?php echo $option_id; ?>_picker').children('div').css('backgroundColor', '#' + hex);
-                                        jQuery('#<?php echo $option_id; ?>_picker').next('input').attr('value', '#' + hex);
-
-                                    }
+                                                jQuery('#<?php echo $option_id; ?>_picker').next('input').attr('value', '#' + hex);
+                                        }
                                 });
                 <?php
             }
         }
         ?>
 
-                    });
-
-        </script>
+                        });</script>
         <?php
         //AJAX Upload
         ?>
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/functions/js/ajaxupload.js"></script>
         <script type="text/javascript">
-                    jQuery(document).ready(function () {
+                                jQuery(document).ready(function () {
 
                         var flip = 0;
-
-                        jQuery('#expand_options').click(function () {
-                            if (flip == 0) {
-                                flip = 1;
+                                jQuery('#expand_options').click(function () {
+                        if (flip == 0) {
+                        flip = 1;
                                 jQuery('#of_container #of-nav').hide();
                                 jQuery('#of_container #content').width(755);
                                 jQuery('#of_container .group').add('#of_container .group h2').show();
-
                                 jQuery(this).text('[-]');
-
-                            } else {
-                                flip = 0;
+                        } else {
+                        flip = 0;
                                 jQuery('#of_container #of-nav').show();
                                 jQuery('#of_container #content').width(595);
                                 jQuery('#of_container .group').add('#of_container .group h2').hide();
                                 jQuery('#of_container .group:first').show();
                                 jQuery('#of_container #of-nav li').removeClass('current');
                                 jQuery('#of_container #of-nav li:first').addClass('current');
-
                                 jQuery(this).text('[+]');
-
-                            }
-
-                        });
-
-                        jQuery('.group').hide();
-                        jQuery('.group:first').fadeIn();
-
-                        jQuery('.group .collapsed').each(function () {
-                            jQuery(this).find('input:checked').parent().parent().parent().nextAll().each(
-                                    function () {
-                                        if (jQuery(this).hasClass('last')) {
-                                            jQuery(this).removeClass('hidden');
-                                            return false;
-                                        }
-                                        jQuery(this).filter('.hidden').removeClass('hidden');
-                                    });
-                        });
-
-                        jQuery('.group .collapsed input:checkbox').click(unhideHidden);
-
-                        function unhideHidden() {
-                            if (jQuery(this).attr('checked')) {
-                                jQuery(this).parent().parent().parent().nextAll().removeClass('hidden');
-                            }
-                            else {
-                                jQuery(this).parent().parent().parent().nextAll().each(
-                                        function () {
-                                            if (jQuery(this).filter('.last').length) {
-                                                jQuery(this).addClass('hidden');
-                                                return false;
-                                            }
-                                            jQuery(this).addClass('hidden');
-                                        });
-
-                            }
                         }
 
+                        });
+                                jQuery('.group').hide();
+                                jQuery('.group:first').fadeIn();
+                                jQuery('.group .collapsed').each(function () {
+                        jQuery(this).find('input:checked').parent().parent().parent().nextAll().each(
+                                function () {
+                                if (jQuery(this).hasClass('last')) {
+                                jQuery(this).removeClass('hidden');
+                                        return false;
+                                }
+                                jQuery(this).filter('.hidden').removeClass('hidden');
+                                });
+                        });
+                                jQuery('.group .collapsed input:checkbox').click(unhideHidden);
+                                function unhideHidden() {
+                                if (jQuery(this).attr('checked')) {
+                                jQuery(this).parent().parent().parent().nextAll().removeClass('hidden');
+                                }
+                                else {
+                                jQuery(this).parent().parent().parent().nextAll().each(
+                                        function () {
+                                        if (jQuery(this).filter('.last').length) {
+                                        jQuery(this).addClass('hidden');
+                                                return false;
+                                        }
+                                        jQuery(this).addClass('hidden');
+                                        });
+                                }
+                                }
+
                         jQuery('.of-radio-img-img').click(function () {
-                            jQuery(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
-                            jQuery(this).addClass('of-radio-img-selected');
-
+                        jQuery(this).parent().parent().find('.of-radio-img-img').removeClass('of-radio-img-selected');
+                                jQuery(this).addClass('of-radio-img-selected');
                         });
-                        jQuery('.of-radio-img-label').hide();
-                        jQuery('.of-radio-img-img').show();
-                        jQuery('.of-radio-img-radio').hide();
-                        jQuery('#of-nav li:first').addClass('current');
-                        jQuery('#of-nav li a').click(function (evt) {
+                                jQuery('.of-radio-img-label').hide();
+                                jQuery('.of-radio-img-img').show();
+                                jQuery('.of-radio-img-radio').hide();
+                                jQuery('#of-nav li:first').addClass('current');
+                                jQuery('#of-nav li a').click(function (evt) {
 
-                            jQuery('#of-nav li').removeClass('current');
-                            jQuery(this).parent().addClass('current');
-
-                            var clicked_group = jQuery(this).attr('href');
-
-                            jQuery('.group').hide();
-
-                            jQuery(clicked_group).fadeIn();
-
-                            evt.preventDefault();
-
+                        jQuery('#of-nav li').removeClass('current');
+                                jQuery(this).parent().addClass('current');
+                                var clicked_group = jQuery(this).attr('href');
+                                jQuery('.group').hide();
+                                jQuery(clicked_group).fadeIn();
+                                evt.preventDefault();
                         });
-
-                        if ('<?php
+                                if ('<?php
         if (isset($_REQUEST['reset'])) {
             echo $_REQUEST['reset'];
         } else {
@@ -300,162 +281,141 @@ function inkthemes_load_only() {
         }
         ?>' == 'true') {
 
-                            var reset_popup = jQuery('#of-popup-reset');
-                            reset_popup.fadeIn();
-                            window.setTimeout(function () {
+                        var reset_popup = jQuery('#of-popup-reset');
+                                reset_popup.fadeIn();
+                                window.setTimeout(function () {
                                 reset_popup.fadeOut();
-                            }, 2000);
-                            //alert(response);
+                                }, 2000);
+                                //alert(response);
 
                         }
 
                         //Update Message popup
                         jQuery.fn.center = function () {
-                            this.animate({"top": (jQuery(window).height() - this.height() - 200) / 2 + jQuery(window).scrollTop() + "px"}, 100);
-                            this.css("left", 250);
-                            return this;
+                        this.animate({"top": (jQuery(window).height() - this.height() - 200) / 2 + jQuery(window).scrollTop() + "px"}, 100);
+                                this.css("left", 250);
+                                return this;
                         }
 
 
                         jQuery('#of-popup-save').center();
-                        jQuery('#of-popup-reset').center();
-                        jQuery(window).scroll(function () {
+                                jQuery('#of-popup-reset').center();
+                                jQuery(window).scroll(function () {
 
-                            jQuery('#of-popup-save').center();
-                            jQuery('#of-popup-reset').center();
-
+                        jQuery('#of-popup-save').center();
+                                jQuery('#of-popup-reset').center();
                         });
+                                //AJAX Upload
+                                jQuery('.image_upload_button').each(function () {
 
-
-
-                        //AJAX Upload
-                        jQuery('.image_upload_button').each(function () {
-
-                            var clickedObject = jQuery(this);
-                            var clickedID = jQuery(this).attr('id');
-                            new AjaxUpload(clickedID, {
+                        var clickedObject = jQuery(this);
+                                var clickedID = jQuery(this).attr('id');
+                                new AjaxUpload(clickedID, {
                                 action: '<?php echo admin_url("admin-ajax.php"); ?>',
-                                name: clickedID, // File upload name
-                                data: {// Additional data to send
-                                    action: 'of_ajax_post_action',
-                                    type: 'upload',
-                                    data: clickedID},
-                                autoSubmit: true, // Submit file after selection
-                                responseType: false,
-                                onChange: function (file, extension) {
-                                },
-                                onSubmit: function (file, extension) {
-                                    clickedObject.text('Uploading'); // change button text, when user selects file	
-                                    this.disable(); // If you want to allow uploading only 1 file at time, you can disable upload button
-                                    interval = window.setInterval(function () {
-                                        var text = clickedObject.text();
-                                        if (text.length < 13) {
-                                            clickedObject.text(text + '.');
+                                        name: clickedID, // File upload name
+                                        data: {// Additional data to send
+                                        action: 'of_ajax_post_action',
+                                                type: 'upload',
+                                                data: clickedID,
+                                                option_nonce: jQuery('#colorway_option_nonce').val(),
+                                        },
+                                        autoSubmit: true, // Submit file after selection
+                                        responseType: false,
+                                        onChange: function (file, extension) {
+                                        },
+                                        onSubmit: function (file, extension) {
+                                        clickedObject.text('Uploading'); // change button text, when user selects file	
+                                                this.disable(); // If you want to allow uploading only 1 file at time, you can disable upload button
+                                                interval = window.setInterval(function () {
+                                                var text = clickedObject.text();
+                                                        if (text.length < 13) {
+                                                clickedObject.text(text + '.');
+                                                }
+                                                else {
+                                                clickedObject.text('Uploading');
+                                                }
+                                                }, 200);
+                                        },
+                                        onComplete: function (file, response) {
+                                        var data = JSON.parse(response);
+                                                window.clearInterval(interval);
+                                                clickedObject.text('Upload Image');
+                                                this.enable(); // enable upload button
+
+                                                // If there was an error
+                                                if (data.error) {
+                                        var buildReturn = '<span class="upload-error">' + data.error + '</span>';
+                                                jQuery(".upload-error").remove();
+                                                clickedObject.parent().after(buildReturn);
+                                        } else {
+                                        var buildReturn = '<img class="hide of-option-image" id="image_' + clickedID + '" src="' + data.url + '" alt="" />';
+                                                jQuery(".upload-error").remove();
+                                                jQuery("#image_" + clickedID).remove();
+                                                clickedObject.parent().after(buildReturn);
+                                                jQuery('img#image_' + clickedID).fadeIn();
+                                                clickedObject.next('span').fadeIn();
+                                                clickedObject.parent().prev('input').val(data.url);
                                         }
-                                        else {
-                                            clickedObject.text('Uploading');
                                         }
-                                    }, 200);
-                                },
-                                onComplete: function (file, response) {
-
-                                    window.clearInterval(interval);
-                                    clickedObject.text('Upload Image');
-                                    this.enable(); // enable upload button
-
-                                    // If there was an error
-                                    if (response.search('Upload Error') > -1) {
-                                        var buildReturn = '<span class="upload-error">' + response + '</span>';
-                                        jQuery(".upload-error").remove();
-                                        clickedObject.parent().after(buildReturn);
-
-                                    }
-                                    else {
-                                        var buildReturn = '<img class="hide of-option-image" id="image_' + clickedID + '" src="' + response + '" alt="" />';
-                                        jQuery(".upload-error").remove();
-                                        jQuery("#image_" + clickedID).remove();
-                                        clickedObject.parent().after(buildReturn);
-                                        jQuery('img#image_' + clickedID).fadeIn();
-                                        clickedObject.next('span').fadeIn();
-                                        clickedObject.parent().prev('input').val(response);
-                                    }
-                                }
-                            });
-
-                        });
-
-                        //AJAX Remove (clear option value)
-                        jQuery('.image_reset_button').click(function () {
-
-                            var clickedObject = jQuery(this);
-                            var clickedID = jQuery(this).attr('id');
-                            var theID = jQuery(this).attr('title');
-
-                            var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
-
-                            var data = {
-                                action: 'of_ajax_post_action',
-                                type: 'image_reset',
-                                data: theID
-                            };
-
-                            jQuery.post(ajax_url, data, function (response) {
-                                var image_to_remove = jQuery('#image_' + theID);
-                                var button_to_hide = jQuery('#reset_' + theID);
-                                image_to_remove.fadeOut(500, function () {
-                                    jQuery(this).remove();
                                 });
-                                button_to_hide.fadeOut();
-                                clickedObject.parent().prev('input').val('');
-
-
-
-                            });
-
-                            return false;
-
                         });
+                                //AJAX Remove (clear option value)
+                                jQuery('.image_reset_button').click(function () {
 
-                        //Save everything else
-                        jQuery('#ofform').submit(function () {
+                        var clickedObject = jQuery(this);
+                                var clickedID = jQuery(this).attr('id');
+                                var theID = jQuery(this).attr('title');
+                                var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
+                                var data = {
+                                action: 'of_ajax_post_action',
+                                        type: 'image_reset',
+                                        data: theID,
+                                        option_nonce: jQuery('#colorway_option_nonce').val(),
+                                };
+                                jQuery.post(ajax_url, data, function (response) {
+                                var image_to_remove = jQuery('#image_' + theID);
+                                        var button_to_hide = jQuery('#reset_' + theID);
+                                        image_to_remove.fadeOut(500, function () {
+                                        jQuery(this).remove();
+                                        });
+                                        button_to_hide.fadeOut();
+                                        clickedObject.parent().prev('input').val('');
+                                });
+                                return false;
+                        });
+                                //Save everything else
+                                jQuery('#ofform').submit(function () {
 
-                            function newValues() {
-                                var serializedValues = jQuery("#ofform").serialize();
+                        function newValues() {
+                        var serializedValues = jQuery("#ofform").serialize();
                                 return serializedValues;
-                            }
-                            jQuery(":checkbox, :radio").click(newValues);
-                            jQuery("select").change(newValues);
-                            jQuery('.ajax-loading-img').fadeIn();
-                            var serializedReturn = newValues();
-
-                            var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
-
-                            //var data = {data : serializedReturn};
-                            var data = {
+                        }
+                        jQuery(":checkbox, :radio").click(newValues);
+                                jQuery("select").change(newValues);
+                                jQuery('.ajax-loading-img').fadeIn();
+                                var serializedReturn = newValues();
+                                var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
+                                //var data = {data : serializedReturn};
+                                var data = {
         <?php if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'optionsframework') { ?>
-                                type: 'options',
+                                    type: 'options',
         <?php } ?>
-                            action: 'of_ajax_post_action',
-                                    data: serializedReturn
-                            };
-
-                            jQuery.post(ajax_url, data, function (response) {
+                                action: 'of_ajax_post_action',
+                                        data: serializedReturn,
+                                        option_nonce: jQuery('#colorway_option_nonce').val(),
+                                };
+                                jQuery.post(ajax_url, data, function (response) {
                                 var success = jQuery('#of-popup-save');
-                                var loading = jQuery('.ajax-loading-img');
-                                loading.fadeOut();
-                                success.fadeIn();
-                                window.setTimeout(function () {
-                                    success.fadeOut();
-
-
-                                }, 2000);
-                            });
-
-                            return false;
-
+                                        var loading = jQuery('.ajax-loading-img');
+                                        loading.fadeOut();
+                                        success.fadeIn();
+                                        window.setTimeout(function () {
+                                        success.fadeOut();
+                                        }, 2000);
+                                });
+                                return false;
                         });
-
-                    });
+                        });
         </script>
         <?php
     }
@@ -468,8 +428,9 @@ function inkthemes_load_only() {
 add_action('wp_ajax_of_ajax_post_action', 'inkthemes_ajax_callback');
 
 function inkthemes_ajax_callback() {
-    global $wpdb; // this is how you get access to the database
-
+    global $wpdb, $options_to_save; // this is how you get access to the database
+    $options_to_save = array();
+    check_ajax_referer('colorwaytheme-update-option', 'option_nonce');
 
     $save_type = $_POST['type'];
     //Uploads
@@ -482,15 +443,20 @@ function inkthemes_ajax_callback() {
         $override['test_form'] = false;
         $override['action'] = 'wp_handle_upload';
         $uploaded_file = wp_handle_upload($filename, $override);
-
-        $upload_tracking[] = $clickedID;
-        inkthemes_update_option($clickedID, $uploaded_file['url']);
-
-        if (!empty($uploaded_file['error'])) {
-            echo 'Upload Error: ' . $uploaded_file['error'];
+        $response = array();
+        if (isset($uploaded_file) && ($uploaded_file['type'] == 'image/gif' || $uploaded_file['type'] == 'image/jpeg' || $uploaded_file['type'] == 'image/pjpeg' || $uploaded_file['type'] == 'image/png' || $uploaded_file['type'] == 'image/svg+xml' )) {
+            $upload_tracking[] = $clickedID;
+            $options_to_save[$clickedID] = $uploaded_file['url'];
+            if (!empty($uploaded_file['error'])) {
+                $response['error'] = __('Upload Error: ', 'colorway') . $uploaded_file['error'];
+            } else {
+                $response['url'] = $uploaded_file['url'];
+            }
         } else {
-            echo $uploaded_file['url'];
+            $response['error'] = __('Unsupported filetype uploaded.', 'colorway');
         } // Is the Response
+        echo json_encode($response);
+        die();
     } elseif ($save_type == 'image_reset') {
 
         $id = $_POST['data']; // Acts as the name
@@ -501,7 +467,8 @@ function inkthemes_ajax_callback() {
         parse_str($data, $output);
         //print_r($output);
         //Pull options
-        $options = inkthemes_get_option('of_template');
+        $of_template = inkthemes_options();
+        $options = $of_template['of_template'];
 
         foreach ($options as $option_array) {
             $id = $option_array['id'];
@@ -524,13 +491,14 @@ function inkthemes_ajax_callback() {
                             if ($new_value == '') {
                                 $new_value = $std;
                             }
-                            inkthemes_update_option($id, stripslashes($new_value));
+                            $new_value = sanitize_text_field($new_value);
+                            $options_to_save[$id] = stripslashes($new_value);
                         }
                     }
                 } elseif ($new_value == '' && $type == 'checkbox') { // Checkbox Save
-                    inkthemes_update_option($id, 'false');
+                    $options_to_save[$id] = 'false';
                 } elseif ($new_value == 'true' && $type == 'checkbox') { // Checkbox Save
-                    inkthemes_update_option($id, 'true');
+                    $options_to_save[$id] = 'true';
                 } elseif ($type == 'multicheck') { // Multi Check Save
                     $option_options = $option_array['options'];
 
@@ -539,9 +507,9 @@ function inkthemes_ajax_callback() {
                         $multicheck_id = $id . "_" . $options_id;
 
                         if (!isset($output[$multicheck_id])) {
-                            inkthemes_update_option($multicheck_id, 'false');
+                            $options_to_save[$multicheck_id] = 'false';
                         } else {
-                            inkthemes_update_option($multicheck_id, 'true');
+                            $options_to_save[$multicheck_id] = 'true';
                         }
                     }
                 } elseif ($type == 'typography') {
@@ -556,7 +524,7 @@ function inkthemes_ajax_callback() {
 
                     $typography_array['color'] = $output[$option_array['id'] . '_color'];
 
-                    inkthemes_update_option($id, $typography_array);
+                    $options_to_save[$id] = $typography_array;
                 } elseif ($type == 'border') {
 
                     $border_array = array();
@@ -567,14 +535,15 @@ function inkthemes_ajax_callback() {
 
                     $border_array['color'] = $output[$option_array['id'] . '_color'];
 
-                    inkthemes_update_option($id, $border_array);
+                    $options_to_save[$id] = $border_array;
                 } elseif ($type != 'upload_min') {
 
-                    inkthemes_update_option($id, stripslashes($new_value));
+                    $options_to_save[$id] = stripslashes($new_value);
                 }
             }
         }
     }
+    inkthemes_save_option($options_to_save);
     die();
 }
 
@@ -587,7 +556,7 @@ function inkthemes_optionsframework_machine($options) {
     $counter = 0;
     $menu = '';
     $output = '';
-    foreach ($options as $value) {
+    foreach ($options['of_template'] as $value) {
 
         $counter++;
         $val = '';
@@ -612,13 +581,13 @@ function inkthemes_optionsframework_machine($options) {
                 if ($std != "") {
                     $val = $std;
                 }
-                $output .= '<input class="of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" type="' . $value['type'] . '" value="' . $val . '" />';
+                $output .= '<input class="of-input" name="' . esc_attr($value['id']) . '" id="' . esc_attr($value['id']) . '" type="' . $value['type'] . '" value="' . esc_attr($val) . '" />';
                 break;
 
             case 'select':
-                $output .= '<select class="of-input" name="' . $value['id'] . '" id="' . $value['id'] . '">';
+                $output .= '<select class="of-input" name="' . esc_attr($value['id']) . '" id="' . esc_attr($value['id']) . '">';
 
-                $select_value = inkthemes_get_option($value['id']);
+                $select_value = get_option($value['id']);
 
                 foreach ($value['options'] as $option) {
 
@@ -640,12 +609,7 @@ function inkthemes_optionsframework_machine($options) {
                     $output .= '</option>';
                 }
                 $output .= '</select>';
-
                 break;
-
-
-
-
             case 'textarea':
 
                 $cols = '8';
@@ -668,39 +632,12 @@ function inkthemes_optionsframework_machine($options) {
                 if ($std != "") {
                     $ta_value = stripslashes($std);
                 }
-                $output .= '<textarea class="of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" cols="' . $cols . '" rows="8">' . $ta_value . '</textarea>';
-
-
-                break;
-            case 'texteditor':
-
-                $cols = '8';
-                $ta_value = '';
-
-                if (isset($value['std'])) {
-
-                    $ta_value = $value['std'];
-
-                    if (isset($value['options'])) {
-                        $ta_options = $value['options'];
-                        if (isset($ta_options['cols'])) {
-                            $cols = $ta_options['cols'];
-                        } else {
-                            $cols = '8';
-                        }
-                    }
-                }
-                $std = inkthemes_get_option($value['id']);
-                if ($std != "") {
-                    $ta_value = stripslashes($std);
-                }
-                $output .= '<textarea class="of-input" name="' . $value['id'] . '" id="' . $value['id'] . '" cols="' . $cols . '" rows="8">' . $ta_value . '</textarea>';
+                $output .= '<textarea class="of-input" name="' . esc_attr($value['id']) . '" id="' . esc_attr($value['id']) . '" cols="' . esc_attr($cols) . '" rows="8">' . esc_textarea($ta_value) . '</textarea>';
 
 
                 break;
             case "radio":
-
-                $select_value = inkthemes_get_option($value['id']);
+                $select_value = get_option($value['id']);
 
                 foreach ($value['options'] as $key => $option) {
                     $checked = '';
@@ -713,18 +650,12 @@ function inkthemes_optionsframework_machine($options) {
                             $checked = ' checked';
                         }
                     }
-                    $output .= '<input class="of-input of-radio" type="radio" name="' . $value['id'] . '" value="' . $key . '" ' . $checked . ' />' . $option . '<br />';
+                    $output .= '<input class="of-input of-radio" type="radio" name="' . esc_attr($value['id']) . '" value="' . esc_attr($key) . '" ' . $checked . ' />' . $option . '<br />';
                 }
                 break;
             case "checkbox":
-                $explain_value = $value['desc'];
-                $val = $value['std'];
-                $std = inkthemes_get_option($value['id']);
-                if ($std != "") {
-                    $val = $std;
-                }
-                $output .= '<input id="' . esc_attr($value['id']) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr($value['id'] . '[' . $value['id'] . ']') . '" ' . checked($val, 1, false) . ' />';
-                $output .= '<label class="explain-label" for="' . esc_attr($value['id']) . '">' . $explain_value . '</label>';
+                $output .= '<input id="' . esc_attr($value['id']) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr($option_name . '[' . $value['id'] . ']') . '" ' . checked($val, 1, false) . ' />';
+                $output .= '<label class="explain" for="' . esc_attr($value['id']) . '">' . wp_kses($explain_value, $allowedtags) . '</label>';
                 break;
             case "multicheck":
                 foreach ($value['options'] as $key => $option) {
@@ -742,12 +673,12 @@ function inkthemes_optionsframework_machine($options) {
             case "upload":
                 $value['std'] = '';
                 if (isset($value['std'])) {
-                    $output .= inkthemes_optionsframework_uploader_function($value['id'], $value['std'], null);
+                    $output .= inkthemes_optionsframework_uploader_function(esc_attr($value['id']), $value['std'], null);
                 }
                 break;
             case "upload_min":
 
-                $output .= inkthemes_optionsframework_uploader_function($value['id'], $value['std'], 'min');
+                $output .= inkthemes_optionsframework_uploader_function(esc_attr($value['id']), $value['std'], 'min');
 
                 break;
             case "color":
@@ -756,8 +687,8 @@ function inkthemes_optionsframework_machine($options) {
                 if ($stored != "") {
                     $val = $stored;
                 }
-                $output .= '<div id="' . $value['id'] . '_picker" class="colorSelector"><div></div></div>';
-                $output .= '<input class="of-color" name="' . $value['id'] . '" id="' . $value['id'] . '" type="text" value="' . $val . '" />';
+                $output .= '<div id="' . esc_attr($value['id']) . '_picker" class="colorSelector"><div></div></div>';
+                $output .= '<input class="of-color" name="' . esc_attr($value['id']) . '" id="' . esc_attr($value['id']) . '" type="text" value="' . esc_attr($val) . '" />';
                 break;
 
             case "typography":
@@ -770,7 +701,7 @@ function inkthemes_optionsframework_machine($options) {
                 if ($typography_stored['size'] != "") {
                     $val = $typography_stored['size'];
                 }
-                $output .= '<select class="of-typography of-typography-size" name="' . $value['id'] . '_size" id="' . $value['id'] . '_size">';
+                $output .= '<select class="of-typography of-typography-size" name="' . esc_attr($value['id']) . '_size" id="' . esc_attr($value['id']) . '_size">';
                 for ($i = 9; $i < 71; $i++) {
                     if ($val == $i) {
                         $active = 'selected="selected"';
@@ -820,14 +751,14 @@ function inkthemes_optionsframework_machine($options) {
                 }
 
                 $output .= '<select class="of-typography of-typography-face" name="' . $value['id'] . '_face" id="' . $value['id'] . '_face">';
-                $output .= '<option value="Arial, sans-serif" ' . $font01 . '>Arial</option>';
-                $output .= '<option value="Verdana, Geneva, sans-serif" ' . $font02 . '>Verdana</option>';
-                $output .= '<option value="&quot;Trebuchet MS&quot;, Tahoma, sans-serif"' . $font03 . '>Trebuchet</option>';
-                $output .= '<option value="Georgia, serif" ' . $font04 . '>Georgia</option>';
-                $output .= '<option value="&quot;Times New Roman&quot;, serif"' . $font05 . '>Times New Roman</option>';
-                $output .= '<option value="Tahoma, Geneva, Verdana, sans-serif"' . $font06 . '>Tahoma</option>';
-                $output .= '<option value="Palatino, &quot;Palatino Linotype&quot;, serif"' . $font07 . '>Palatino</option>';
-                $output .= '<option value="&quot;Helvetica Neue&quot;, Helvetica, sans-serif" ' . $font08 . '>Helvetica*</option>';
+                $output .= '<option value="Arial, sans-serif" ' . $font01 . '>' . __('Arial', 'colorway') . '</option>';
+                $output .= '<option value="Verdana, Geneva, sans-serif" ' . $font02 . '>' . __('Verdana', 'colorway') . '</option>';
+                $output .= '<option value="&quot;Trebuchet MS&quot;, Tahoma, sans-serif"' . $font03 . '>' . __('Trebuchet', 'colorway') . '</option>';
+                $output .= '<option value="Georgia, serif" ' . $font04 . '>' . __('Georgia', 'colorway') . '</option>';
+                $output .= '<option value="&quot;Times New Roman&quot;, serif"' . $font05 . '>' . __('Times New Roman', 'colorway') . '</option>';
+                $output .= '<option value="Tahoma, Geneva, Verdana, sans-serif"' . $font06 . '>' . __('Tahoma', 'colorway') . '</option>';
+                $output .= '<option value="Palatino, &quot;Palatino Linotype&quot;, serif"' . $font07 . '>' . __('Palatino', 'colorway') . '</option>';
+                $output .= '<option value="&quot;Helvetica Neue&quot;, Helvetica, sans-serif" ' . $font08 . '>' . __('Helvetica*', 'colorway') . '</option>';
                 $output .= '</select>';
 
                 /* Font Weight */
@@ -852,11 +783,11 @@ function inkthemes_optionsframework_machine($options) {
                     $bolditalic = 'selected="selected"';
                 }
 
-                $output .= '<select class="of-typography of-typography-style" name="' . $value['id'] . '_style" id="' . $value['id'] . '_style">';
-                $output .= '<option value="normal" ' . $normal . '>Normal</option>';
-                $output .= '<option value="italic" ' . $italic . '>Italic</option>';
-                $output .= '<option value="bold" ' . $bold . '>Bold</option>';
-                $output .= '<option value="bold italic" ' . $bolditalic . '>Bold/Italic</option>';
+                $output .= '<select class="of-typography of-typography-style" name="' . esc_attr($value['id']) . '_style" id="' . esc_attr($value['id']) . '_style">';
+                $output .= '<option value="normal" ' . $normal . '>' . __('Normal', 'colorway') . '</option>';
+                $output .= '<option value="italic" ' . $italic . '>' . __('Italic', 'colorway') . '</option>';
+                $output .= '<option value="bold" ' . $bold . '>' . __('Bold', 'colorway') . '</option>';
+                $output .= '<option value="bold italic" ' . $bolditalic . '>' . __('Bold/Italic', 'colorway') . '</option>';
                 $output .= '</select>';
 
                 /* Font Color */
@@ -864,13 +795,13 @@ function inkthemes_optionsframework_machine($options) {
                 if ($typography_stored['color'] != "") {
                     $val = $typography_stored['color'];
                 }
-                $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector"><div></div></div>';
-                $output .= '<input class="of-color of-typography of-typography-color" name="' . $value['id'] . '_color" id="' . $value['id'] . '_color" type="text" value="' . $val . '" />';
+                $output .= '<div id="' . esc_attr($value['id']) . '_color_picker" class="colorSelector"><div></div></div>';
+                $output .= '<input class="of-color of-typography of-typography-color" name="' . esc_attr($value['id']) . '_color" id="' . esc_attr($value['id']) . '_color" type="text" value="' . esc_attr($val) . '" />';
                 break;
 
             case "border":
 
-                $default = $value['std'];
+                $default = esc_attr($value['std']);
                 $border_stored = inkthemes_get_option($value['id']);
 
                 /* Border Width */
@@ -878,14 +809,14 @@ function inkthemes_optionsframework_machine($options) {
                 if ($border_stored['width'] != "") {
                     $val = $border_stored['width'];
                 }
-                $output .= '<select class="of-border of-border-width" name="' . $value['id'] . '_width" id="' . $value['id'] . '_width">';
+                $output .= '<select class="of-border of-border-width" name="' . esc_attr($value['id']) . '_width" id="' . esc_attr($value['id']) . '_width">';
                 for ($i = 0; $i < 21; $i++) {
                     if ($val == $i) {
                         $active = 'selected="selected"';
                     } else {
                         $active = '';
                     }
-                    $output .= '<option value="' . $i . '" ' . $active . '>' . $i . 'px</option>';
+                    $output .= '<option value="' . esc_attr($i) . '" ' . $active . '>' . esc_attr($i) . 'px</option>';
                 }
                 $output .= '</select>';
 
@@ -907,10 +838,10 @@ function inkthemes_optionsframework_machine($options) {
                     $dotted = 'selected="selected"';
                 }
 
-                $output .= '<select class="of-border of-border-style" name="' . $value['id'] . '_style" id="' . $value['id'] . '_style">';
-                $output .= '<option value="solid" ' . $solid . '>Solid</option>';
-                $output .= '<option value="dashed" ' . $dashed . '>Dashed</option>';
-                $output .= '<option value="dotted" ' . $dotted . '>Dotted</option>';
+                $output .= '<select class="of-border of-border-style" name="' . esc_attr($value['id']) . '_style" id="' . esc_attr($value['id']) . '_style">';
+                $output .= '<option value="solid" ' . $solid . '>' . __('Solid', 'colorway') . '</option>';
+                $output .= '<option value="dashed" ' . $dashed . '>' . __('Dashed', 'colorway') . '</option>';
+                $output .= '<option value="dotted" ' . $dotted . '>' . __('Dotted', 'colorway') . '</option>';
                 $output .= '</select>';
 
                 /* Border Color */
@@ -918,11 +849,11 @@ function inkthemes_optionsframework_machine($options) {
                 if ($border_stored['color'] != "") {
                     $val = $border_stored['color'];
                 }
-                $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector"><div></div></div>';
-                $output .= '<input class="of-color of-border of-border-color" name="' . $value['id'] . '_color" id="' . $value['id'] . '_color" type="text" value="' . $val . '" />';
+                $output .= '<div id="' . esc_attr($value['id']) . '_color_picker" class="colorSelector"><div></div></div>';
+                $output .= '<input class="of-color of-border of-border-color" name="' . esc_attr($value['id']) . '_color" id="' . esc_attr($value['id']) . '_color" type="text" value="' . esc_attr($val) . '" />';
                 break;
             case "images":
-                $name = $option_name . '[' . $value['id'] . ']';
+                $name = $option_name . '[' . esc_attr($value['id']) . ']';
                 foreach ($value['options'] as $key => $option) {
                     $selected = '';
                     $checked = '';
@@ -949,9 +880,9 @@ function inkthemes_optionsframework_machine($options) {
                     $output .= '</div>' . "\n";
                 }
                 $jquery_click_hook = preg_replace("/[^a-zA-Z0-9._\-]/", "", strtolower($value['name']));
-                $jquery_click_hook = "of-option-" . $jquery_click_hook;
-                $menu .= '<li><a title="' . $value['name'] . '" href="#' . $jquery_click_hook . '">' . $value['name'] . '</a></li>';
-                $output .= '<div class="group" id="' . $jquery_click_hook . '"><h2>' . $value['name'] . '</h2>' . "\n";
+                $jquery_click_hook = "of-option-" . esc_attr($jquery_click_hook);
+                $menu .= '<li><a title="' . esc_attr($value['name']) . '" href="#' . esc_attr($jquery_click_hook) . '">' . esc_html($value['name']) . '</a></li>';
+                $output .= '<div class="group" id="' . esc_attr($jquery_click_hook) . '"><h2>' . esc_html($value['name']) . '</h2>' . "\n";
                 break;
         }
 
@@ -968,7 +899,7 @@ function inkthemes_optionsframework_machine($options) {
                 $meta = $array['meta'];
 
                 if ($array['type'] == 'text') { // Only text at this point
-                    $output .= '<input class="input-text-small of-input" name="' . $id . '" id="' . $id . '" type="text" value="' . $std . '" />';
+                    $output .= '<input class="input-text-small of-input" name="' . esc_attr($id) . '" id="' . esc_attr($id) . '" type="text" value="' . $std . '" />';
                     $output .= '<span class="meta-two">' . $meta . '</span>';
                 }
             }
@@ -982,10 +913,7 @@ function inkthemes_optionsframework_machine($options) {
             } else {
                 $explain_value = $value['desc'];
             }
-            $output .= '</div>' . "\n";
-            if ($value['type'] != "checkbox") {
-                $output .= '<div class="explain">' . $explain_value . '</div>' . "\n";
-            }
+            $output .= '</div><div class="explain">' . $explain_value . '</div>' . "\n";
             $output .= '<div class="clear"> </div></div></div>' . "\n";
         }
     }
@@ -1009,10 +937,10 @@ function inkthemes_optionsframework_uploader_function($id, $std, $mod) {
         if (inkthemes_get_option($id) != "") {
             $val = inkthemes_get_option($id);
         }
-        $uploader .= '<input class=\'of-input\' name=\'' . $id . '\' id=\'' . $id . '_upload\' type=\'text\' value=\'' . str_replace("'", "", $val) . '\' />';
+        $uploader .= '<input class="of-input" readonly name="' . esc_attr($id) . '" id="' . esc_attr($id) . '_upload" type="text" value="' . esc_attr($val) . '" />';
     }
 
-    $uploader .= '<div class="upload_button_div"><span class="button image_upload_button" id="' . $id . '">Upload Image</span>';
+    $uploader .= '<div class="upload_button_div"><span class="button image_upload_button" id="' . esc_attr($id) . '">' . __('Upload Image', 'colorway') . '</span>';
 
     if (!empty($upload)) {
         $hide = '';
@@ -1020,14 +948,12 @@ function inkthemes_optionsframework_uploader_function($id, $std, $mod) {
         $hide = 'hide';
     }
 
-    $uploader .= '<span class="button image_reset_button ' . $hide . '" id="reset_' . $id . '" title="' . $id . '">Remove</span>';
+    $uploader .= '<span class="button image_reset_button ' . $hide . '" id="reset_' . esc_attr($id) . '" title="' . esc_attr($id) . '">' . __('Remove', 'colorway') . '</span>';
     $uploader .='</div>' . "\n";
     $uploader .= '<div class="clear"></div>' . "\n";
-    $findme = 'wp-content/uploads';
-    $imgvideocheck = strpos($upload, $findme);
-    if ((!empty($upload)) && ($imgvideocheck === true)) {
+    if (!empty($upload)) {
         $uploader .= '<a class="of-uploaded-image" href="' . $upload . '">';
-        $uploader .= '<img class="of-option-image" id="image_' . $id . '" src="' . $upload . '" alt="" />';
+        $uploader .= '<img class="of-option-image" id="image_' . esc_attr($id) . '" src="' . $upload . '" alt="" />';
         $uploader .= '</a>';
     }
     $uploader .= '<div class="clear"></div>' . "\n";

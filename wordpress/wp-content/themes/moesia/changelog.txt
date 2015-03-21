@@ -1,5 +1,16 @@
 Changelog
 
+11 Mar 2015 - 1.26
+--------------------------------------
+- updated fr_FR, de_DE, de_AT and pt_PT language files.
+
+23 Feb 2015 - 1.25
+--------------------------------------
+- fixed header text block going above the menu when the menu is set to top;
+- increased header max-height defaults;
+- replaced screenshot and updated readme.txt with new license info for the screenshot;
+- changed wrong text domain in searchform.php.
+
 15 Feb 2015 - 1.24
 --------------------------------------
 - new options added in the Customizer;
