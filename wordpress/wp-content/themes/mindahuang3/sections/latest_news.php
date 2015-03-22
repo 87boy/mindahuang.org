@@ -16,7 +16,7 @@
 					if( !empty($zerif_latestnews_title) ):
 						echo '<h2 class="dark-text">' . __($zerif_latestnews_title,'zerif-lite') . '</h2>';
 					else:
-						echo '<h2 class="dark-text">' . __('Latest news','zerif-lite') . '</h2>';
+						echo '<h2 class="dark-text">' . __('Latest News','zerif-lite') . '</h2>';
 					endif;
 
 

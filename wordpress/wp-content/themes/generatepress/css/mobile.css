@@ -1,4 +1,4 @@
-
+@media screen and (max-width: 768px) {
 
 	/* GeneratePress specific */
 	.menu-toggle,
@@ -48,6 +48,7 @@
 	}
 	.main-nav .sf-menu > li {
 		float: none;
+		clear: both;
 	}
 	.nav-aligned-right.nav-below-header .main-navigation .menu > li, 
 	.nav-aligned-right.nav-below-header .main-navigation .sf-menu > li, 
@@ -581,3 +582,4 @@
 	  clear: both;
 	  width: 100%;
 	}
+}

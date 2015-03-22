@@ -10,6 +10,21 @@ Changelog Legend:
 
 ----
 
+(3/17/2015) - 1.2.9.2
+[+] Fix error in description
+[*] Add item to changelog
+
+----
+
+(3/17/2015) - 1.2.9.1
+[+] generate_more_tag filter added
+[*] Revert back to media query inside mobile.css due to minifying/caching issues
+[!] Fix bug regarding dropdown menus on mobile
+[+] Danish translation added
+[*] Admin page (Appearance > GeneratePress) improved
+
+----
+
 (3/9/2015) - 1.2.9
 [*] Font Awesome updated to 4.3.0
 [+] Comic Sans MS added to font list

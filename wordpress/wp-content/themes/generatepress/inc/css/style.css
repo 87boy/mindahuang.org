@@ -97,3 +97,18 @@
 .column-addon_name {
 	width: 225px;
 }
+
+.appearance_page_generate-options .updated {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+@media screen and (min-width: 1050px) {
+	.addon-metabox {
+		max-width:30%;
+		float: right;
+	}
+	.form-metabox {
+		max-width: 68%;
+	}
+}
