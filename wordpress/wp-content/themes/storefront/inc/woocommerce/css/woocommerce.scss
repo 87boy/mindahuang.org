@@ -10,6 +10,18 @@
 @import '../../../sass/utils/mixins';
 @import '../../../node_modules/susy/sass/susy';
 
+// Star font, FontAwesome doesn't work :(
+@font-face {
+	font-family: 'star';
+	src: url('../../../../../plugins/woocommerce/assets/fonts/star.eot');
+	src: url('../../../../../plugins/woocommerce/assets/fonts/star.eot?#iefix') format('embedded-opentype'),
+		url('../../../../../plugins/woocommerce/assets/fonts/star.woff') format('woff'),
+		url('../../../../../plugins/woocommerce/assets/fonts/star.ttf') format('truetype'),
+		url('../../../../../plugins/woocommerce/assets/fonts/star.svg#star') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /**
  * Header Elements
  */
@@ -84,7 +96,7 @@
 		}
 
 		#searchsubmit {
-			display: none;
+			@include screen-reader-text();
 		}
 	}
 }
@@ -392,6 +404,12 @@ ul.products {
 	}
 }
 
+.widget_products {
+	a {
+		display: block;
+	}
+}
+
 .widget_shopping_cart {
 	.product_list_widget {
 		margin-bottom: 0;
@@ -516,7 +534,7 @@ ul.products {
 		cursor: ew-resize;
 		outline: none;
 		background: $color_links;
-		@include box-sizing(border-box);
+		box-sizing: border-box;
 		margin-top: -.25em;
 		opacity: 1;
 
@@ -926,19 +944,18 @@ ul.digital-downloads {
 	overflow: hidden;
 	position: relative;
 	height: 1em;
-	line-height: 1em;
+	line-height: 1;
 	font-size: 1em;
-	width: 4.64em;
-	font-family: "fontawesome";
-	font-weight: 400;
+	width: 5.3em;
+	font-family: 'star';
 
 	&:before {
-		content: "\f005\f005\f005\f005\f005";
+		content: "\73\73\73\73\73";
+		color: rgba(0,0,0,0.2);
 		float: left;
 		top: 0;
 		left: 0;
 		position: absolute;
-		color: rgba(0,0,0,0.2);
 	}
 
 	span {
@@ -947,11 +964,11 @@ ul.digital-downloads {
 		top: 0;
 		left: 0;
 		position: absolute;
-		padding-top: 1.618em;
+		padding-top: 1.5em;
 	}
 
 	span:before {
-		content: "\f005\f005\f005\f005\f005";
+		content: "\53\53\53\53\53";
 		top: 0;
 		position: absolute;
 		left: 0;
@@ -1301,12 +1318,12 @@ dl.variation {
 
 		.widget_shopping_cart {
 			position: absolute;
-			left: 0;
 			top: 100%;
 			width: 100%;
-			display: none;
 			z-index: 999999;
 			font-size: .857em;
+			left: -999em;
+			display: block;
 
 			h2.widgettitle {
 				display: none;
@@ -1325,7 +1342,7 @@ dl.variation {
 
 		&:hover {
 			.widget_shopping_cart {
-				display: block;
+				left: 0;
 			}
 		}
 	}
@@ -1719,6 +1736,22 @@ dl.variation {
 
 	#order_review {
 		border-width: 0 3px 3px 3px;
+	}
+
+	// Changing a payment method for a subscription
+	.woocommerce-info + #order_review {
+		border-width: 3px;
+		width: 100%;
+		float: none;
+
+		.payment_methods + .form-row {
+			padding: 1em;
+		}
+
+		.button#place_order {
+			display: block;
+			width: 100%;
+		}
 	}
 
 	#wc_checkout_add_ons {

@@ -680,7 +680,7 @@ $this->sections[] = array(
     'icon' => 'icon-shopping-cart',
     'icon_class' => 'icon-large',
     'title' => __('Shop Settings', 'virtue'),
-    'desc' => "<div class='redux-info-field'><h3>".__('Shop Archive Page Settings', 'virtue')."</h3></div>",
+    'desc' => "<div class='redux-info-field'><h3>".__('Shop Archive Page Settings (Woocommerce plugin required)', 'virtue')."</h3></div>",
     'fields' => array(
     	array(
             'id'=>'shop_layout',
@@ -1440,13 +1440,19 @@ $this->sections[] = array(
             ),
 		),
 );
-
 $this->sections[] = array(
-    'icon' => 'icon-wrench',
+    'icon' => 'icon-list-alt',
     'icon_class' => 'icon-large',
-    'title' => __('Misc Settings', 'virtue'),
-    'desc' => "<div class='redux-info-field'><h3>".__('Misc Settings', 'virtue')."</h3></div>",
+    'title' => __('Page/Post Settings', 'virtue'),
+    'desc' => "<div class='redux-info-field'><h3>".__('Page and Post Settings', 'virtue')."</h3></div>",
     'fields' => array(
+        array(
+            'id'=>'page_comments',
+            'type' => 'switch', 
+            'title' => __('Allow Comments on Pages', 'virtue'),
+            'subtitle' => __('Turn on to allow comments on pages', 'virtue'),
+            "default" => 0,
+            ),
         array(
             'id'=>'portfolio_link',
             'type' => 'select',
@@ -1456,76 +1462,18 @@ $this->sections[] = array(
             'subtitle' => __('This sets the link in every single portfolio page. *note: You still have to set the page template to portfolio.', 'virtue'),
             ),
         array(
-            'id'=>'page_comments',
-            'type' => 'switch', 
-            'title' => __('Allow Comments on Pages', 'virtue'),
-            'subtitle' => __('Turn on to allow comments on pages', 'virtue'),
-            "default" => 0,
-            ),
-        array(
             'id'=>'portfolio_comments',
             'type' => 'switch', 
             'title' => __('Allow Comments on Portfolio Posts', 'virtue'),
             'subtitle' => __('Turn on to allow comments on Portfolio posts', 'virtue'),
             "default" => 0,
             ),
-    	array(
-            'id'=>'hide_image_border',
-            'type' => 'switch', 
-            'title' => __('Hide Image Border', 'virtue'),
-            'subtitle' => __('Choose to show or hide image border for images added in pages or posts', 'virtue'),
-            "default" => 0,
-            ),
-      array(
-            'id'=>'blog_archive_full',
-            'type' => 'select',
-            'title' => __('Blog Archive', 'virtue'), 
-            'subtitle' => __("Choose to show full post or post excerpt.", 'virtue'),
-            'options' => array('summery' => 'Post Excerpt','full' => 'Full'),
-            'default' => 'summery',
-            'width' => 'width:60%',
-            ),
-    	array(
+        array(
             'id'=>'close_comments',
             'type' => 'switch', 
             'title' => __('Show Comments Closed Text?', 'virtue'),
             'subtitle' => __('Choose to show or hide comments closed alert below posts.', 'virtue'),
             "default" => 0,
-            ),
-        array(
-            'id'=>'hide_author',
-            'type' => 'switch', 
-            'title' => __('Show Author Icon with posts?', 'virtue'),
-            'subtitle' => __('Choose to show or hide author icon under post title.', 'virtue'),
-            "default" => 1,
-            ),
-        array(
-            'id'=>'show_postlinks',
-            'type' => 'switch', 
-            'title' => __('Show Previous and Next posts links?', 'virtue'),
-            'subtitle' => __('Choose to show or hide previous and next post links in the footer of a single post.', 'virtue'),
-            "default" => 0,
-            ),
-        array(
-            'id'=>'virtue_custom_favicon',
-            'type' => 'media', 
-            'preview'=> true,
-            'title' => __('Custom Favicon', 'virtue'),
-            'subtitle' => __('Upload a 16px x 16px png/gif/ico image that will represent your website favicon.', 'virtue'),
-            ),
-        array(
-            'id'=>'contact_email',
-            'type' => 'text',
-            'title' => __('Contact Form Email', 'virtue'),
-            'subtitle' => __('Sets the email for the contact page email form.', 'virtue'),
-            'default' => 'test@test.com'
-            ),
-        array(
-            'id'=>'footer_text',
-            'type' => 'textarea',
-            'title' => __('Footer Copyright Text', 'virtue'), 
-            'subtitle' => __('Write your own copyright text here. You can use the following shortcodes in your footer text: [copyright] [site-name] [the-year]', 'virtue'),
-            'default' => '[copyright] [the-year] [site-name] [theme-credit]',
             ),
         array(
             'id'=>'info_blog_defaults',
@@ -1556,6 +1504,87 @@ $this->sections[] = array(
             'default' => 'none',
             ),
         array(
+            'id'=>'show_postlinks',
+            'type' => 'switch', 
+            'title' => __('Show Previous and Next posts links?', 'virtue'),
+            'subtitle' => __('Choose to show or hide previous and next post links in the footer of a single post.', 'virtue'),
+            "default" => 0,
+            ),
+        array(
+            'id'=>'hide_author',
+            'type' => 'switch', 
+            'title' => __('Show Author Icon with posts?', 'virtue'),
+            'subtitle' => __('Choose to show or hide author icon under post title.', 'virtue'),
+            "default" => 1,
+            ),
+        array(
+            'id'=>'post_author_default',
+            'type' => 'select',
+            'title' => __('Blog Post Author Box Default', 'virtue'), 
+            'options' => array('no' => __('No, Do not Show', 'virtue'), 'yes' => __('Yes, Show', 'virtue')),
+            'width' => 'width:60%',
+            'default' => 'no',
+            ),
+        array(
+            'id'=>'post_carousel_default',
+            'type' => 'select',
+            'title' => __('Blog Post Bottom Carousel Default', 'virtue'), 
+            'options' => array('no' => __('No, Do not Show', 'virtue'), 'recent' => __('Yes - Display Recent Posts', 'virtue'), 'similar' => __('Yes - Display Similar Posts', 'virtue')),
+            'width' => 'width:60%',
+            'default' => 'no',
+            ),
+        array(
+            'id'=>'info_blog_category',
+            'type' => 'info',
+            'desc' => __('Blog Category/Archive Defaults', 'virtue'),
+            ),
+        array(
+            'id'=>'blog_archive_full',
+            'type' => 'select',
+            'title' => __('Blog Archive', 'virtue'), 
+            'subtitle' => __("Choose to show full post or post excerpt.", 'virtue'),
+            'options' => array('summery' => 'Post Excerpt','full' => 'Full'),
+            'default' => 'summery',
+            'width' => 'width:60%',
+            ),
+
+    ),
+);
+$this->sections[] = array(
+    'icon' => 'icon-wrench',
+    'icon_class' => 'icon-large',
+    'title' => __('Misc Settings', 'virtue'),
+    'desc' => "<div class='redux-info-field'><h3>".__('Misc Settings', 'virtue')."</h3></div>",
+    'fields' => array(
+    	array(
+            'id'=>'hide_image_border',
+            'type' => 'switch', 
+            'title' => __('Hide Image Border', 'virtue'),
+            'subtitle' => __('Choose to show or hide image border for images added in pages or posts', 'virtue'),
+            "default" => 0,
+            ),
+        array(
+            'id'=>'virtue_custom_favicon',
+            'type' => 'media', 
+            'preview'=> true,
+            'title' => __('Custom Favicon', 'virtue'),
+            'subtitle' => __('Upload a 16px x 16px png/gif/ico image that will represent your website favicon.', 'virtue'),
+            ),
+        array(
+            'id'=>'contact_email',
+            'type' => 'text',
+            'title' => __('Contact Form Email', 'virtue'),
+            'subtitle' => __('Sets the email for the contact page email form.', 'virtue'),
+            'default' => 'test@test.com'
+            ),
+        array(
+            'id'=>'footer_text',
+            'type' => 'textarea',
+            'title' => __('Footer Copyright Text', 'virtue'), 
+            'subtitle' => __('Write your own copyright text here. You can use the following shortcodes in your footer text: [copyright] [site-name] [the-year]', 'virtue'),
+            'default' => '[copyright] [the-year] [site-name] [theme-credit]',
+            ),
+        array(
             'id'=>'info_sidebars',
             'type' => 'info',
             'desc' => __('Create Sidebars', 'virtue'),
@@ -1578,6 +1607,17 @@ $this->sections[] = array(
             'title' => __('Enable Virtue Galleries to override Wordpress', 'virtue'),
             'subtitle' => __('Disable this if using a plugin to customize galleries, for example jetpack tiled gallery.', 'virtue'),
             "default" => 1,
+            ),
+        array(
+            'id'=>'info_lightbox',
+            'type' => 'info',
+            'desc' => __('Theme Lightbox', 'virtue'),
+            ),
+        array(
+            'id'=>'kadence_lightbox',
+            'type' => 'switch', 
+            'title' => __('Turn Off Theme Lightbox?', 'virtue'),
+            "default" => 0,
             ),
     ),
 );

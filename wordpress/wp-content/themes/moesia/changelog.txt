@@ -1,5 +1,15 @@
 Changelog
 
+1 Apr 2015 - 1.28
+--------------------------------------
+- a quick fix to match the new Page Builder by SiteOrigin changes.
+
+26 Mar 2015 - 1.27
+--------------------------------------
+- added some more filters for the Page Builder plugin;
+- added number of posts option for the latest posts widget;
+- small CSS additions.
+
 11 Mar 2015 - 1.26
 --------------------------------------
 - updated fr_FR, de_DE, de_AT and pt_PT language files.

@@ -1,6 +1,6 @@
 /* !
  * Customizr WordPress theme Javascript code
- * Copyright (c) 2014-2015 Nicolas GUILLAUME (@nicguillaume), Themes & Co.
+ * Copyright (c) 2014-2015 Nicolas GUILLAUME (@nicguillaume), Press Customizr.
  * GPL2+ Licensed
 */
 //ON DOM READY
@@ -47,6 +47,7 @@ jQuery(function ($) {
       $('.tc-rectangular-thumb').centerImages( {
         enableCentering : 1 == _p.centerAllImg,
         enableGoldenRatio : true,
+        goldenRatioVal : _p.goldenRatio || 1.618,
         disableGRUnder : 0,//<= don't disable golden ratio when responsive
         oncustom : ['smartload', 'refresh-height', 'simple_load'] //bind 'refresh-height' event (triggered to the the customizer preview frame)
       });
@@ -64,6 +65,7 @@ jQuery(function ($) {
         enableCentering : 1 == _p.centerAllImg,
         oncustom : ['smartload', 'simple_load'],
         enableGoldenRatio : true,
+        goldenRatioVal : _p.goldenRatio || 1.618,
         goldenRatioLimitHeightTo : _p.gridGoldenRatioLimit || 350
       } );
     }, 300 );
@@ -458,9 +460,8 @@ jQuery(function ($) {
           isUserLogged    = $('body').hasClass('logged-in') || 0 !== $('#wpadminbar').length,
           isCustomizing   = $('body').hasClass('is-customizing'),
           customOffset    = +_p.stickyCustomOffset,
-          logosH     = [],
-          logosW      = [],
-          logosRatio      = [];
+          $sticky_logo    = $('img.sticky', '.site-logo'),
+          logo            = 0 === $sticky_logo.length ? { _logo: $('img:not(".sticky")', '.site-logo') , _ratio: '' }: false;
 
     function _is_scrolling() {
         return $('body').hasClass('sticky-enabled') ? true : false;
@@ -505,14 +506,11 @@ jQuery(function ($) {
 
 
     function _set_logo_height(){
-        if ( 0 === $('img' , '.site-logo').length )
+        if ( logo && 0 === logo._logo.length || ! logo._ratio )
             return;
-        $.each($('img', '.site-logo'), function( $i ){
-            if ( ! logosRatio[$i] )
-              return;
-            var logoHeight   = $(this).width() / logosRatio[$i];
-            $(this).css('height' , logoHeight );
-        });
+
+        logo._logo.css('height' , logo._logo.width() / logo._ratio );
+
         setTimeout( function() {
             _set_sticky_offsets();
             _set_header_top_offset();
@@ -522,18 +520,16 @@ jQuery(function ($) {
 
     //set site logo width and height if exists
     //=> allow the CSS3 transition to be enabled
-    if ( _is_sticky_enabled() && 0 !== $('img' , '.site-logo').length ) {
-        $.each($('img', '.site-logo'), function( $i ){
-            logosW[$i]  = $(this).attr('width');
-            logosH[$i]  = $(this).attr('height');
+    if ( _is_sticky_enabled() && logo && 0 !== logo._logo.length ) {
+        var logoW = logo._logo.attr('width'),
+            logoH = logo._logo.attr('height');
 
-            //check that all numbers are valid before using division
-            if ( 0 === _.size( _.filter( [ logosW[$i], logosH[$i] ], function(num){ return _.isNumber( parseInt(num, 10) ) && 0 !== num; } ) ) )
-              return;
+        //check that all numbers are valid before using division
+        if ( 0 === _.size( _.filter( [ logoW, logoH ], function(num){ return _.isNumber( parseInt(num, 10) ) && 0 !== num; } ) ) )
+          return;
 
-            logosRatio[$i]  = logosW[$i] / logosH[$i];
-            $(this).css('height' , logosH[$i]  ).css('width' , logosW[$i] );
-        });
+        logo._ratio  = logoW / logoH;
+        logo._logo.css('height' , logoH  ).css('width' , logoW );
     }
 
     //LOADING ACTIONS
@@ -570,7 +566,7 @@ jQuery(function ($) {
         if ( $(window).scrollTop() > triggerHeight ) {
             $('body').addClass("sticky-enabled").removeClass("sticky-disabled");
         }
-        else if ( $('body').hasClass('sticky-enabled') ) {
+        else if ( _is_scrolling() ) {
             $('body').removeClass("sticky-enabled").addClass("sticky-disabled");
             setTimeout( function() { _sticky_refresh();} ,
               $('body').hasClass('is-customizing') ? 100 : 20

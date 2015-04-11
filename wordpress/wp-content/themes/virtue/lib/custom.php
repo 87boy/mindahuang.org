@@ -51,6 +51,14 @@ function virtue_wp_pagenav() {
   if ($max > 1) echo '</div>';
 }
 
+function virtue_lightbox_off() {
+  global $virtue; 
+  if(isset($virtue['kadence_lightbox']) && $virtue['kadence_lightbox'] == 1 ) {
+    echo  '<script type="text/javascript">jQuery(document).ready(function ($) {var magnificPopupEnabled = false;$.extend(true, $.magnificPopup.defaults, {disableOn: function() {return false;}});});</script>';
+  }
+}
+add_action('wp_footer', 'virtue_lightbox_off');
+
 
 function kadence_hex2rgb($hex) {
    $hex = str_replace("#", "", $hex);

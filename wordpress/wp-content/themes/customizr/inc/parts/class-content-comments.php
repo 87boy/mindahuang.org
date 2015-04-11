@@ -6,9 +6,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_comments' ) ) :
@@ -56,10 +56,15 @@ if ( ! class_exists( 'TC_comments' ) ) :
       * @since Customizr 3.0.10
      */
       function tc_comments() {
+        global $post;
         //By default not displayed on home, for protected posts, and if no comments for page option is checked
-        $comments_bool    =  ( post_password_required() || tc__f( '__is_home' ) || ( is_page() && 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_page_comments' )) ) ) ? false : true;
+        $_bool = ( post_password_required() || tc__f( '__is_home' ) )  ? false : true;
+        $_bool = ( is_page() && 1 != esc_attr( TC_utils::$inst->tc_opt( 'tc_page_comments' )) ) ? false : $_bool;
+        //if user has enabled comment for this specific page then force true
+        //@todo contx : update default value user's value)
+        $_bool = ( is_page() && 'closed' != $post -> comment_status ) ? true : $_bool;
 
-        if ( ! apply_filters('tc_show_comments', $comments_bool ) )
+        if ( ! apply_filters('tc_show_comments', $_bool ) )
           return;
 
         comments_template( '' , true );
@@ -169,7 +174,7 @@ if ( ! class_exists( 'TC_comments' ) ) :
                                                                         array(  'reply_text' => __( 'Reply' , 'customizr' ).' <span>&darr;</span>',
                                                                                 'depth' => $depth,
                                                                                 'max_depth' => $args['max_depth'] ,
-                                                                                'add_below' => apply_filters( 'tc_comment_reply_below' , 'li-comment' )
+                                                                                'add_below' => apply_filters( 'tc_comment_reply_below' , 'comment' )
                                                                               )
                                                                   )
                                             )

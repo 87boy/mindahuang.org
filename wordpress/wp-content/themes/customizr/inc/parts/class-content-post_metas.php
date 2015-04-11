@@ -6,9 +6,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0.5
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_post_metas' ) ) :
@@ -17,9 +17,9 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
         function __construct () {
           self::$instance =& $this;
           //Show / hide metas based on customizer user options (@since 3.2.0)
-          add_action( 'wp'                            , array( $this , 'tc_set_visibility_options' ) , 10 );
+          add_action( 'template_redirect'                            , array( $this , 'tc_set_visibility_options' ) , 10 );
            //Show / hide metas based on customizer user options (@since 3.2.0)
-          add_action( 'wp'                            , array( $this , 'tc_set_design_options' ) , 20 );
+          add_action( 'template_redirect'                            , array( $this , 'tc_set_design_options' ) , 20 );
           //Show / hide metas based on customizer user options (@since 3.2.0)
           add_action( '__after_content_title'         , array( $this , 'tc_set_post_metas_hooks' ), 20 );
 
@@ -32,7 +32,7 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
         /**
         * Set the post metas visibility based on Customizer options
         * uses hooks tc_show_post_metas, body_class
-        * hook : wp
+        * hook : template_redirect
         *
         * @package Customizr
         * @since Customizr 3.2.0
@@ -84,7 +84,7 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
 
         /**
         * Default metas visibility controller
-        * tc_show_post_metas gets filtered by tc_set_visibility_options() called early in wp
+        * tc_show_post_metas gets filtered by tc_set_visibility_options() called early in template_redirect
         * @return  boolean
         * @package Customizr
         * @since Customizr 3.2.6
@@ -373,7 +373,7 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
         */
         public function tc_get_term_of_tax_type( $hierarchical = true ) {
           //var declaration
-          $post_type              = get_post_type( tc__f('__ID') );
+          $post_type              = get_post_type( TC_utils::tc_id() );
           $tax_list               = get_object_taxonomies( $post_type, 'object' );
           $_tax_type_list         = array();
           $_tax_type_terms_list   = array();
@@ -384,7 +384,7 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
           //filter the post taxonomies
           while ( $el = current($tax_list) ) {
               //skip the post format taxinomy
-              if ( in_array( key($tax_list) , apply_filters_ref_array ( 'tc_exclude_taxonomies_from_metas' , array( array('post_format') , $post_type , tc__f('__ID') ) ) ) ) {
+              if ( in_array( key($tax_list) , apply_filters_ref_array ( 'tc_exclude_taxonomies_from_metas' , array( array('post_format') , $post_type , TC_utils::tc_id() ) ) ) ) {
                   next($tax_list);
                   continue;
               }
@@ -398,7 +398,7 @@ if ( ! class_exists( 'TC_post_metas' ) ) :
 
           //fill the post terms array
           foreach ($_tax_type_list as $tax_name => $data ) {
-              $_current_tax_terms = get_the_terms( tc__f('__ID') , $tax_name );
+              $_current_tax_terms = get_the_terms( TC_utils::tc_id() , $tax_name );
 
               //If current post support this tax but no terms has been assigned yet = continue
               if ( ! $_current_tax_terms )

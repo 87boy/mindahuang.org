@@ -95,7 +95,7 @@ jQuery(function($) {
 
 //Better support for third party widgets
 jQuery(function($) {
-    $('.panel.widget').addClass('container');
+    $('.so-panel.widget, .panel.widget').addClass('container');
 }); 
 
 //Open social links in a new tab

@@ -22,12 +22,13 @@
 /**
  * Pagination
  */
-.storefront-pagination,
+.pagination,
 .woocommerce-pagination {
 	padding: 1em 0;
 	border: 1px solid $color_border;
 	border-width: 1px 0;
 	text-align: center;
+	clear: both;
 
 	.page-numbers {
 		list-style: none;

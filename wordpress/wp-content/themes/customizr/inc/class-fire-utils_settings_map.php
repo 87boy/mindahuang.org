@@ -7,9 +7,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_utils_settings_map' ) ) :
@@ -771,7 +771,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'label'       => __( 'Lightbox effect on images' , 'customizr' ),
                                 'section'     => 'tc_image_settings' ,
                                 'type'        => 'checkbox' ,
-                                'notice'    => __( 'If enabled, this option activate a popin window whith a zoom effect when an image is clicked. This will not apply to image gallery.' , 'customizr' ),
+                                'notice'    => __( 'If enabled, this option activates a popin window whith a zoom effect when an image is clicked. Note : to enable this effect on the images of your pages and posts, images have to be linked to the Media File.' , 'customizr' ),
               ),
 
               'tc_theme_options[tc_fancybox_autoscale]' =>  array(
@@ -819,7 +819,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'label'       => __( "Dynamic thumbnails centering on any devices" , "customizr" ),
                                 'section'     => 'tc_image_settings' ,
                                 'type'        => 'checkbox' ,
-                                'notice'    => __( 'This option dynamically centers your images on any devices vertically or horizontally (without stretching them) according to their initial dimensions.' , 'customizr' ),
+                                'notice'    => __( 'This option dynamically centers your images on any devices, vertically or horizontally according to their initial aspect ratio.' , 'customizr' ),
               )
       );//end of images options
       $images_option_map = apply_filters( 'tc_images_option_map', $images_option_map , $get_default );
@@ -1854,6 +1854,47 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'type'          => 'checkbox',
                                 'priority'      => 95
               ),
+
+              /* ARCHIVE TITLES */
+              'tc_theme_options[tc_cat_title]'  =>  array(
+                                'default'       => __( 'Category Archives :' , 'customizr' ),
+                                'title'         => __( 'Archive titles' , 'customizr' ),
+                                'label'       => __( 'Category pages titles' , 'customizr' ),
+                                'control'   =>  'TC_controls' ,
+                                'section'     => 'tc_post_list_settings' ,
+                                'type'        => 'text' ,
+                                'priority'       => 100
+                                //'notice'    => __( 'Will be hidden if empty' , 'customizr' )
+              ),
+              'tc_theme_options[tc_tag_title]'  =>  array(
+                                'default'         => __( 'Tag Archives :' , 'customizr' ),
+                                'label'       => __( 'Tag pages titles' , 'customizr' ),
+                                'control'   =>  'TC_controls' ,
+                                'section'     => 'tc_post_list_settings' ,
+                                'type'        => 'text' ,
+                                'priority'       => 105
+                                //'notice'    => __( 'Will be hidden if empty' , 'customizr' )
+              ),
+              'tc_theme_options[tc_author_title]'  =>  array(
+                                'default'         => __( 'Author Archives :' , 'customizr' ),
+                                'label'       => __( 'Author pages titles' , 'customizr' ),
+                                'control'   =>  'TC_controls' ,
+                                'section'     => 'tc_post_list_settings' ,
+                                'type'        => 'text' ,
+                                'priority'       => 110
+                                //'notice'    => __( 'Will be hidden if empty' , 'customizr' )
+              ),
+              'tc_theme_options[tc_search_title]'  =>  array(
+                                'default'         => __( 'Search Results for :' , 'customizr' ),
+                                'label'       => __( 'Search results page titles' , 'customizr' ),
+                                'control'   =>  'TC_controls' ,
+                                'section'     => 'tc_post_list_settings' ,
+                                'type'        => 'text' ,
+                                'priority'       => 115
+                                //'notice'    => __( 'Will be hidden if empty' , 'customizr' )
+              ),
+
+              /* SINGLE POST SETTINGS */
               'tc_theme_options[tc_single_post_thumb_location]'  =>  array(
                                 'default'       => 'hide',
                                 'control'     => 'TC_controls' ,
@@ -2123,7 +2164,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                                 'section'     => 'tc_frontpage_settings' ,
                                 'type'        => 'checkbox' ,
                                 'priority'       => 54,
-                                'notice'    => sprintf('%1$s <a href="http://doc.themesandco.com/customizr/recommended-plugins/#images" target="_blank">%2$s</a>',
+                                'notice'    => sprintf('%1$s <a href="http://doc.presscustomizr.com/customizr/recommended-plugins/#images" target="_blank">%2$s</a>',
                                     __( "If this option is checked, your images will be resized with your custom height on upload. This is better for your overall loading performance." , 'customizr' ),
                                     __( "You might want to regenerate your thumbnails." , 'customizr')
                                 ),
@@ -2144,7 +2185,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
     function tc_grid_map( $_map ) {
         $_new_settings = array(
           'tc_theme_options[tc_post_list_grid]'  =>  array(
-                            'default'       => TC_utils::$inst -> tc_user_started_before_version( '3.2.18' ) ? 'alternate' : 'grid',
+                            'default'       => TC_utils::$inst -> tc_user_started_before_version( '3.2.18', '1.0.13' ) ? 'alternate' : 'grid',
                             'control'       => 'TC_controls' ,
                             'title'         => __( 'Post List Design' , 'customizr' ),
                             'label'         => __( 'Select a Layout' , "customizr" ),
@@ -2175,10 +2216,10 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
           'tc_theme_options[tc_grid_expand_featured]'  =>  array(
                             'default'       => 1,
                             'control'       => 'TC_controls' ,
-                            'label'         => __( 'Expand the featured posts (for home and blog page only)' , "customizr" ),
+                            'label'         => __( 'Expand the last sticky post (for home and blog page only)' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 50
+                            'priority'      => 47
           ),
           'tc_theme_options[tc_grid_in_blog]'  =>  array(
                             'default'       => 1,
@@ -2186,7 +2227,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Apply the grid layout to Home/Blog' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 55
+                            'priority'      => 57
           ),
           'tc_theme_options[tc_grid_in_archive]'  =>  array(
                             'default'       => 1,
@@ -2194,7 +2235,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Apply the grid layout to Archives (archives, categories, author posts)' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 60
+                            'priority'      => 58
           ),
           'tc_theme_options[tc_grid_in_search]'  =>  array(
                             'default'       => 1,
@@ -2202,7 +2243,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Apply the grid layout to Search results' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 62,
+                            'priority'      => 60,
                             'notice'        => __( 'Unchecked contexts are displayed with the alternate thumbnails layout.' , 'customizr' ),
            ),
           'tc_theme_options[tc_grid_shadow]'  =>  array(
@@ -2211,7 +2252,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Apply a shadow to each grid items' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 63,
+                            'priority'      => 61,
                             'transport'   => 'postMessage'
            ),
           'tc_theme_options[tc_grid_bottom_border]'  =>  array(
@@ -2220,7 +2261,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Apply a colored bottom border to each grid items' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 64,
+                            'priority'      => 62,
                             'transport'   => 'postMessage'
            ),
           'tc_theme_options[tc_grid_icons]'  =>  array(
@@ -2229,7 +2270,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'label'         => __( 'Display post format icons in the background' , "customizr" ),
                             'section'       => 'tc_post_list_settings' ,
                             'type'          => 'checkbox',
-                            'priority'      => 65,
+                            'priority'      => 63,
                             'transport'   => 'postMessage'
            ),
           'tc_theme_options[tc_grid_num_words]'  =>  array(
@@ -2241,7 +2282,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'type'          => 'number' ,
                             'step'          => 1,
                             'min'           => 1,
-                            'priority'      => 66
+                            'priority'      => 64
            ),
           'tc_theme_options[tc_grid_thumb_height]' => array(
                             'default'       => 350,
@@ -2253,7 +2294,7 @@ if ( ! class_exists( 'TC_utils_settings_map' ) ) :
                             'type'          => 'number' ,
                             'step'          => 1,
                             'min'           => 0,
-                            'priority'      => 67
+                            'priority'      => 65
                             //'transport'   => 'postMessage'
           )
         );//$_new_settings

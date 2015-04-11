@@ -34,7 +34,7 @@ if ( ! function_exists( 'storefront_setup' ) ) :
 		 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 		 */
 
-		// wp-content/languages/theme-name/it_IT.mo
+		// wp-content/languages/themes/storefront-it_IT.mo
 		load_theme_textdomain( 'storefront', trailingslashit( WP_LANG_DIR ) . 'themes/' );
 
 		// wp-content/themes/child-theme-name/languages/it_IT.mo
@@ -59,14 +59,20 @@ if ( ! function_exists( 'storefront_setup' ) ) :
 		register_nav_menus( array(
 			'primary'		=> __( 'Primary Menu', 'storefront' ),
 			'secondary'		=> __( 'Secondary Menu', 'storefront' ),
+			'handheld'		=> __( 'Handheld Menu', 'storefront' ),
 		) );
 
 		/*
-		 * Switch default core markup for search form, comment form, and comments
+		 * Switch default core markup for search form, comment form, comments, galleries, captions and widgets
 		 * to output valid HTML5.
 		 */
 		add_theme_support( 'html5', array(
-			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'widgets',
 		) );
 
 		// Setup the WordPress core custom background feature.
@@ -100,8 +106,8 @@ function storefront_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 
 	register_sidebar( array(
@@ -110,8 +116,8 @@ function storefront_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 
 	$footer_widget_regions = apply_filters( 'storefront_footer_widget_regions', 4 );

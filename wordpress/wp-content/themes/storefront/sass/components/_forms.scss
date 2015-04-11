@@ -15,6 +15,7 @@ textarea {
 	vertical-align: baseline; /* Improves appearance and consistency in all browsers */
 	*vertical-align: middle; /* Improves appearance and consistency in all browsers */
 }
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -57,6 +58,10 @@ input[type="submit"],
 		color: #fff;
 	}
 
+	&:focus {
+		outline: 2px solid $color_links;
+	}
+
 	&.added {
 		&:after {
 			content: "\f00c";
@@ -93,7 +98,7 @@ input[type="search"]::-webkit-search-decoration { /* Corrects inner padding disp
 }
 
 input[type="search"] {
-	@include box-sizing(border-box); // Overrules normalize.css.
+	box-sizing: border-box; // Overrules normalize.css.
 }
 
 button::-moz-focus-inner,
@@ -117,20 +122,15 @@ textarea,
 	border: 0;
 	-webkit-appearance: none;
 	border-radius: 0;
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 	font-weight: normal;
 	box-shadow:
 		inset 0 1px 2px rgba(0,0,0,0.125);
-}
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-textarea:focus {
-		background-color: darken($body-background,10%);
+	&:focus {
+		background-color: darken( $body-background,10% );
 		color: darken( $color_body, 10% );
+	}
 }
 
 textarea {

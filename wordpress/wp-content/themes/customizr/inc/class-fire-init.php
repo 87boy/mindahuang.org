@@ -8,9 +8,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_init' ) ) :
@@ -98,7 +98,6 @@ if ( ! class_exists( 'TC_init' ) ) :
                 'green2.css'      =>  __( 'Light green' , 'customizr'),
                 'blue3.css'       =>  __( 'Green blue' , 'customizr'),
                 'blue2.css'       =>  __( 'Light blue ' , 'customizr' )
-
           );
 
           //Main skin color array : array( link color, link hover color )
@@ -532,11 +531,11 @@ if ( ! class_exists( 'TC_init' ) ) :
         //Finds the good path : are we in a child theme and is there a skin to override?
         $remote_path    = ( TC___::$instance -> tc_is_child() && file_exists(TC_BASE_CHILD .'inc/assets/css/' . $_sheet) ) ? TC_BASE_URL_CHILD .'inc/assets/css/' : false ;
         $remote_path    = ( ! $remote_path && file_exists(TC_BASE .'inc/assets/css/' . $_sheet) ) ? TC_BASE_URL .'inc/assets/css/' : $remote_path ;
-
         //Checks if there is a rtl version of common if needed
-        if ( 'skin' != $_wot && defined( 'WPLANG' ) && ( 'ar' == WPLANG || 'he_IL' == WPLANG ) ) {
-          $remote_path   = ( TC___::$instance -> tc_is_child() && file_exists(TC_BASE_CHILD .'inc/assets/css/rtl/' . $_sheet) ) ? TC_BASE_URL_CHILD .'inc/assets/css/rtl/' : $remote_path ;
-          $remote_path   = ( !TC___::$instance -> tc_is_child() && file_exists(TC_BASE .'inc/assets/css/rtl/' . $_sheet) ) ? TC_BASE_URL .'inc/assets/css/rtl/' : $remote_path ;
+        if ( 'skin' != $_wot && ( is_rtl() || ( defined( 'WPLANG' ) && ( 'ar' == WPLANG || 'he_IL' == WPLANG ) ) ) ){
+          $remote_rtl_path   = ( TC___::$instance -> tc_is_child() && file_exists(TC_BASE_CHILD .'inc/assets/css/rtl/' . $_sheet) ) ? TC_BASE_URL_CHILD .'inc/assets/css/rtl/' : false ;
+          $remote_rtl_path   = ( ! $remote_rtl_path && file_exists(TC_BASE .'inc/assets/css/rtl/' . $_sheet) ) ? TC_BASE_URL .'inc/assets/css/rtl/' : $remote_rtl_path;
+          $remote_path       = $remote_rtl_path ? $remote_rtl_path : $remote_path;
         }
 
         //Defines the active skin and fallback to blue.css if needed
@@ -681,16 +680,16 @@ if ( ! class_exists( 'TC_init' ) ) :
               case 'woocommerce_before_main_content':
 
               ?>
-                <div id="main-wrapper" class="<?php echo tc__f( 'tc_main_wrapper_classes' , 'container' ) ?>">
+                <div id="main-wrapper" class="<?php echo implode(' ', apply_filters( 'tc_main_wrapper_classes' , array('container') ) ) ?>">
 
                 <?php do_action( '__before_main_container' ); ##hook of the featured page (priority 10) and breadcrumb (priority 20)...and whatever you need! ?>
 
                 <div class="container" role="main">
-                    <div class="<?php echo tc__f( 'tc_column_content_wrapper_classes' , 'row column-content-wrapper' ) ?>">
+                    <div class="<?php echo implode(' ', apply_filters( 'tc_column_content_wrapper_classes' , array('row' ,'column-content-wrapper') ) ) ?>">
 
                         <?php do_action( '__before_article_container'); ##hook of left sidebar?>
 
-                            <div id="content" class="<?php echo tc__f( '__screen_layout' , tc__f ( '__ID' ) , 'class' ) ?> article-container">
+                            <div id="content" class="<?php echo implode(' ', apply_filters( 'tc_article_container_class' , array( TC_utils::tc_get_layout( TC_utils::tc_id() , 'class' ) , 'article-container' ) ) ) ?>">
 
                                 <?php do_action ('__before_loop');##hooks the header of the list of post : archive, search... ?>
               <?php
@@ -905,25 +904,30 @@ if ( ! class_exists( 'TC_init' ) ) :
 
 
       /**
-      * Add various classes on the body element.
-      * cb of body_class
+      * Adds various classes on the body element.
+      * hook body_class
       *
       * @package Customizr
       * @since Customizr 3.2.0
       */
       function tc_set_body_classes( $_classes ) {
-        $_to_add = array();
         if ( 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_link_hover_effect' ) ) )
-          $_to_add[] = 'tc-fade-hover-links';
+          array_push( $_classes, 'tc-fade-hover-links' );
         if ( TC___::$instance -> tc_is_customizing() )
-          $_to_add[] = 'is-customizing';
+          array_push( $_classes, 'is-customizing' );
         if ( wp_is_mobile() )
-          $_to_add[] = 'tc-is-mobile';
+          array_push( $_classes, 'tc-is-mobile' );
         if ( 0 != esc_attr( TC_utils::$inst->tc_opt( 'tc_enable_dropcap' ) ) )
-          $_to_add[] = esc_attr( TC_utils::$inst->tc_opt( 'tc_dropcap_design' ) );
+          array_push( $_classes, esc_attr( TC_utils::$inst->tc_opt( 'tc_dropcap_design' ) ) );
 
-        return array_merge( $_classes , $_to_add );
+        //adds the layout
+        $_layout = TC_utils::tc_get_layout( get_the_ID() , 'sidebar' );
+        if ( in_array( $_layout, array('b', 'l', 'r' , 'f') ) ) {
+          array_push( $_classes, sprintf( 'tc-%s-sidebar',
+            'f' == $_layout ? 'no' : $_layout
+          ) );
+        }
+        return $_classes;
       }
-
   }//end of class
 endif;

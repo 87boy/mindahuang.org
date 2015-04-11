@@ -7,13 +7,13 @@ a, #nav-main ul.sf-menu ul li a:hover, .product_price ins .amount, .price ins .a
 .widget_price_filter .ui-slider .ui-slider-handle, .product_item .kad_add_to_cart:hover, .product_item:hover a.button:hover, .product_item:hover .kad_add_to_cart:hover, .kad-btn-primary, html .woocommerce-page .widget_layered_nav ul.yith-wcan-label li a:hover, html .woocommerce-page .widget_layered_nav ul.yith-wcan-label li.chosen a,
 .product-category.grid_item a:hover h5, .woocommerce-message .button, .widget_layered_nav_filters ul li a, .widget_layered_nav ul li.chosen a, .wpcf7 input.wpcf7-submit, .yith-wcan .yith-wcan-reset-navigation,
 #containerfooter .menu li a:hover, .bg_primary, .portfolionav a:hover, .home-iconmenu a:hover, p.demo_store, .topclass, #commentform .form-submit #submit, .kad-hover-bg-primary:hover, .widget_shopping_cart_content .checkout,
-.login .form-row .button, .kad-post-navigation .kad-previous-link a:hover, .cart_totals .checkout-button,
+.login .form-row .button, .kad-post-navigation .kad-previous-link a:hover, .cart_totals .checkout-button, .wpcf7 input.wpcf7-back,
 .kad-post-navigation .kad-next-link a:hover, .variations .kad_radio_variations label.selectedValue, #payment #place_order, .shop_table .actions input[type=submit].checkout-button, input[type="submit"].button, .order-actions .button {background: #2d5c88;}
 
 /* 20% lighter than Primary */
 a:hover {color: #6c8dab;}
 .kad-btn-primary:hover, .login .form-row .button:hover, #payment #place_order:hover, .yith-wcan .yith-wcan-reset-navigation:hover, .widget_shopping_cart_content .checkout:hover,
-.woocommerce-message .button:hover, #commentform .form-submit #submit:hover, .wpcf7 input.wpcf7-submit:hover, .widget_layered_nav_filters ul li a:hover, .cart_totals .checkout-button:hover,
+.woocommerce-message .button:hover, #commentform .form-submit #submit:hover, .wpcf7 input.wpcf7-submit:hover, .wpcf7 input.wpcf7-back:hover, .widget_layered_nav_filters ul li a:hover, .cart_totals .checkout-button:hover,
 .widget_layered_nav ul li.chosen a:hover, .shop_table .actions input[type=submit].checkout-button:hover, .order-actions .button:hover, input[type="submit"].button:hover {background: #6c8dab;}
 
 .product_item.hidetheaction .kad_add_to_cart {background: transparent; color: transparent;}

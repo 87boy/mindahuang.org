@@ -6,9 +6,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_utils' ) ) :
@@ -28,11 +28,11 @@ if ( ! class_exists( 'TC_utils' ) ) :
         //get all options
         add_filter( '__options'                           , array( $this , 'tc_get_theme_options' ), 10, 1);
         //get single option
-        add_filter( '__get_option'                        , array( $this , 'tc_opt' ), 10, 2 );
+        add_filter( '__get_option'                        , array( $this , 'tc_opt' ), 10, 2 );//deprecated
 
         //some useful filters
-        add_filter( '__ID'                                , array( $this , 'tc_get_the_ID' ));
-        add_filter( '__screen_layout'                     , array( $this , 'tc_get_current_screen_layout' ) , 10 , 2 );
+        add_filter( '__ID'                                , array( $this , 'tc_id' ));//deprecated
+        add_filter( '__screen_layout'                     , array( $this , 'tc_get_layout' ) , 10 , 2 );//deprecated
         add_filter( '__is_home'                           , array( $this , 'tc_is_home' ) );
         add_filter( '__is_home_empty'                     , array( $this , 'tc_is_home_empty' ) );
         add_filter( '__post_type'                         , array( $this , 'tc_get_post_type' ) );
@@ -276,7 +276,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
           $_db_options = empty($this -> db_options) ? $this -> tc_cache_db_options($option_group) : $this -> db_options;
 
         //do we have to use the default ?
-         $__options = $_db_options;
+        $__options = $_db_options;
         if ( $use_default ) {
           $_defaults      = $this -> default_options;
           $__options      = wp_parse_args( $_db_options, $_defaults );
@@ -319,7 +319,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @package Customizr
       * @since Customizr 1.0
       */
-      function tc_get_the_ID()  {
+      public static function tc_id()  {
         global $wp_version;
         if ( in_the_loop() || version_compare( $wp_version, '3.4.1', '<=' ) ) {
           $tc_id            = get_the_ID();
@@ -340,7 +340,7 @@ if ( ! class_exists( 'TC_utils' ) ) :
       * @package Customizr
       * @since Customizr 1.0
       */
-      function tc_get_current_screen_layout ( $post_id , $sidebar_or_class = 'class' ) {
+      public static function tc_get_layout( $post_id , $sidebar_or_class = 'class' ) {
           $__options                    = tc__f ( '__options' );
 
           global $post;
@@ -349,19 +349,25 @@ if ( ! class_exists( 'TC_utils' ) ) :
           $global_layout                = apply_filters( 'tc_global_layout' , TC_init::$instance -> global_layout );
 
           /* DEFAULT LAYOUTS */
-          //get the global default layout
-          $tc_sidebar_global_layout     = $__options['tc_sidebar_global_layout'];
-          //get the post default layout
-          $tc_sidebar_post_layout       = $__options['tc_sidebar_post_layout'];
-          //get the page default layout
-          $tc_sidebar_page_layout       = $__options['tc_sidebar_page_layout'];
-
           //what is the default layout we want to apply? By default we apply the global default layout
-          $tc_sidebar_default_layout    = $tc_sidebar_global_layout;
+          $tc_sidebar_default_layout    = esc_attr( $__options['tc_sidebar_global_layout'] );
+
+          //checks if the 'force default layout' option is checked and return the default layout before any specific layout
+          if( isset($__options['tc_sidebar_force_layout']) && 1 == $__options['tc_sidebar_force_layout'] ) {
+            $class_tab  = $global_layout[$tc_sidebar_default_layout];
+            $class_tab  = $class_tab['content'];
+            $tc_screen_layout = array(
+              'sidebar' => $tc_sidebar_default_layout,
+              'class'   => $class_tab
+            );
+            return $tc_screen_layout[$sidebar_or_class];
+          }
+
+
           if ( is_single() )
-            $tc_sidebar_default_layout  = $tc_sidebar_post_layout;
+            $tc_sidebar_default_layout  = esc_attr( $__options['tc_sidebar_post_layout'] );
           if ( is_page() )
-            $tc_sidebar_default_layout  = $tc_sidebar_page_layout;
+            $tc_sidebar_default_layout  = esc_attr( $__options['tc_sidebar_page_layout'] );
 
           //builds the default layout option array including layout and article class
           $class_tab  = $global_layout[$tc_sidebar_default_layout];
@@ -370,18 +376,6 @@ if ( ! class_exists( 'TC_utils' ) ) :
                       'sidebar' => $tc_sidebar_default_layout,
                       'class'   => $class_tab
           );
-
-          //checks if the 'force default layout' option is checked and return the default layout before any specific layout
-          $force_layout = $__options['tc_sidebar_force_layout'];
-          if( $force_layout == 1) {
-            $class_tab  = $global_layout[$tc_sidebar_global_layout];
-            $class_tab  = $class_tab['content'];
-            $tc_screen_layout = array(
-              'sidebar' => $tc_sidebar_global_layout,
-              'class'   => $class_tab
-            );
-            return $tc_screen_layout[$sidebar_or_class];
-          }
 
           //The following lines set the post specific layout if any, and if not keeps the default layout previously defined
           $tc_specific_post_layout    = false;

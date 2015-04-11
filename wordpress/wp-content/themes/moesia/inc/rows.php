@@ -40,3 +40,40 @@ function moesia_panels_panels_row_style_attributes($attr, $style) {
 	return $attr;
 }
 add_filter('siteorigin_panels_row_style_attributes', 'moesia_panels_panels_row_style_attributes', 10, 2);
+
+/* Theme widgets */
+function moesia_theme_widgets($widgets) {
+	$theme_widgets = array(
+		'Moesia_Services',
+		'Moesia_Employees',
+		'Moesia_Fp_Social_Profile',
+		'Moesia_Blockquote',
+		'Moesia_Skills',
+		'Moesia_Facts',
+		'Moesia_Testimonials',
+		'Moesia_Clients',
+		'Moesia_Projects',
+		'Moesia_Action',
+		'Moesia_Latest_News',
+	);
+	foreach($theme_widgets as $theme_widget) {
+		if( isset( $widgets[$theme_widget] ) ) {
+			$widgets[$theme_widget]['groups'] = array('moesia-theme');
+			$widgets[$theme_widget]['icon'] = 'dashicons dashicons-schedule';
+		}
+	}
+	return $widgets;
+}
+add_filter('siteorigin_panels_widgets', 'moesia_theme_widgets');
+
+/* Add a tab for the theme widgets in the page builder */
+function moesia_theme_widgets_tab($tabs){
+	$tabs[] = array(
+		'title' => __('Moesia Theme Widgets', 'moesia'),
+		'filter' => array(
+			'groups' => array('moesia-theme')
+		)
+	);
+	return $tabs;
+}
+add_filter('siteorigin_panels_widget_dialog_tabs', 'moesia_theme_widgets_tab', 20);

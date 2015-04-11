@@ -12,10 +12,10 @@
 		<div class="author-social">
 			<?php
 				$author_name = get_the_author_meta('display_name');	
-				$author_facebook = get_the_author_meta('athemes_facebook');
-				$author_twitter = get_the_author_meta('athemes_twitter');
-				$author_googleplus = get_the_author_meta('athemes_googleplus');
-				$author_linkedin = get_the_author_meta('athemes_linkedin');
+				$author_facebook = get_the_author_meta('moesia_facebook');
+				$author_twitter = get_the_author_meta('moesia_twitter');
+				$author_googleplus = get_the_author_meta('moesia_googleplus');
+				$author_linkedin = get_the_author_meta('moesia_linkedin');
 			?>		
 			<?php if ( $author_facebook != '' ) : ?>
 				<a href="<?php echo esc_url($author_facebook); ?>" title="Facebook"><i class="fa fa-facebook-square"></i></a>
@@ -34,14 +34,14 @@
 	
 	<div class="col-md-9 col-sm-9 col-xs-12">
 		<h3 class="author-name">
-			<?php printf(__('About %s', 'athemes'), esc_html($author_name) ); ?>				
+			<?php printf(__('About %s', 'moesia'), esc_html($author_name) ); ?>				
 		</h3>
 	
 		<div class="author-desc">
 			<?php esc_html(the_author_meta( 'description' )); ?>
 		</div>
 		
-		<div class="view-all"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php printf(__('See all posts by %s', 'athemes'), esc_html($author_name) ); ?></a>&nbsp;<i class="fa fa-long-arrow-right"></i></div>
+		<div class="view-all"><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php printf(__('See all posts by %s', 'moesia'), esc_html($author_name) ); ?></a>&nbsp;<i class="fa fa-long-arrow-right"></i></div>
 	</div>
 </div> 
 

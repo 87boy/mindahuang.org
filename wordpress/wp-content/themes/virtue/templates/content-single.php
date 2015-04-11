@@ -90,8 +90,21 @@
       <?php $tags = get_the_tags(); if ($tags) { ?>
         <span class="posttags"><i class="icon-tag"></i> <?php the_tags('', ', ', ''); ?> </span>
       <?php } ?>
-      <?php if(get_post_meta( $post->ID, '_kad_blog_author', true ) == 'yes') { virtue_author_box(); } ?>
-      <?php $blog_carousel_recent = get_post_meta( $post->ID, '_kad_blog_carousel_similar', true ); if ($blog_carousel_recent == 'similar') { get_template_part('templates/similarblog', 'carousel'); } else if($blog_carousel_recent == 'recent') {get_template_part('templates/recentblog', 'carousel');} ?>
+      <?php $authorbox = get_post_meta( $post->ID, '_kad_blog_author', true );
+      if(empty($authorbox) || $authorbox == 'default') {
+          if(isset($virtue['post_author_default']) && ($virtue['post_author_default'] == 'yes')) {
+            virtue_author_box(); 
+          }
+      } else if($authorbox == 'yes'){ 
+        virtue_author_box(); 
+      }?>
+      <?php $blog_carousel_recent = get_post_meta( $post->ID, '_kad_blog_carousel_similar', true ); 
+      if(empty($blog_carousel_recent) || $blog_carousel_recent == 'default' ) { if(isset($virtue['post_carousel_default'])) {$blog_carousel_recent = $virtue['post_carousel_default']; } }
+      if ($blog_carousel_recent == 'similar') { 
+        get_template_part('templates/similarblog', 'carousel');
+      } else if($blog_carousel_recent == 'recent') {
+        get_template_part('templates/recentblog', 'carousel');
+      } ?>
 
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'virtue'), 'after' => '</p></nav>')); ?>
       <?php if(isset($virtue['show_postlinks']) &&  $virtue['show_postlinks'] == 1) {get_template_part('templates/entry', 'post-links'); }?>

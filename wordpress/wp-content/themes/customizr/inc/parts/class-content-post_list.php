@@ -6,9 +6,9 @@
 * @package      Customizr
 * @subpackage   classes
 * @since        3.0.5
-* @author       Nicolas GUILLAUME <nicolas@themesandco.com>
+* @author       Nicolas GUILLAUME <nicolas@presscustomizr.com>
 * @copyright    Copyright (c) 2013, Nicolas GUILLAUME
-* @link         http://themesandco.com/customizr
+* @link         http://presscustomizr.com/customizr
 * @license      http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 if ( ! class_exists( 'TC_post_list' ) ) :
@@ -57,9 +57,9 @@ class TC_post_list {
   */
   function tc_set_early_hooks() {
     //Include attachments in search results
-    add_filter ( 'pre_get_posts'         , array( $this , 'tc_include_attachments_in_search' ));
+    add_action ( 'pre_get_posts'         , array( $this , 'tc_include_attachments_in_search' ));
     //Include all post types in archive pages
-    add_filter ( 'pre_get_posts'         , array( $this , 'tc_include_cpt_in_lists' ));
+    add_action ( 'pre_get_posts'         , array( $this , 'tc_include_cpt_in_lists' ));
   }
 
 
@@ -357,7 +357,7 @@ class TC_post_list {
   * @since Customizr 3.0.10
   */
   function tc_include_attachments_in_search( $query ) {
-      if (! is_search() || ! apply_filters( 'tc_include_attachments_in_search_results' , true ) )
+      if (! is_search() || ! apply_filters( 'tc_include_attachments_in_search_results' , false ) )
         return $query;
 
       // add post status 'inherit'

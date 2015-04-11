@@ -49,6 +49,14 @@ Virtue Theme Uses:
 
 = Theme Name: Virtue =
 
+= Version 2.4.3 | 17th March 2015 =
+* Remove: "to the top" title tag.
+* Fix: Validator alerts with mobile menu.
+* Fix: Retina Logo for desktops.
+* Add: Related posts Master setting.
+* Add: Author Box Master Setting.
+* Add: Theme Lightbox off switch.
+
 = Version 2.4.2 =
 * Add: Youtube option for author box.
 * Add: category crop option.

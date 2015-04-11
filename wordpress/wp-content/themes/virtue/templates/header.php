@@ -91,8 +91,8 @@
     <?php if (has_nav_menu('mobile_navigation')) : ?>
            <div id="mobile-nav-trigger" class="nav-trigger">
               <button class="nav-trigger-case mobileclass collapsed" data-toggle="collapse" data-target=".kad-nav-collapse">
-                <div class="kad-navbtn"><i class="icon-reorder"></i></div>
-                <div class="kad-menu-name"><?php echo __('Menu', 'virtue'); ?></div>
+                <span class="kad-navbtn"><i class="icon-reorder"></i></span>
+                <span class="kad-menu-name"><?php echo __('Menu', 'virtue'); ?></span>
               </button>
             </div>
             <div id="kad-mobile-nav" class="kad-mobile-nav">

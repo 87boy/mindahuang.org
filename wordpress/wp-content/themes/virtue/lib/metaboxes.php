@@ -151,6 +151,7 @@ function virtue_metaboxes( array $meta_boxes ) {
 				'id'   => $prefix . 'blog_author',
 				'type'    => 'select',
 				'options' => array(
+					array( 'name' => __('Default', 'virtue'), 'value' => 'default', ),
 					array( 'name' => __('No', 'virtue'), 'value' => 'no', ),
 					array( 'name' => __('Yes', 'virtue'), 'value' => 'yes', ),
 				),
@@ -161,6 +162,7 @@ function virtue_metaboxes( array $meta_boxes ) {
 				'id'   => $prefix . 'blog_carousel_similar',
 				'type'    => 'select',
 				'options' => array(
+					array( 'name' => __('Default', 'virtue'), 'value' => 'default', ),
 					array( 'name' => __('No', 'virtue'), 'value' => 'no', ),
 					array( 'name' => __('Yes - Display Recent Posts', 'virtue'), 'value' => 'recent', ),
 					array( 'name' => __('Yes - Display Similar Posts', 'virtue'), 'value' => 'similar', )

@@ -10,11 +10,11 @@
 	}
 
 	.widget-search .search-submit {
-		display: none;
+		@include screen-reader-text();
 	}
 
-	h1 {
-		font-size: 1em;
+	h3.widget-title {
+		font-size: 1.387em;
 		letter-spacing: 0;
 		border-bottom: 3px solid $color_body;
 		padding: 0 0 1em;
@@ -67,7 +67,7 @@
 		}
 
 		input[type=submit] {
-			display: none;
+			@include screen-reader-text();
 		}
 
 		&:before {
@@ -203,15 +203,9 @@
 		a {
 			color: $color_body;
 			font-weight: 400;
-			opacity: 0.75;
 
 			&:hover {
 				color: $color_links;
-				opacity: 1;
-			}
-
-			&.button {
-				opacity: 1;
 			}
 		}
 	}
