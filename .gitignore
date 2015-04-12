@@ -31,3 +31,7 @@ wordpress/wp-content/wp-cache-config.php
 # config gitignore
 *.sql
 wordpress/wp-config.php
+
+
+# jetBrains gitignore
+.idea/
